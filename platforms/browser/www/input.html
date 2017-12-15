@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+        * Enable inline JS: add 'unsafe-inline' to default-src
+        * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>GolfinUp</title>
+</head>
+
+<body id="input">
+    <div class="app conatiner">
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<div class="row no-gutters pinfo">
+					<div class="col-4">Campo: <span id="course"></span></div>
+					<div class="col-3">Hoyo: <span id="hole"></span></div>
+					<div class="col-2">Par: <span id="par"></span></div>
+					<div class="col-3">Vuelta: <span id="tour"></span></div>
+				</div>
+				<h2><img src="img/icono-hoyo-peque-o.svg" />   Golpe <span></span></h2>
+				<div class="row  no-gutters">
+					<div class="col-8">
+						Distancia al hoyo:
+					</div>
+					<div class="col-4 pdist">
+						metros&nbsp;&nbsp;&nbsp;<input type="number" name="distance"  class="form-control" />
+					</div>
+				</div>
+				<div class="row  no-gutters">
+					<div class="col-3">
+						Lie:
+					</div>
+					<div class="col-9">
+						<select class="form-control"  name="lie">
+							<option>Salida</option>
+							<option>Calle</option>
+							<option>Bunker</option>
+							<option>Green</option>
+						</select>
+					</div>
+				</div>
+				<div class="row  no-gutters">
+					<div class="col-3">
+						Palo:
+					</div>
+					<div class="col-9">
+						<select class="form-control"  name="club">
+							<option>Madera</option>
+							<option>Hierro 1</option>
+							<option>Hierro 2</option>
+							<option>Hierro 3</option>
+							<option>Drive</option>
+						</select>
+					</div>
+				</div>
+				<div class="row  no-gutters">
+					<div class="col-6">
+						Golpe impedido:
+					</div>
+					<div class="col-6">
+						<input type="checkbox" name="prevented" class="form-control form-control-lg">
+					</div>
+				</div>
+				<div class="row  no-gutters">
+					<div class="col-6">
+						Golpe penalidad:
+					</div>
+					<div class="col-6">
+						<input type="checkbox" name="penalty" class="form-control form-control-lg">
+					</div>
+				</div>
+
+			</div>
+			<div class="col-1"></div>
+		</div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+		
+		$(document).ready(function(){
+			window.localStorage.setItem("strike",1)
+			$('#course').html(window.localStorage.getItem("course"));
+			$('#hole').html(window.localStorage.getItem("hole"));
+			$('#par').html(window.localStorage.getItem("par"));
+			$('#tour').html(1);
+			$('h2 span').html(window.localStorage.getItem("strike"));
+		});
+    </script>
+</body>
+
+</html>
