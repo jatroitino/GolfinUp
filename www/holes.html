@@ -36,30 +36,30 @@
 					</div>
 					<h2><img src="img/icono-hoyo-peque-o.svg" />   Hoyos</h2>
 					<div id="hdata">
-						<button class="rndbtn" name="hole" value="1">1</button>
-						<button class="rndbtn" name="hole" value="2">2</button>
-						<button class="rndbtn" name="hole" value="3">3</button>
-						<button class="rndbtn" name="hole" value="4">4</button>
-						<button class="rndbtn" name="hole" value="5">5</button>
-						<button class="rndbtn" name="hole" value="6">6</button>
-						<button class="rndbtn" name="hole" value="7">7</button>
-						<button class="rndbtn" name="hole" value="8">8</button>
-						<button class="rndbtn" name="hole" value="9">9</button>
-						<button class="rndbtn" name="hole" value="10">10</button>
-						<button class="rndbtn" name="hole" value="11">11</button>
-						<button class="rndbtn" name="hole" value="12">12</button>
-						<button class="rndbtn" name="hole" value="13">13</button>
-						<button class="rndbtn" name="hole" value="14">14</button>
-						<button class="rndbtn" name="hole" value="15">15</button>
-						<button class="rndbtn" name="hole" value="16">16</button>
-						<button class="rndbtn" name="hole" value="17">17</button>
-						<button class="rndbtn" name="hole" value="18">18</button>
+						<button class="rndbtn h1" name="hole" value="1">1</button>
+						<button class="rndbtn h2" name="hole" value="2">2</button>
+						<button class="rndbtn h3" name="hole" value="3">3</button>
+						<button class="rndbtn h4" name="hole" value="4">4</button>
+						<button class="rndbtn h5" name="hole" value="5">5</button>
+						<button class="rndbtn h6" name="hole" value="6">6</button>
+						<button class="rndbtn h7" name="hole" value="7">7</button>
+						<button class="rndbtn h8" name="hole" value="8">8</button>
+						<button class="rndbtn h9" name="hole" value="9">9</button>
+						<button class="rndbtn h10" name="hole" value="10">10</button>
+						<button class="rndbtn h11" name="hole" value="11">11</button>
+						<button class="rndbtn h12" name="hole" value="12">12</button>
+						<button class="rndbtn h13" name="hole" value="13">13</button>
+						<button class="rndbtn h14" name="hole" value="14">14</button>
+						<button class="rndbtn h15" name="hole" value="15">15</button>
+						<button class="rndbtn h16" name="hole" value="16">16</button>
+						<button class="rndbtn h17" name="hole" value="17">17</button>
+						<button class="rndbtn h18" name="hole" value="18">18</button>
 					</div>
 					<div id="pdata">
 						<p class="shalf">Par del campo</p>
-						<button class="sqbtn" name="par" value="3">3</button>
-						<button class="sqbtn" name="par" value="4">4</button>
-						<button class="sqbtn" name="par" value="5">5</button>
+						<button class="sqbtn p3" name="par" value="3">3</button>
+						<button class="sqbtn p4" name="par" value="4">4</button>
+						<button class="sqbtn p5" name="par" value="5">5</button>
 					</div>
 			</div>
 			<div class="col-6 aright">
@@ -70,6 +70,31 @@
 					</div>
 		</div>
     </div>
+<footer class="fixed-bottom">
+	<div class="container-fluid">
+		<div class="col-3">
+			<a href="home.html">
+				<img src="img/home_inactive.svg"><br>Dashboard
+			</a>
+		</div>
+		<div class="col-3 active">
+			<a href="play.html">
+				<img src="img/input.svg"><br>Input
+			</a>
+		</div>
+		<div class="col-3">
+			<a href="stats.html">
+				<img src="img/stats_inactive.svg"><br>Stats
+			</a>
+		</div>
+		<div class="col-3">
+			<a href="ajustes.html">
+				<img src="img/ajustes_inactive.svg"><br>Config.
+			</a>
+		</div>
+	</div>
+</footer>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -85,10 +110,25 @@
 			$('#weather').html(window.localStorage.getItem("weather"));
 			$('#game_type').html(window.localStorage.getItem("game_type"));
 			$('#bars').html(window.localStorage.getItem("bars"));
+			
+			var par = window.localStorage.getItem("par");
+			if (par > 0){
+				$('.p'+par).addClass('selected');
+			}
+			
+			var holes = JSON.parse(window.localStorage.getItem("holes") || null);
+			if (holes != null){
+				for (var i = 1; i <= 18; i++){
+					if (holes[i] == 1){
+						$('.rndbtn').removeClass('selected');
+						$('.h'+i).addClass('done').addClass('selected');
+					}
+				}
+			}
 			$('.rndbtn').click(function(){
 				$('.rndbtn').removeClass('selected');
 				$(this).addClass('selected');
-			window.localStorage.setItem("hole", $(this).val());
+				window.localStorage.setItem("shole", $(this).val());
 			});
 			$('.sqbtn').click(function(){
 				$('.sqbtn').removeClass('selected');

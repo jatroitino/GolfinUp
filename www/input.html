@@ -29,26 +29,26 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-4">Campo: <span id="course"></span></div>
-					<div class="col-3">Hoyo: <span id="hole"></span></div>
+					<div class="col-4">Course: <span id="course"></span></div>
+					<div class="col-3">Hole: <span id="hole"></span></div>
 					<div class="col-2">Par: <span id="par"></span></div>
-					<div class="col-3">Vuelta: <span id="tour"></span></div>
+					<div class="col-3">Round: <span id="tour"></span></div>
 				</div>
-				<h2><img src="img/icono-hoyo-peque-o.svg" />   Golpe <span></span></h2>
+				<h2><img src="img/icono-hoyo-peque-o.svg" />   Strike <span></span></h2>
 				<div class="row  no-gutters">
 					<div class="col-8">
-						Distancia al hoyo:
+						Hole distance:
 					</div>
 					<div class="col-4 pdist">
-						metros&nbsp;&nbsp;&nbsp;<input type="number" name="distance"  class="form-control" />
+						meters&nbsp;&nbsp;&nbsp;<input type="number" name="distance" id="distance" class="form-control" />
 					</div>
 				</div>
-				<div class="row  no-gutters">
+				<div class="row  no-gutters disabled s2">
 					<div class="col-3">
 						Lie:
 					</div>
 					<div class="col-9">
-						<select class="form-control"  name="lie">
+						<select class="form-control"  name="lie" id="lie">
 							<option>Salida</option>
 							<option>Calle</option>
 							<option>Bunker</option>
@@ -56,31 +56,31 @@
 						</select>
 					</div>
 				</div>
-				<div class="row  no-gutters">
+				<div class="row  no-gutters disabled s3">
 					<div class="col-3">
-						Palo:
+						Club:
 					</div>
 					<div class="col-9">
-						<select class="form-control"  name="club">
-							<option>Madera</option>
-							<option>Hierro 1</option>
-							<option>Hierro 2</option>
-							<option>Hierro 3</option>
+						<select class="form-control"  name="club" id="club">
+							<option>Wood</option>
+							<option>Iron 1</option>
+							<option>Iron 2</option>
+							<option>Iron 3</option>
 							<option>Drive</option>
 						</select>
 					</div>
 				</div>
-				<div class="row  no-gutters">
+				<div class="row  no-gutters disabled s4">
 					<div class="col-6">
-						Golpe impedido:
+						Blow prevented:
 					</div>
 					<div class="col-6">
 						<input type="checkbox" name="prevented" class="form-control form-control-lg">
 					</div>
 				</div>
-				<div class="row  no-gutters">
+				<div class="row  no-gutters disabled s5">
 					<div class="col-6">
-						Golpe penalidad:
+						Penalty:
 					</div>
 					<div class="col-6">
 						<input type="checkbox" name="penalty" class="form-control form-control-lg">
@@ -89,8 +89,39 @@
 
 			</div>
 			<div class="col-1"></div>
+			<div class="col-6 aright">
+				<a href="holes.html" class="btn btn-danger">End hole</a>
+			</div>
+			<div class="col-6 aleft">
+				<a href="" id="nextstrike" class="btn btn-info">Next strike</a>
+			</div>
 		</div>
     </div>
+<footer class="fixed-bottom">
+	<div class="container-fluid">
+		<div class="col-3">
+			<a href="home.html">
+				<img src="img/home_inactive.svg"><br>Dashboard
+			</a>
+		</div>
+		<div class="col-3 active">
+			<a href="play.html">
+				<img src="img/input.svg"><br>Input
+			</a>
+		</div>
+		<div class="col-3">
+			<a href="stats.html">
+				<img src="img/stats_inactive.svg"><br>Stats
+			</a>
+		</div>
+		<div class="col-3">
+			<a href="ajustes.html">
+				<img src="img/ajustes_inactive.svg"><br>Config.
+			</a>
+		</div>
+	</div>
+</footer>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -101,12 +132,43 @@
         app.initialize();
 		
 		$(document).ready(function(){
-			window.localStorage.setItem("strike",1)
+			var strike = parseInt(window.localStorage.getItem("strike"));
+			if (!(strike > 0)){
+				strike = 1;
+			}
+			window.localStorage.setItem("strike", strike);
+			if (window.localStorage.getItem("holes") == null){
+				var holes = new Array();
+			} else {
+				var holes = JSON.parse(window.localStorage.getItem("holes"));
+			}
+			console.log(holes);
+			holes[window.localStorage.getItem("shole")] = 1;
+			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
-			$('#hole').html(window.localStorage.getItem("hole"));
+			$('#hole').html(window.localStorage.getItem("shole"));
 			$('#par').html(window.localStorage.getItem("par"));
 			$('#tour').html(1);
 			$('h2 span').html(window.localStorage.getItem("strike"));
+		});
+		$('#nextstrike').click(function(){
+			var strike = parseInt(window.localStorage.getItem("strike"));
+			if (!(strike > 0)){
+				strike = 1;
+			}
+			window.localStorage.setItem("strike", strike+1);
+			window.href = 'input.html';
+		});
+		
+		$('#distance').change(function(){
+			$('.s2').removeClass('disabled');
+		});
+		$('#lie').change(function(){
+			$('.s3').removeClass('disabled');
+		});
+		$('#club').change(function(){
+			$('.s4').removeClass('disabled');
+			$('.s5').removeClass('disabled');
 		});
     </script>
 </body>
