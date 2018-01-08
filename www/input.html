@@ -43,34 +43,55 @@
 						meters&nbsp;&nbsp;&nbsp;<input type="number" name="distance" id="distance" class="form-control" />
 					</div>
 				</div>
-				<div class="row  no-gutters disabled s2">
+				<div class="row  no-gutters s2">
 					<div class="col-3">
 						Lie:
 					</div>
 					<div class="col-9">
 						<select class="form-control"  name="lie" id="lie">
-							<option>Salida</option>
-							<option>Calle</option>
+							<option>Teeing</option>
+							<option>Fairway</option>
 							<option>Bunker</option>
 							<option>Green</option>
 						</select>
 					</div>
 				</div>
-				<div class="row  no-gutters disabled s3">
+				<div class="row  no-gutters s3">
 					<div class="col-3">
 						Club:
 					</div>
 					<div class="col-9">
 						<select class="form-control"  name="club" id="club">
-							<option>Wood</option>
+							<option>Drive</option>
+							<option>Wood 2</option>
+							<option>Wood 3</option>
+							<option>Wood 4</option>
+							<option>Wood 5</option>
+							<option>Wood 6</option>
+							<option>Wood 7</option>
+							<option>Wood 8</option>
+							<option>Wood 9</option>
+							<option>Wood 10</option>
+							<option>Wood 11</option>
 							<option>Iron 1</option>
 							<option>Iron 2</option>
 							<option>Iron 3</option>
-							<option>Drive</option>
+							<option>Iron 4</option>
+							<option>Iron 5</option>
+							<option>Iron 6</option>
+							<option>Iron 7</option>
+							<option>Iron 8</option>
+							<option>Iron 9</option>
+							<option>Pitching wedge</option>
+							<option>Gap wedge</option>
+							<option>Sand wedge</option>
+							<option>Lob wedge</option>
+							<option>Ultra lob wedge</option>
+							<option>Putter</option>
 						</select>
 					</div>
 				</div>
-				<div class="row  no-gutters disabled s4">
+				<div class="row  no-gutters s4">
 					<div class="col-6">
 						Blow prevented:
 					</div>
@@ -78,7 +99,7 @@
 						<input type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
 					</div>
 				</div>
-				<div class="row  no-gutters disabled s5">
+				<div class="row  no-gutters s5">
 					<div class="col-6">
 						Penalty:
 					</div>
@@ -264,14 +285,19 @@
 		});
 		
 		$('#distance').change(function(){
-			$('.s2').removeClass('disabled');
+			//$('.s2').removeClass('disabled');
 		});
 		$('#lie').change(function(){
-			$('.s3').removeClass('disabled');
+			if ($('#lie option:selected').val() == 'Green'){
+				$('#club').val('Putter').attr('disabled',true);
+			} else {
+				$('#club').attr('disabled',false);
+			}
+			//$('.s3').removeClass('disabled');
 		});
 		$('#club').change(function(){
-			$('.s4').removeClass('disabled');
-			$('.s5').removeClass('disabled');
+			//$('.s4').removeClass('disabled');
+			//$('.s5').removeClass('disabled');
 		});
     </script>
 </body>
