@@ -25,7 +25,25 @@
 
 <body id="home">
     <div class="app conatiner">
-		
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10">
+				<h2><img src="img/avatarchica.png" />   Hello, <span id="username"></span></h2>
+			</div>
+			<div class="col-1"></div>
+		</div>
+		<div class="row">
+			<div class="col-1"></div>
+			<div class="col-10 btns acenter">
+				<br>
+				<a class="btn btn-info btn-block btn-lg" href="play.html">New input</a>
+				<br>
+				<a class="btn btn-info btn-block btn-lg" href="stats.html">Stats</a>
+				<br>
+				<a class="btn btn-info btn-block btn-lg" href="ajustes.html">Configuration</a>
+			</div>
+			<div class="col-1"></div>
+		</div>
     </div>
 <footer class="fixed-bottom">
 	<div class="container-fluid">
@@ -62,7 +80,8 @@
         app.initialize();
 		
 		$(document).ready(function(){
-			
+			$('#course').html(window.localStorage.getItem("username"));
+
 		});
     </script>
 </body>

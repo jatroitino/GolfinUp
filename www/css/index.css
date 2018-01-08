@@ -14,7 +14,7 @@ body {
 }
 
 /* Portrait layout (default) */
-.app {margin-bottom: 80px;}
+.app {margin-bottom: 80px;display: none;}
 
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
@@ -31,12 +31,16 @@ footer .col-3 a {color:#9b9b9b; font-size: 10px;}
 footer .col-3.active a {color:#0076ff;}
 
 
-#home {text-align:center;background-color:#00bcb4;}
-#home #logo {margin-top:20%;}
-#home input[type="text"]{border:1px solid #01e5db;line-height:40px;width:80%;margin:0 auto;}
-#home input[type="password"]{border:1px solid #01e5db;line-height:40px;width:80%;margin:0 auto;}
+#index {text-align:center;background-color:#00bcb4;}
+#index #logo {margin-top:20%;}
+#index input[type="text"]{border:1px solid #01e5db;line-height:40px;width:80%;margin:0 auto;}
+#index input[type="password"]{border:1px solid #01e5db;line-height:40px;width:80%;margin:0 auto;}
 .btn-info {background: #01e5db;border-color:#01e5db;margin-top: 20px;border-radius:40px;padding:10px 40px;}
 .btn-danger {margin-top: 20px;border-radius:40px;padding:10px 40px;}
+
+#home {text-align:center;padding-top:5%;}
+#home h2 {text-align:left; margin-top:40px;}
+
 
 #play {text-align:center;}
 #play #logo {margin-top:20%;}
@@ -76,13 +80,13 @@ footer .col-3.active a {color:#0076ff;}
     border: 1px solid #00bcb4;	
 }
 #pdata {padding-left:50px;text-align:left;margin-top: 40px;    float: left;}
-.sqbtn {font-size: 24px;    border-radius: 10px;
+.sqbtn {font-size: 22px;    border-radius: 10px;
     background: #fff;
     color: #cccccc;
     border: 1px solid #cccccc;
     font-weight: 100;
-        width: 45px;
-    height: 60px;
+        width: 40px;
+    height: 50px;
     margin: 3px;}
 .sqbtn.selected {
 	 background: #00bcb4;

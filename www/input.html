@@ -75,7 +75,7 @@
 						Blow prevented:
 					</div>
 					<div class="col-6">
-						<input type="checkbox" name="prevented" class="form-control form-control-lg">
+						<input type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
 					</div>
 				</div>
 				<div class="row  no-gutters disabled s5">
@@ -83,14 +83,14 @@
 						Penalty:
 					</div>
 					<div class="col-6">
-						<input type="checkbox" name="penalty" class="form-control form-control-lg">
+						<input type="checkbox" name="penalty" id="penalty" class="form-control form-control-lg">
 					</div>
 				</div>
 
 			</div>
 			<div class="col-1"></div>
 			<div class="col-6 aright">
-				<a href="holes.html" class="btn btn-danger">End hole</a>
+				<a href="" id="endhole" class="btn btn-danger">End hole</a>
 			</div>
 			<div class="col-6 aleft">
 				<a href="" id="nextstrike" class="btn btn-info">Next strike</a>
@@ -122,6 +122,25 @@
 	</div>
 </footer>
 
+<div class="modal" id="modal1" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Has it been ball holed or lifted?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="bholed" class="btn btn-primary">Holed</button>
+        <button type="button" id="blifted" class="btn btn-primary">Lifted</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -142,7 +161,6 @@
 			} else {
 				var holes = JSON.parse(window.localStorage.getItem("holes"));
 			}
-			console.log(holes);
 			holes[window.localStorage.getItem("shole")] = 1;
 			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
@@ -151,13 +169,98 @@
 			$('#tour').html(1);
 			$('h2 span').html(window.localStorage.getItem("strike"));
 		});
-		$('#nextstrike').click(function(){
+		$('#nextstrike').click(function(event){
+			event.preventDefault();
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
 				strike = 1;
 			}
 			window.localStorage.setItem("strike", strike+1);
-			window.href = 'input.html';
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'course':window.localStorage.getItem("course"),
+					'tour':1,
+					'hole':window.localStorage.getItem("shole"),
+					'par':window.localStorage.getItem("par"),
+					'strike':window.localStorage.getItem("strike"),
+					'distance':$('#distance').val(),
+					'lie':$('#lie').val(),
+					'club':$('#club').val(),
+					'prevented':$('#prevented:checked').length,
+					'penalty':$('#penalty:checked').length,
+					'lifted':0
+				},
+				dataType: 'json',
+				success: function(response){
+					window.location.href = 'input.html';
+				}
+			});
+		});
+		
+		$('#endhole').click(function(event){
+			event.preventDefault();
+			$("#modal1").modal("show");
+		});
+		
+		$('#bholed').click(function(event){
+			event.preventDefault();
+			$("#modal1").modal("hide");
+			window.localStorage.setItem("strike", 0);
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'course':window.localStorage.getItem("course"),
+					'tour':1,
+					'hole':window.localStorage.getItem("shole"),
+					'par':window.localStorage.getItem("par"),
+					'strike':window.localStorage.getItem("strike"),
+					'distance':$('#distance').val(),
+					'lie':$('#lie').val(),
+					'club':$('#club').val(),
+					'prevented':$('#prevented:checked').length,
+					'penalty':$('#penalty:checked').length,
+					'lifted':0
+				},
+				dataType: 'json',
+				success: function(response){
+					window.location.href = 'holes.html';
+				}
+			});
+		});
+		$('#blifted').click(function(event){
+			event.preventDefault();
+			$("#modal1").modal("hide");
+			window.localStorage.setItem("strike", 0);
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'course':window.localStorage.getItem("course"),
+					'tour':1,
+					'hole':window.localStorage.getItem("shole"),
+					'par':window.localStorage.getItem("par"),
+					'strike':window.localStorage.getItem("strike"),
+					'distance':$('#distance').val(),
+					'lie':$('#lie').val(),
+					'club':$('#club').val(),
+					'prevented':$('#prevented:checked').length,
+					'penalty':$('#penalty:checked').length,
+					'lifted':1
+				},
+				dataType: 'json',
+				success: function(response){
+					window.location.href = 'holes.html';
+				}
+			});
 		});
 		
 		$('#distance').change(function(){
