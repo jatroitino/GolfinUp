@@ -83,7 +83,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		
 		//cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
 			//console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
-			navigator.geolocation.getCurrentPosition(geosuccess);
+			navigator.geolocation.getCurrentPosition(geosuccess,geoError);
 		//}, function(error){
 		//	window.alert("GPS is required to offer nearby courses");
 		//});    
@@ -124,6 +124,11 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 				});
 		  
 		};
+		
+		function geoError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n');
+		}
     </script>
 </body>
 
