@@ -58,6 +58,10 @@
     </script>
 	<script>
 			$(document).ready(function(){
+				var username = window.localStorage.getItem("username");
+				if (username != null){
+					window.location.href='home.html';
+				}
 				$('#login_submit').on( 'click', function(e){
 					$.ajax({
 						type: 'post',

@@ -121,24 +121,40 @@
 		$('select[name="wind"]').change(function(){
 			window.localStorage.setItem("wind", $(this).val());
 			$(this).hide();
-			$('#swind').html($(this).val());
+			$('#swind').fadeIn().html($(this).val());
+		});
+		$('#swind').click(function(){
+			$(this).hide();
+			$('select[name="wind"]').fadeIn();
 		});
 		$('select[name="weather"]').change(function(){
 			window.localStorage.setItem("weather", $(this).val());
 			$(this).hide();
-			$('#weather').hide();
-			$('#sweather').html($(this).val());
+			//$('#weather').hide();
+			$('#sweather').fadeIn().html($(this).val());
+		});
+		$('#sweather').click(function(){
+			$(this).hide();
+			$('select[name="weather"]').fadeIn();
 		});
 		$('select[name="game_type"]').change(function(){
 			window.localStorage.setItem("game_type", $(this).val());
 			$(this).hide();
-			$('#sgame_type').html($(this).val());
+			$('#sgame_type').fadeIn().html($(this).val());
+		});
+		$('#sgame_type').click(function(){
+			$(this).hide();
+			$('select[name="game_type"]').fadeIn();
 		});
 		$('select[name="bars"]').change(function(){
 			window.localStorage.setItem("bars", $(this).val());
 			$(this).hide();
-			$('#game_type').hide();
-			$('#sbars').html($(this).val());
+			//$('#game_type').hide();
+			$('#sbars').fadeIn().html($(this).val());
+		});
+		$('#sbars').click(function(){
+			$(this).hide();
+			$('select[name="bars"]').fadeIn();
 		});
 		
     </script>

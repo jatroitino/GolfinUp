@@ -72,16 +72,47 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+		var sourceplaces = [];
 		
 		
-		$('.typeahead').typeahead({
-			source: [
-						{id: 1, name: "Zaudin"}
-					  ]
-		});
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
 		});
+		$(document).ready(function(){
+			navigator.geolocation.getCurrentPosition(geosuccess);
+		})
+		function geosuccess(pos) {
+		  var crd = pos.coords;
+
+		  console.log('Your current position is:');
+		  console.log('Latitude : ' + crd.latitude);
+		  console.log('Longitude: ' + crd.longitude);
+		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  
+		  $.ajax({
+					type: 'get',
+					cache: false,
+					url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+					data: {
+						'location': crd.latitude+','+crd.longitude,
+						'radius': '50000',
+						'keyword': 'golf course',
+						'key':'AIzaSyDoY5pf3EJ7XzcI-jvpYg3s6s2uG3BiCVY'
+					},
+					dataType: 'json',
+					success: function(response){
+						for (i=0;i<response.results.length;i++){
+							console.log(response.results[i].name);
+							sourceplaces[i]=response.results[i].name;
+						}
+						
+						$('.typeahead').typeahead({
+							source: sourceplaces
+						});
+					}
+				});
+		  
+		};
     </script>
 </body>
 
