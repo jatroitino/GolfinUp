@@ -79,15 +79,22 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 			window.localStorage.setItem("course", $(this).val());
 		});
 		$(document).ready(function(){
+		
+		cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+			//console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
 			navigator.geolocation.getCurrentPosition(geosuccess);
+		}, function(error){
+			window.alert("GPS is required to offer nearby courses");
+		});    
+		
 		})
 		function geosuccess(pos) {
 		  var crd = pos.coords;
 
-		  console.log('Your current position is:');
-		  console.log('Latitude : ' + crd.latitude);
-		  console.log('Longitude: ' + crd.longitude);
-		  console.log('More or less ' + crd.accuracy + ' meters.');
+		  //console.log('Your current position is:');
+		  //console.log('Latitude : ' + crd.latitude);
+		  //console.log('Longitude: ' + crd.longitude);
+		  //console.log('More or less ' + crd.accuracy + ' meters.');
 		  
 		  $.ajax({
 					type: 'get',
@@ -102,7 +109,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 					dataType: 'json',
 					success: function(response){
 						for (i=0;i<response.results.length;i++){
-							console.log(response.results[i].name);
+							 //console.log(response.results[i].name);
 							sourceplaces[i]=response.results[i].name;
 						}
 						
