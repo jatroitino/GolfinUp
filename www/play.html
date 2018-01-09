@@ -70,7 +70,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/play.js"></script>
     <script type="text/javascript">
         app.initialize();
 		var sourceplaces = [];
@@ -79,18 +79,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
 		});
-		document.addEventListener("deviceready", onDeviceReadyPlay, false);
-		
-		function onDeviceReadyPlay() {
-		
-		//cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
-			//console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
-			navigator.geolocation.getCurrentPosition(geosuccess,geoError);
-		//}, function(error){
-		//	window.alert("GPS is required to offer nearby courses");
-		//});    
-		
-		})
+
 		function geosuccess(pos) {
 		  var crd = pos.coords;
 
