@@ -84,7 +84,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		  var crd = pos.coords;
 
 		  //console.log('Your current position is:');
-		  alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);
+		 // alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);
 		  //console.log();
 		  //console.log('More or less ' + crd.accuracy + ' meters.');
 		  
@@ -106,7 +106,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 							sourceplaces[i]=response.results[i].name;
 							html += response.results[i].name+'<br>';
 						}
-						$('#coursesops').html(html);
+						//$('#coursesops').html(html);
 						
 						$('.typeahead').typeahead({
 							source: sourceplaces
