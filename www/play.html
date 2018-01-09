@@ -34,6 +34,7 @@
 				<p>¿En que campo estás?<br>
 Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 					<input type="text" name="course" class="form-control typeahead"  placeholder="Introduce el campo" />
+					<div id="coursesops"></div>
 					<a href="condiciones.html" class="btn btn-secondary">Siguiente</a>
 				</div>
 			</div>
@@ -80,12 +81,12 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		});
 		$(document).ready(function(){
 		
-		cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
+		//cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
 			//console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
 			navigator.geolocation.getCurrentPosition(geosuccess);
-		}, function(error){
-			window.alert("GPS is required to offer nearby courses");
-		});    
+		//}, function(error){
+		//	window.alert("GPS is required to offer nearby courses");
+		//});    
 		
 		})
 		function geosuccess(pos) {
@@ -108,10 +109,13 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 					},
 					dataType: 'json',
 					success: function(response){
+						var html = '';
 						for (i=0;i<response.results.length;i++){
 							 //console.log(response.results[i].name);
 							sourceplaces[i]=response.results[i].name;
+							html += response.results[i].name+'<br>';
 						}
+						$('#coursesops').html(html);
 						
 						$('.typeahead').typeahead({
 							source: sourceplaces
