@@ -79,7 +79,9 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
 		});
-		$(document).ready(function(){
+		document.addEventListener("deviceready", onDeviceReadyPlay, false);
+		
+		function onDeviceReadyPlay() {
 		
 		//cordova.plugins.diagnostic.isGpsLocationEnabled(function(enabled){
 			//console.log("GPS location is " + (enabled ? "enabled" : "disabled"));
