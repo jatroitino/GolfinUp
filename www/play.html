@@ -79,12 +79,12 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
 		});
-		$(document).ready(function(){
-		//function geosuccess(pos) {
-		  //var crd = pos.coords;
+
+		function geosuccess(pos) {
+		  var crd = pos.coords;
 
 		  //console.log('Your current position is:');
-		 // alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);
+		  alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);
 		  //console.log();
 		  //console.log('More or less ' + crd.accuracy + ' meters.');
 		  
@@ -93,7 +93,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 					cache: false,
 					url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
 					data: {
-						'location': '37.376100, -6.029524',
+						'location': crd.latitude+','+crd.longitude,
 						'radius': '50000',
 						'keyword': 'golf course',
 						'key':'AIzaSyDoY5pf3EJ7XzcI-jvpYg3s6s2uG3BiCVY'
@@ -114,7 +114,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 					}
 				});
 		  
-		});
+		};
 		
 		function geoError(error) {
 			alert('code: '    + error.code    + '\n' +
