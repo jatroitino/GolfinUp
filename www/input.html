@@ -33,6 +33,12 @@
 					<div class="col-3">Hole: <span id="hole"></span></div>
 					<div class="col-2">Par: <span id="par"></span></div>
 					<div class="col-3">Round: <span id="tour"></span></div>
+					<div id="pdata" class="col-12">
+						<p class="shalf">Hole par</p>
+						<button class="sqbtn p3" name="par" value="3">3</button>
+						<button class="sqbtn p4" name="par" value="4">4</button>
+						<button class="sqbtn p5" name="par" value="5">5</button>
+					</div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span></h2>
 				<div class="row  no-gutters">
@@ -40,7 +46,7 @@
 						Hole distance:
 					</div>
 					<div class="col-4 pdist">
-						meters&nbsp;&nbsp;&nbsp;<input type="number" name="distance" id="distance" class="form-control" />
+						<input type="number" name="distance" id="distance" class="form-control" placeholder="meters"/>
 					</div>
 				</div>
 				<div class="row  no-gutters s2">
@@ -54,7 +60,7 @@
 							<option>Bunker</option>
 							<option>Rough</option>
 							<option>Green</option>
-							<option>Other</option>
+							<option>Other </option>
 						</select>
 					</div>
 				</div>
@@ -94,29 +100,39 @@
 					</div>
 				</div>
 				<div class="row  no-gutters s4">
-					<div class="col-6">
-						Blow prevented:
+					<div class="col-9">
+						Impeded shot:
 					</div>
-					<div class="col-6">
+					<div class="col-3">
 						<input type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
 					</div>
 				</div>
 				<div class="row  no-gutters s5">
-					<div class="col-6">
-						Penalty:
+					<div class="col-9">
+						Penalty shot:
 					</div>
-					<div class="col-6">
-						<input type="checkbox" name="penalty" id="penalty" class="form-control form-control-lg">
+					<div class="col-3">
+						<select name="penalty" id="penalty" class="form-control form-control-sm">
+							<option></option>
+							<option>1</option>
+							<option>2</option>
+						</select>
 					</div>
 				</div>
 
 			</div>
 			<div class="col-1"></div>
-			<div class="col-6 aright">
-				<a href="" id="endhole" class="btn btn-danger">End hole</a>
+			<div class="col-4">
+				<a href="" id="endround" class="btn btn-danger">Finish round</a>
 			</div>
-			<div class="col-6 aleft">
-				<a href="" id="nextstrike" class="btn btn-info">Next stroke</a>
+			<div class="col-4">
+				<a href="" id="endhole" class="btn btn-info">Next hole</a>
+			</div>
+			<!-- <div class="col-2">
+				<a href="" id="prevstrike" class="btn btn-info"><</a>
+			</div> -->
+			<div class="col-4">
+				<a href="" id="nextstrike" class="btn btn-info">></a>
 			</div>
 		</div>
     </div>
@@ -174,6 +190,10 @@
         app.initialize();
 		
 		$(document).ready(function(){
+			var par = window.localStorage.getItem("par");
+			if (par > 0){
+				$('.p'+par).addClass('selected');
+			}
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
 				strike = 1;
@@ -214,7 +234,7 @@
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
-					'penalty':$('#penalty:checked').length,
+					'penalty':$('#penalty').val(),
 					'lifted':0
 				},
 				dataType: 'json',
@@ -223,10 +243,45 @@
 				}
 			});
 		});
-		
+		$('.sqbtn').click(function(){
+			$('.sqbtn').removeClass('selected');
+			$(this).addClass('selected');
+			window.localStorage.setItem("par", $(this).val());
+		});
 		$('#endhole').click(function(event){
 			event.preventDefault();
-			$("#modal1").modal("show");
+			var gt = window.localStorage.getItem("game_type");
+			if (gt == 'Stableford'){
+				$("#modal1").modal("show");
+			} else {
+				$.ajax({
+					type: 'post',
+					cache: false,
+					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+					data: {
+						'user_id':window.localStorage.getItem("user_id"),
+						'course':window.localStorage.getItem("course"),
+						'tour':1,
+						'hole':window.localStorage.getItem("shole"),
+						'par':window.localStorage.getItem("par"),
+						'strike':window.localStorage.getItem("strike"),
+						'distance':$('#distance').val(),
+						'lie':$('#lie').val(),
+						'club':$('#club').val(),
+						'prevented':$('#prevented:checked').length,
+						'penalty':$('#penalty:checked').length,
+						'lifted':1
+					},
+					dataType: 'json',
+					success: function(response){
+						window.localStorage.setItem("strike", 1);
+						var shole = parseInt(window.localStorage.getItem("shole"));
+						window.localStorage.setItem("shole", shole+1);
+						window.location.href = 'input.html';
+					}
+				});
+				
+			}
 		});
 		
 		$('#bholed').click(function(event){
@@ -253,7 +308,10 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					window.location.href = 'holes.html';
+					window.localStorage.setItem("strike", 1);
+					var shole = parseInt(window.localStorage.getItem("shole"));
+					window.localStorage.setItem("shole", shole+1);
+					window.location.href = 'input.html';
 				}
 			});
 		});
@@ -281,11 +339,41 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					window.location.href = 'holes.html';
+					window.localStorage.setItem("strike", 1);
+					var shole = parseInt(window.localStorage.getItem("shole"));
+					window.localStorage.setItem("shole", shole+1);
+					window.location.href = 'input.html';
 				}
 			});
 		});
 		
+		
+		$('#endround').click(function(event){
+			event.preventDefault();
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'course':window.localStorage.getItem("course"),
+					'tour':1,
+					'hole':window.localStorage.getItem("shole"),
+					'par':window.localStorage.getItem("par"),
+					'strike':window.localStorage.getItem("strike"),
+					'distance':$('#distance').val(),
+					'lie':$('#lie').val(),
+					'club':$('#club').val(),
+					'prevented':$('#prevented:checked').length,
+					'penalty':$('#penalty:checked').length,
+					'lifted':1
+				},
+				dataType: 'json',
+				success: function(response){
+					window.location.href = 'dashboard.html';
+				}
+			});
+		});
 		$('#distance').change(function(){
 			//$('.s2').removeClass('disabled');
 		});

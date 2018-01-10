@@ -62,6 +62,7 @@ footer .col-3.active a {color:#0076ff;}
 #holes h2 {text-align:left; margin-top:40px;}
 #holes p.half {width:50%;float:left;text-align:left;font-size:14px;}
 #holes p.shalf {width:45%;float:left;text-align:left;font-size:19px;font-weight:100;}
+#input p.shalf {width:45%;float:left;text-align:left;font-size:19px;font-weight:100;}
 #holes p.half span{color:#00bcb4;}
 #holes .btn-info {margin-top: 40px;}
 #cdata {padding-left:50px;margin: 20px 0;    float: left;}
@@ -79,7 +80,7 @@ footer .col-3.active a {color:#0076ff;}
     color: #ffffff;
     border: 1px solid #00bcb4;	
 }
-#pdata {padding-left:50px;text-align:left;margin-top: 40px;    float: left;}
+#pdata {text-align:left;margin-top: 40px;    float: left;}
 .sqbtn {font-size: 22px;    border-radius: 10px;
     background: #fff;
     color: #cccccc;
@@ -98,11 +99,17 @@ footer .col-3.active a {color:#0076ff;}
 #input .pinfo{font-size: 12px;font-weight: 100;}	
 #input .pinfo span {color:#00bcb4;}	
 
+#input .btn-danger {padding:0;font-size:14px;width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;}
+#input .btn-info {padding:0;font-size:14px;width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;}
 
 #input .row {margin-top:20px; margin-bottom:40px;}
 #input .disabled {opacity:0.2;}
 .pdist {font-size: 12px;text-align:right;}
-.pdist input{float:right;width:40%;vertical-align:middle;padding-left: 0;padding-right: 0;}
+.pdist input{float:right;width:100%;vertical-align:middle;padding-left: 0;padding-right: 0;text-align:center;}
 
 
 #ajustes {padding-top:10%;}

@@ -55,12 +55,6 @@
 						<button class="rndbtn h17" name="hole" value="17">17</button>
 						<button class="rndbtn h18" name="hole" value="18">18</button>
 					</div>
-					<div id="pdata">
-						<p class="shalf">Hole par</p>
-						<button class="sqbtn p3" name="par" value="3">3</button>
-						<button class="sqbtn p4" name="par" value="4">4</button>
-						<button class="sqbtn p5" name="par" value="5">5</button>
-					</div>
 			</div>
 			<div class="col-6 aright">
 				<a href="condiciones.html" class="btn btn-secondary">Back</a>
@@ -111,10 +105,7 @@
 			$('#game_type').html(window.localStorage.getItem("game_type"));
 			$('#bars').html(window.localStorage.getItem("bars"));
 			
-			var par = window.localStorage.getItem("par");
-			if (par > 0){
-				$('.p'+par).addClass('selected');
-			}
+			
 			
 			var holes = JSON.parse(window.localStorage.getItem("holes") || null);
 			if (holes != null){
@@ -130,11 +121,7 @@
 				$(this).addClass('selected');
 				window.localStorage.setItem("shole", $(this).val());
 			});
-			$('.sqbtn').click(function(){
-				$('.sqbtn').removeClass('selected');
-				$(this).addClass('selected');
-				window.localStorage.setItem("par", $(this).val());
-			});
+			
 		});
 
     </script>
