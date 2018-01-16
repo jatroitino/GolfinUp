@@ -29,15 +29,16 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-4">Course: <span id="course"></span></div>
-					<div class="col-3">Hole: <span id="hole"></span></div>
-					<div class="col-2">Par: <span id="par"></span></div>
-					<div class="col-3">Round: <span id="tour"></span></div>
-					<div id="pdata" class="col-12">
-						<p class="shalf">Hole par</p>
-						<button class="sqbtn p3" name="par" value="3">3</button>
-						<button class="sqbtn p4" name="par" value="4">4</button>
-						<button class="sqbtn p5" name="par" value="5">5</button>
+					<div class="col-6">Course:<br> <span id="course"></span></div>
+					<div class="col-2">Round:<br> <span id="tour"></span></div>
+					<div class="col-2">Hole:<br> <span id="hole"></span></div>
+					<div class="col-2">
+						<label class="">Par:</label> 
+						<select class="form-control form-control-sm" id="par">
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
 					</div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span></h2>
@@ -192,7 +193,7 @@
 		$(document).ready(function(){
 			var par = window.localStorage.getItem("par");
 			if (par > 0){
-				$('.p'+par).addClass('selected');
+				$('#par').val(par);
 			}
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
@@ -208,7 +209,7 @@
 			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
 			$('#hole').html(window.localStorage.getItem("shole"));
-			$('#par').html(window.localStorage.getItem("par"));
+			//$('#par').html(window.localStorage.getItem("par"));
 			$('#tour').html(1);
 			$('h2 span').html(window.localStorage.getItem("strike"));
 		});
@@ -243,9 +244,12 @@
 				}
 			});
 		});
-		$('.sqbtn').click(function(){
+/* $('.sqbtn').click(function(){
 			$('.sqbtn').removeClass('selected');
 			$(this).addClass('selected');
+			window.localStorage.setItem("par", $(this).val());
+		}); */
+		$('#par').change(function(){
 			window.localStorage.setItem("par", $(this).val());
 		});
 		$('#endhole').click(function(event){

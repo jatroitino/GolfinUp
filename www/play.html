@@ -31,9 +31,11 @@
 				<div id="logo">
 					<img src="img/icono-jugar.svg" />
 				<h2>Let's start!</h2>
-				<p>¿En que campo estás?<br>
-Así podremos comparar tus<br>estadísticas la próxima vez.</p>
+				<p>On what golf course are you?</p>
 					<input type="text" name="course" class="form-control typeahead"  placeholder="Introduce el campo" />
+					<button id="nearme" type="button" class="btn btn-primary btn-sm active" data-toggle="button" aria-pressed="true" autocomplete="off">
+					  Search near me
+					</button>
 					<div id="coursesops"></div>
 					<a href="condiciones.html" class="btn btn-secondary">Siguiente</a>
 				</div>
@@ -75,6 +77,9 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
         app.initialize();
 		var sourceplaces = [];
 		
+		$(document).ready(function(){
+			navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+		});
 		
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
@@ -87,8 +92,7 @@ Así podremos comparar tus<br>estadísticas la próxima vez.</p>
 		 // alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);
 		  //console.log();
 		  //console.log('More or less ' + crd.accuracy + ' meters.');
-		  
-		  $.ajax({
+			$.ajax({
 					type: 'get',
 					cache: false,
 					url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
