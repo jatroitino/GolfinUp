@@ -206,6 +206,10 @@
 			if (!(strike > 0)){
 				strike = 1;
 			}
+			if (strike == 1){
+			
+				$('#prevstrike').hide();
+			}
 			window.localStorage.setItem("strike", strike);
 			if (window.localStorage.getItem("holes") == null){
 				var holes = new Array();
@@ -226,6 +230,15 @@
 			if (parseInt(shole) >= 18){
 				$('#endhole').hide();
 			}
+		});
+		$('#prevstrike').click(function(event){
+			event.preventDefault();
+			var strike = parseInt(window.localStorage.getItem("strike"));
+			if (!(strike > 0)){
+				strike = 1;
+			}
+			window.localStorage.setItem("strike", strike-1);
+			window.location.href = 'input.html';
 		});
 		$('#nextstrike').click(function(event){
 			event.preventDefault();
