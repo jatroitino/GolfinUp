@@ -32,12 +32,12 @@
 					<img src="img/icono-jugar.svg" />
 				<h2>Let's start!</h2>
 				<p>On what golf course are you?</p>
-					<input type="text" name="course" class="form-control typeahead"  placeholder="Introduce el campo" />
-					<button id="nearme" type="button" class="btn btn-primary btn-sm active" data-toggle="button" aria-pressed="true" autocomplete="off">
+					<input type="text" name="course" id="course" class="form-control typeahead"  placeholder="Introduce el campo" />
+					<a id="nearme" href=""><svg data-name="Layer 1" id="Layer_1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#0076ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><polyline class="cls-1" points="47 1 25.82 47 21.44 26.56 1 22.18 47 1"/></svg>
 					  Search near me
-					</button>
+					</a>
 					<div id="coursesops"></div>
-					<a href="condiciones.html" class="btn btn-secondary">Siguiente</a>
+					<a href="" id="tonext" class="btn btn-secondary">Siguiente</a>
 				</div>
 			</div>
 			<div class="col-sm-2"></div>
@@ -76,7 +76,10 @@
     <script type="text/javascript">
         app.initialize();
 		var sourceplaces = [];
+		var sourceplaces2 = JSON.parse(window.localStorage.getItem('sourceplaces2') || new Array());
 		
+		
+		var crd;
 		$(document).ready(function(){
 			navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
 		});
@@ -85,8 +88,30 @@
 			window.localStorage.setItem("course", $(this).val());
 		});
 
+		$('#nearme').click(function(event){
+			event.preventDefault();
+			if ($(this).hasClass('disabled')){
+				$(this).removeClass('disabled');
+				$(".typeahead").data('typeahead').source = sourceplaces;
+			} else {
+				$(this).addClass('disabled');
+				$(".typeahead").data('typeahead').source = sourceplaces2;
+			}
+		});
+		
+		$('#tonext').click(function(e){
+			e.preventDefault();
+			
+			if (!sourceplaces2.includes($('#course').val())){
+				sourceplaces2.push($('#course').val());
+				window.localStorage.setItem('sourceplaces2',JSON.stringify(sourceplaces2));
+			}
+			
+			window.location.href='condiciones.html';
+		});
+		
 		function geosuccess(pos) {
-		  var crd = pos.coords;
+		  crd = pos.coords;
 
 		  //console.log('Your current position is:');
 		 // alert('Latitude : ' + crd.latitude + ', Longitude: ' + crd.longitude);

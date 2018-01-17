@@ -123,17 +123,24 @@
 
 			</div>
 			<div class="col-1"></div>
-			<div class="col-4">
+			
+			</div>
+			<div class="row wp">
+			<div class="col-3 sp">
 				<a href="" id="endround" class="btn btn-danger">Finish round</a>
 			</div>
-			<div class="col-4">
+			<div class="col-2 sp">
+				<a href="" id="toholes" class="btn btn-info">Holes</a>
+			</div>
+			<div class="col-3 sp">
 				<a href="" id="endhole" class="btn btn-info">Next hole</a>
 			</div>
-			<!-- <div class="col-2">
+			<div class="col-2 sp">
 				<a href="" id="prevstrike" class="btn btn-info"><</a>
-			</div> -->
-			<div class="col-4">
+			</div>
+			<div class="col-2 sp">
 				<a href="" id="nextstrike" class="btn btn-info">></a>
+			</div>
 			</div>
 		</div>
     </div>
@@ -212,6 +219,13 @@
 			//$('#par').html(window.localStorage.getItem("par"));
 			$('#tour').html(1);
 			$('h2 span').html(window.localStorage.getItem("strike"));
+			
+			$('#lie').val(window.localStorage.getItem("lie"));
+			$('#club').val(window.localStorage.getItem("club"));
+			shole = window.localStorage.getItem("shole");
+			if (parseInt(shole) >= 18){
+				$('#endhole').hide();
+			}
 		});
 		$('#nextstrike').click(function(event){
 			event.preventDefault();
@@ -282,6 +296,43 @@
 						var shole = parseInt(window.localStorage.getItem("shole"));
 						window.localStorage.setItem("shole", shole+1);
 						window.location.href = 'input.html';
+					}
+				});
+				
+			}
+		});
+		
+		
+		$('#toholes').click(function(event){
+			event.preventDefault();
+			var gt = window.localStorage.getItem("game_type");
+			if (gt == 'Stableford'){
+				$("#modal1").modal("show");
+			} else {
+				$.ajax({
+					type: 'post',
+					cache: false,
+					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+					data: {
+						'user_id':window.localStorage.getItem("user_id"),
+						'course':window.localStorage.getItem("course"),
+						'tour':1,
+						'hole':window.localStorage.getItem("shole"),
+						'par':window.localStorage.getItem("par"),
+						'strike':window.localStorage.getItem("strike"),
+						'distance':$('#distance').val(),
+						'lie':$('#lie').val(),
+						'club':$('#club').val(),
+						'prevented':$('#prevented:checked').length,
+						'penalty':$('#penalty:checked').length,
+						'lifted':1
+					},
+					dataType: 'json',
+					success: function(response){
+						window.localStorage.setItem("strike", 1);
+						var shole = parseInt(window.localStorage.getItem("shole"));
+						window.localStorage.setItem("shole", shole+1);
+						window.location.href = 'holes.html';
 					}
 				});
 				
@@ -374,6 +425,16 @@
 				},
 				dataType: 'json',
 				success: function(response){
+					window.localStorage.removeItem("course");
+					window.localStorage.removeItem("shole");
+					window.localStorage.removeItem("par");
+					window.localStorage.removeItem("strike");
+					window.localStorage.removeItem("wind");
+					window.localStorage.removeItem("weather");
+					window.localStorage.removeItem("game_type");
+					window.localStorage.removeItem("bars");
+					window.localStorage.removeItem("lie");
+					window.localStorage.removeItem("club");
 					window.location.href = 'home.html';
 				}
 			});
@@ -388,8 +449,17 @@
 				$('#club').attr('disabled',false);
 			}
 			//$('.s3').removeClass('disabled');
+			window.localStorage.setItem("lie", $(this).val());
 		});
 		$('#club').change(function(){
+			//$('.s4').removeClass('disabled');
+			//$('.s5').removeClass('disabled');
+			window.localStorage.setItem("club", $(this).val());
+		});
+		$('#penalty').change(function(){
+			strike = window.localStorage.getItem("strike");
+			window.localStorage.setItem("strike", parseInt(strike)+parseInt($(this).val()));
+			$('h2 span').html(window.localStorage.getItem("strike"));
 			//$('.s4').removeClass('disabled');
 			//$('.s5').removeClass('disabled');
 		});

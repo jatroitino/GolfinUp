@@ -107,14 +107,17 @@
 			
 			
 			
-			var holes = JSON.parse(window.localStorage.getItem("holes") || null);
+			var holes = window.localStorage.getItem("shole");
 			if (holes != null){
 				for (var i = 1; i <= 18; i++){
-					if (holes[i] == 1){
+					if (holes == i){
 						$('.rndbtn').removeClass('selected');
 						$('.h'+i).addClass('done').addClass('selected');
 					}
 				}
+			} else {
+				$('.h1').addClass('done').addClass('selected');
+				window.localStorage.setItem("shole", 1);
 			}
 			$('.rndbtn').click(function(){
 				$('.rndbtn').removeClass('selected');
