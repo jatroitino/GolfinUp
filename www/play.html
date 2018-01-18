@@ -76,8 +76,10 @@
     <script type="text/javascript">
         app.initialize();
 		var sourceplaces = [];
-		var sourceplaces2 = JSON.parse(window.localStorage.getItem('sourceplaces2') || new Array());
-		
+		var sourceplaces2 = JSON.parse(window.localStorage.getItem('sourceplaces2'));
+		if (sourceplaces2 == null){
+			sourceplaces2 = new Array();
+		}
 		
 		var crd;
 		/* $(document).ready(function(){
