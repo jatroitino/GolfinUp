@@ -80,9 +80,9 @@
 		
 		
 		var crd;
-		$(document).ready(function(){
+		/* $(document).ready(function(){
 			navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
-		});
+		}); */
 		
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());
