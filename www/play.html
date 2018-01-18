@@ -82,9 +82,24 @@
 		}
 		
 		var crd;
-		/* $(document).ready(function(){
-			navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
-		}); */
+		$(document).ready(function(){
+			//navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+			
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/get_las_tour',
+				data: {
+					'user_id':window.localStorage.getItem("user_id")
+				},
+				dataType: 'json',
+				success: function(response){
+					if (response == null) response = 0;
+					window.localStorage.setItem("tour",parseInt(response)+1);
+					//window.location.href = 'input.html';
+				}
+			});
+		});
 		
 		$('input[name="course"]').change(function(){
 			window.localStorage.setItem("course", $(this).val());

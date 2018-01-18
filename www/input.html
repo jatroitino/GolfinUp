@@ -221,7 +221,7 @@
 			$('#course').html(window.localStorage.getItem("course"));
 			$('#hole').html(window.localStorage.getItem("shole"));
 			//$('#par').html(window.localStorage.getItem("par"));
-			$('#tour').html(1);
+			$('#tour').html(window.localStorage.getItem("tour"));
 			$('h2 span').html(window.localStorage.getItem("strike"));
 			
 			$('#lie').val(window.localStorage.getItem("lie"));
@@ -242,11 +242,7 @@
 		});
 		$('#nextstrike').click(function(event){
 			event.preventDefault();
-			var strike = parseInt(window.localStorage.getItem("strike"));
-			if (!(strike > 0)){
-				strike = 1;
-			}
-			window.localStorage.setItem("strike", strike+1);
+			
 			$.ajax({
 				type: 'post',
 				cache: false,
@@ -254,7 +250,7 @@
 				data: {
 					'user_id':window.localStorage.getItem("user_id"),
 					'course':window.localStorage.getItem("course"),
-					'tour':1,
+					'tour':window.localStorage.getItem("tour"),
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
@@ -267,6 +263,11 @@
 				},
 				dataType: 'json',
 				success: function(response){
+					var strike = parseInt(window.localStorage.getItem("strike"));
+					if (!(strike > 0)){
+						strike = 1;
+					}
+					window.localStorage.setItem("strike", strike+1);
 					window.location.href = 'input.html';
 				}
 			});
@@ -355,7 +356,6 @@
 		$('#bholed').click(function(event){
 			event.preventDefault();
 			$("#modal1").modal("hide");
-			window.localStorage.setItem("strike", 0);
 			$.ajax({
 				type: 'post',
 				cache: false,
@@ -386,7 +386,6 @@
 		$('#blifted').click(function(event){
 			event.preventDefault();
 			$("#modal1").modal("hide");
-			window.localStorage.setItem("strike", 0);
 			$.ajax({
 				type: 'post',
 				cache: false,
