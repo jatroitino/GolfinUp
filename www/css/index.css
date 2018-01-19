@@ -128,3 +128,10 @@ footer .col-3.active a {color:#0076ff;}
 
 
 #stats {padding-top:10%;}
+
+#stats {padding-top:10%;}
+#stats .item {border-bottom:1px solid #e2e2e2;}
+#stats .item-header {padding: 20px 10px;}
+#stats .item-body {padding: 20px 10px;}
+#stats .item-header a {font-size: 14px;font-weight:normal;color:#494949;}
+#stats .item-header a span{float:right;color:#00bcb4;font-size: 20px;}

@@ -31,37 +31,18 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 acenter">
-					<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">SG putting</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">0-2m</th>
-      <td id="m0to2"></td>
-    </tr>
-    <tr>
-      <th scope="row">2-5m</th>
-      <td id="m2to5"></td>
-    </tr>
-    <tr>
-      <th scope="row">5-10m</th>
-      <td id="m5to10"></td>
-    </tr>
-    <tr>
-      <th scope="row">10+m</th>
-      <td id="mgt10"></td>
-    </tr>
-    <tr>
-      <th scope="row">Total</th>
-      <td id="sgt"></td>
-    </tr>
-  </tbody>
-</table>
+			<div class="col-12">
+			<select class="form-control" >
+<option>SG putting</option>
+<option>Total SG</option>
+<option>SG golpes de salida</option>
+<option>SG juego largo</option>
+<option>SG juego corto</option>
+			</select>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12" id="sgputting">
 			</div>
 		</div>
     </div>
@@ -107,14 +88,18 @@
 				data: {
 					'user_id':window.localStorage.getItem("user_id")
 				},
-				dataType: 'json',
+				dataType: 'html',
 				success: function(response){
 					console.log(response);
-					$('#m0to2').html(response.m0to2);
-					$('#m2to5').html(response.m2to5);
-					$('#m5to10').html(response.m5to10);
-					$('#mgt10').html(response.mgt10);
-					$('#sgt').html(response.sgt);
+					$('#sgputting').html(response);
+					/* $.each( response, function( key, value ) {
+					  console.log( key + ": " + value );
+					  $('#m0to2').html(response.m0to2);
+						$('#m2to5').html(response.m2to5);
+						$('#m5to10').html(response.m5to10);
+						$('#mgt10').html(response.mgt10);
+						$('#sgt').html(response.sgt);
+					}); */
 				}
 			});
 		});
