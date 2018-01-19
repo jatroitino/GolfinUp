@@ -32,18 +32,21 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
-			<select class="form-control" >
-<option>SG putting</option>
-<option>Total SG</option>
-<option>SG golpes de salida</option>
-<option>SG juego largo</option>
-<option>SG juego corto</option>
+			<select class="form-control" onchange="$('.pstat').hide();$('#'+$(this).val()).fadeIn();">
+<option value="sgtotal">SG total</option>
+<option value="sgteeing">SG teeing</option>
+<option value="sglong">SG long game</option>
+<option value="sgshort">SG short game</option>
+<option value="sgputting">SG putting</option>
 			</select>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12" id="sgputting">
-			</div>
+			<div class="col-12 pstat" id="sgtotal"></div>
+			<div class="col-12 pstat" id="sgteeing"></div>
+			<div class="col-12 pstat" id="sglong"></div>
+			<div class="col-12 pstat" id="sgshort"></div>
+			<div class="col-12 pstat" id="sgputting"></div>
 		</div>
     </div>
 <footer class="fixed-bottom">
@@ -92,16 +95,35 @@
 				success: function(response){
 					console.log(response);
 					$('#sgputting').html(response);
-					/* $.each( response, function( key, value ) {
-					  console.log( key + ": " + value );
-					  $('#m0to2').html(response.m0to2);
-						$('#m2to5').html(response.m2to5);
-						$('#m5to10').html(response.m5to10);
-						$('#mgt10').html(response.mgt10);
-						$('#sgt').html(response.sgt);
-					}); */
 				}
 			});
+						$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/get_sg_long',
+				data: {
+					'user_id':window.localStorage.getItem("user_id")
+				},
+				dataType: 'html',
+				success: function(response){
+					console.log(response);
+					$('#sglong').html(response);
+				}
+			});
+						$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/get_sg_short',
+				data: {
+					'user_id':window.localStorage.getItem("user_id")
+				},
+				dataType: 'html',
+				success: function(response){
+					console.log(response);
+					$('#sgshort').html(response);
+				}
+			});
+
 		});
     </script>
 </body>

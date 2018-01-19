@@ -130,6 +130,7 @@ footer .col-3.active a {color:#0076ff;}
 #stats {padding-top:10%;}
 
 #stats {padding-top:10%;}
+#stats .pstat {display: none;}
 #stats .item {border-bottom:1px solid #e2e2e2;}
 #stats .item-header {padding: 20px 10px;}
 #stats .item-body {padding: 20px 10px;}
