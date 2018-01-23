@@ -32,21 +32,10 @@
 		</div>
 		<div class="row">
 			<div class="col-12">
-			<select class="form-control" onchange="$('.pstat').hide();$('#'+$(this).val()).fadeIn();">
-<option value="sgtotal">SG total</option>
-<option value="sgteeing">SG teeing</option>
-<option value="sglong">SG long game</option>
-<option value="sgshort">SG short game</option>
-<option value="sgputting">SG putting</option>
-			</select>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12 pstat" id="sgtotal"></div>
-			<div class="col-12 pstat" id="sgteeing"></div>
-			<div class="col-12 pstat" id="sglong"></div>
-			<div class="col-12 pstat" id="sgshort"></div>
-			<div class="col-12 pstat" id="sgputting"></div>
+			<div class="col-12" id="sgtotal"></div>
 		</div>
     </div>
 <footer class="fixed-bottom">
@@ -87,42 +76,17 @@
 			$.ajax({
 				type: 'post',
 				cache: false,
-				url: 'http://proyectosweb.info/golf/privado/get_sg_putting',
+				url: 'http://proyectosweb.info/golf/privado/get_sg',
 				data: {
 					'user_id':window.localStorage.getItem("user_id")
 				},
 				dataType: 'html',
 				success: function(response){
 					console.log(response);
-					$('#sgputting').html(response);
+					$('#sgtotal').html(response);
 				}
 			});
-						$.ajax({
-				type: 'post',
-				cache: false,
-				url: 'http://proyectosweb.info/golf/privado/get_sg_long',
-				data: {
-					'user_id':window.localStorage.getItem("user_id")
-				},
-				dataType: 'html',
-				success: function(response){
-					console.log(response);
-					$('#sglong').html(response);
-				}
-			});
-						$.ajax({
-				type: 'post',
-				cache: false,
-				url: 'http://proyectosweb.info/golf/privado/get_sg_short',
-				data: {
-					'user_id':window.localStorage.getItem("user_id")
-				},
-				dataType: 'html',
-				success: function(response){
-					console.log(response);
-					$('#sgshort').html(response);
-				}
-			});
+						
 
 		});
     </script>
