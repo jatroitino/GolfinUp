@@ -114,10 +114,17 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					if (response == null) response = 0;
-					last_tour = response.tour;
-					$('#opentour').html(response.date);
-					$("#modal1").modal("show");
+					console.log(response);
+					if (response.tour == null){
+						last_tour = 0;
+						window.localStorage.setItem("tour",1);
+						window.localStorage.setItem("shole",1);
+						window.localStorage.setItem("strike",1);
+					} else {
+						last_tour = response.tour;
+						$('#opentour').html(response.date);
+						$("#modal1").modal("show");
+					}
 					//window.localStorage.setItem("tour",parseInt(response)+1);
 					//window.location.href = 'input.html';
 					
@@ -128,6 +135,8 @@
 		$('#bnew').click(function(){
 			$("#modal1").modal("hide");
 			window.localStorage.setItem("tour",parseInt(last_tour)+1);
+			window.localStorage.setItem("shole",1);
+			window.localStorage.setItem("strike",1);
 		});
 		$('#bcontinue').click(function(){
 			window.location.href='holes.html';
