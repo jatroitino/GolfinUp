@@ -41,7 +41,7 @@
 						</select>
 					</div>
 				</div>
-				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span></h2>
+				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
 				<div class="row  no-gutters">
 					<div class="col-8">
 						Hole distance:
@@ -223,7 +223,12 @@
 			//$('#par').html(window.localStorage.getItem("par"));
 			$('#tour').html(window.localStorage.getItem("tour"));
 			$('h2 span').html(window.localStorage.getItem("strike"));
-			
+			pstrike = parseInt(window.localStorage.getItem("pstrike"));
+			if (pstrike > 0){
+				$('h2 em').html('+'+pstrike);
+			} else {
+				window.localStorage.setItem("pstrike",0);
+			}
 			$('#lie').val(window.localStorage.getItem("lie"));
 			$('#club').val(window.localStorage.getItem("club"));
 			shole = window.localStorage.getItem("shole");
@@ -307,6 +312,7 @@
 					dataType: 'json',
 					success: function(response){
 						window.localStorage.setItem("strike", 1);
+						window.localStorage.setItem("pstrike", 0);
 						var shole = parseInt(window.localStorage.getItem("shole"));
 						window.localStorage.setItem("shole", shole+1);
 						window.location.href = 'input.html';
@@ -344,6 +350,7 @@
 					dataType: 'json',
 					success: function(response){
 						window.localStorage.setItem("strike", 1);
+						window.localStorage.setItem("pstrike", 0);
 						var shole = parseInt(window.localStorage.getItem("shole"));
 						window.localStorage.setItem("shole", shole+1);
 						window.location.href = 'holes.html';
@@ -377,6 +384,7 @@
 				dataType: 'json',
 				success: function(response){
 					window.localStorage.setItem("strike", 1);
+					window.localStorage.setItem("pstrike", 0);
 					var shole = parseInt(window.localStorage.getItem("shole"));
 					window.localStorage.setItem("shole", shole+1);
 					window.location.href = 'input.html';
@@ -407,6 +415,7 @@
 				dataType: 'json',
 				success: function(response){
 					window.localStorage.setItem("strike", 1);
+					window.localStorage.setItem("pstrike", 0);
 					var shole = parseInt(window.localStorage.getItem("shole"));
 					window.localStorage.setItem("shole", shole+1);
 					window.location.href = 'input.html';
@@ -433,7 +442,7 @@
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty:checked').length,
-					'lifted':1
+					'lifted':0
 				},
 				dataType: 'json',
 				success: function(response){
@@ -441,6 +450,7 @@
 					window.localStorage.removeItem("shole");
 					window.localStorage.removeItem("par");
 					window.localStorage.removeItem("strike");
+					window.localStorage.removeItem("pstrike");
 					window.localStorage.removeItem("wind");
 					window.localStorage.removeItem("weather");
 					window.localStorage.removeItem("game_type");
@@ -469,11 +479,9 @@
 			window.localStorage.setItem("club", $(this).val());
 		});
 		$('#penalty').change(function(){
-			strike = window.localStorage.getItem("strike");
-			window.localStorage.setItem("strike", parseInt(strike)+parseInt($(this).val()));
-			$('h2 span').html(window.localStorage.getItem("strike"));
-			//$('.s4').removeClass('disabled');
-			//$('.s5').removeClass('disabled');
+			pstrike = window.localStorage.getItem("pstrike");
+			window.localStorage.setItem("pstrike", parseInt(pstrike)+parseInt($(this).val()));
+			$('h2 em').html('+'+window.localStorage.getItem("pstrike"));
 		});
     </script>
 </body>
