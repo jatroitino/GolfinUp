@@ -13,6 +13,9 @@ body {
     width:100%;
 }
 
+a:active {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:visited {text-decoration: none;}
 /* Portrait layout (default) */
 .app {margin-bottom: 80px;display: none;}
 
@@ -133,7 +136,13 @@ footer .col-3.active a {color:#0076ff;}
 #stats .pstat {display: none;}
 #stats .item {border-bottom:1px solid #e2e2e2;}
 #stats .item-header {padding: 10px 10px;}
-#stats .item-body {padding: 20px 10px;}
 #stats .item-body p {padding: 10px 10px;font-size:14px;margin-bottom:0;}
 #stats .item-header a {font-size: 14px;font-weight:normal;color:#494949;}
+#stats .item-header a.tour {font-size: 16px;font-weight:normal;color:#494949;}
 #stats .item-header a span{float:right;color:#00bcb4;font-size: 20px;}
+#stats .item-header a em{font-size:26px; color:#00bcb4;font-style:normal;}
+
+#stats .item-body .col-6{font-size:14px; color:#494949;    padding: 10px 0 10px 40px;}
+#stats .item-body .col-6 span{font-size:26px; color:#00bcb4;padding-left:5px;}
+#stats .item-body .col-12 span{font-size:18px; color:#00bcb4;}
+#stats .item-body .col-6 span sup{font-size:14px; color:#00bcb4;}
