@@ -29,17 +29,10 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-6">Course:<br> <span id="course"></span></div>
-					<div class="col-2">Round:<br> <span id="tour"></span></div>
-					<div class="col-2">Hole:<br> <span id="hole"></span></div>
-					<div class="col-2">
-						<label class="">Par:</label> 
-						<select class="form-control form-control-sm" id="par">
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</div>
+					<div class="col-5">Course:&nbsp;<span id="course"></span></div>
+					<div class="col-3">Round:&nbsp;<span id="tour"></span></div>
+					<div class="col-2">Hole:&nbsp;<span id="hole"></span></div>
+					<div class="col-2">Par:&nbsp;<span id="spar"></span></div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
 				<div class="row  no-gutters">
@@ -188,6 +181,24 @@
   </div>
 </div>
 
+<div class="modal" id="modalpar" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>Select the hole par:</p>
+		
+		<select class="form-control form-control-sm" id="par">
+							<option value="">-</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+		</select>
+						
+      </div>
+    </div>
+  </div>
+</div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -198,18 +209,21 @@
         app.initialize();
 		
 		$(document).ready(function(){
-			var par = window.localStorage.getItem("par");
-			if (par > 0){
-				$('#par').val(par);
-			}
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
 				strike = 1;
 			}
 			if (strike == 1){
-			
 				$('#prevstrike').hide();
+				window.localStorage.setItem("par",0);
+				$("#modalpar").modal("show");
 			}
+			
+			var par = window.localStorage.getItem("par");
+			/*if (par > 0){
+				$('#par').val(par);
+			} */
+			
 			window.localStorage.setItem("strike", strike);
 			if (window.localStorage.getItem("holes") == null){
 				var holes = new Array();
@@ -220,7 +234,7 @@
 			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
 			$('#hole').html(window.localStorage.getItem("shole"));
-			//$('#par').html(window.localStorage.getItem("par"));
+			$('#spar').html(window.localStorage.getItem("par"));
 			$('#tour').html(window.localStorage.getItem("tour"));
 			$('h2 span').html(window.localStorage.getItem("strike"));
 			pstrike = parseInt(window.localStorage.getItem("pstrike"));
@@ -238,12 +252,17 @@
 		});
 		$('#prevstrike').click(function(event){
 			event.preventDefault();
+			$('.app').hide();
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
 				strike = 1;
 			}
-			window.localStorage.setItem("strike", strike-1);
-			window.location.href = 'input.html';
+			//window.localStorage.setItem("strike", strike-1);
+			//window.location.href = 'input.html';
+			if ( strike > 1){
+				recoverStroke(strike-1);
+			}
+			$('.app').fadeIn('slow');
 		});
 		$('#nextstrike').click(function(event){
 			event.preventDefault();
@@ -284,6 +303,8 @@
 		}); */
 		$('#par').change(function(){
 			window.localStorage.setItem("par", $(this).val());
+			$('#spar').html($(this).val());
+			$("#modalpar").modal("hide");
 		});
 		$('#endhole').click(function(event){
 			event.preventDefault();
@@ -306,7 +327,7 @@
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
-						'penalty':$('#penalty:checked').length,
+						'penalty':$('#penalty').val(),
 						'lifted':1
 					},
 					dataType: 'json',
@@ -344,7 +365,7 @@
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
-						'penalty':$('#penalty:checked').length,
+						'penalty':$('#penalty').val(),
 						'lifted':1
 					},
 					dataType: 'json',
@@ -378,7 +399,7 @@
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
-					'penalty':$('#penalty:checked').length,
+					'penalty':$('#penalty').val(),
 					'lifted':0
 				},
 				dataType: 'json',
@@ -409,7 +430,7 @@
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
-					'penalty':$('#penalty:checked').length,
+					'penalty':$('#penalty').val(),
 					'lifted':1
 				},
 				dataType: 'json',
@@ -441,7 +462,7 @@
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
-					'penalty':$('#penalty:checked').length,
+					'penalty':$('#penalty').val(),
 					'lifted':0
 				},
 				dataType: 'json',
@@ -483,6 +504,33 @@
 			window.localStorage.setItem("pstrike", parseInt(pstrike)+parseInt($(this).val()));
 			$('h2 em').html('+'+window.localStorage.getItem("pstrike"));
 		});
+		
+		
+		function recoverStroke(stroke){
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_recover_input',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'tour':window.localStorage.getItem("tour"),
+					'hole':window.localStorage.getItem("shole"),
+					'strike':stroke
+				},
+				dataType: 'json',
+				success: function(response){
+					$('#club').val(response.club);
+					$('#lie').val(response.lie);
+					$('#distance').val(response.distance);
+					$('#penalty').val(response.penalty);
+					if (response.prevented == 1){
+						$('#prevented').prop('checked','checked');
+					}
+					window.localStorage.setItem("strike",stroke);
+					$('h2 span').html(stroke);
+				}
+			});
+		}
     </script>
 </body>
 
