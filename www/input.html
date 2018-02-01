@@ -29,15 +29,14 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-5">Course:&nbsp;<span id="course"></span></div>
-					<div class="col-3">Round:&nbsp;<span id="tour"></span></div>
+					<div class="col-8">Course:&nbsp;<span id="course"></span></div>
 					<div class="col-2">Hole:&nbsp;<span id="hole"></span></div>
 					<div class="col-2">Par:&nbsp;<span id="spar"></span></div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
 				<div class="row  no-gutters">
 					<div class="col-8">
-						Hole distance:
+						Distance to hole:
 					</div>
 					<div class="col-4 pdist">
 						<input type="number" name="distance" id="distance" class="form-control" placeholder="meters"/>
@@ -49,12 +48,12 @@
 					</div>
 					<div class="col-9">
 						<select class="form-control"  name="lie" id="lie">
-							<option>Teeing</option>
-							<option>Fairway</option>
-							<option>Bunker</option>
-							<option>Rough</option>
-							<option>Green</option>
-							<option>Other </option>
+							<option value="Teeing">Tee</option>
+							<option value="Fairway">Fairway</option>
+							<option value="Rough">Rough</option>
+							<option value="Bunker">Bunker</option>
+							<option value="Green">Green</option>
+							<option value="Other">Other </option>
 						</select>
 					</div>
 				</div>
@@ -185,7 +184,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <p>Select the hole par:</p>
+        <p>Par:</p>
 		
 		<select class="form-control form-control-sm" id="par">
 							<option value="">-</option>
