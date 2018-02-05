@@ -161,7 +161,6 @@
 			$(sclubs).each(function(key,value){
 				$('input[value="'+value+'"]').prop('checked',true).parent('label').addClass('active');
 			});
-			$('input[value="Driver"]').prop('checked',true).parent('label').addClass('active');
 			$('input[value="Putter"]').prop('checked',true).parent('label').addClass('active');
 		
 		
@@ -170,7 +169,7 @@
           $('#clubs label').click(function(event) {
 			  event.preventDefault();
 			  event.stopPropagation();
-			  if ($('#'+$(this).attr('data-for')).val()=='Driver' || $('#'+$(this).attr('data-for')).val()=='Putter') return;
+			  if ($('#'+$(this).attr('data-for')).val()=='Putter') return;
 			//console.log($('#clubs .active').length);
 			if ($(this).hasClass('active')){
 				$('#'+$(this).attr('data-for')).prop('checked',false);

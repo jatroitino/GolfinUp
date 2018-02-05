@@ -119,6 +119,7 @@
 						window.localStorage.setItem("tour",1);
 						window.localStorage.setItem("shole",1);
 						window.localStorage.setItem("strike",1);
+						window.localStorage.setItem("pstrike",0);
 					} else {
 						last_tour = response.tour;
 						$('#opentour').html(response.date);
@@ -136,6 +137,7 @@
 			window.localStorage.setItem("tour",parseInt(last_tour)+1);
 			window.localStorage.setItem("shole",1);
 			window.localStorage.setItem("strike",1);
+			window.localStorage.setItem("pstrike",0);
 		});
 		$('#bcontinue').click(function(){
 			window.location.href='holes.html';
