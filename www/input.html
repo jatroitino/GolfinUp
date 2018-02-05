@@ -248,6 +248,22 @@
 			if (parseInt(shole) >= 18){
 				$('#endhole').hide();
 			}
+			
+			
+			
+			if (window.localStorage.getItem("clubs") == null){
+				var sclubs = new Array();
+			} else {
+				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
+				$('#club').empty();
+				$(sclubs).each(function(key,value){
+					$('#club').append($('<option>', {
+						value: value,
+						text: value
+					}));
+				});
+			}
+			
 		});
 		$('#prevstrike').click(function(event){
 			event.preventDefault();

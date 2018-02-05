@@ -50,12 +50,36 @@
 				  <div class="item">
 					<div class="item-header" role="tab" id="headingTwo">
 						<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-						  Privacidad <span>+</span>
+						  Club bag <span>+</span>
 						</a>
 					</div>
 					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
 					  <div class="item-body">
-						Connection error.
+						<div id="clubs" class="" data-toggle="buttons">
+							<div class="form-group"><label class="btn btn-info" data-for="club1"><input id="club1" type="checkbox" name="clubs[]" value="Driver" />Driver</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club2"><input id="club2" type="checkbox" name="clubs[]" value="3 wood" />3 wood</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club3"><input id="club3" type="checkbox" name="clubs[]" value="4 wood" />4 wood</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club4"><input id="club4" type="checkbox" name="clubs[]" value="5 wood" />5 wood</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club5"><input id="club5" type="checkbox" name="clubs[]" value="7 wood" />7 wood</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club6"><input id="club6" type="checkbox" name="clubs[]" value="2 hybrid" />2 hybrid</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club7"><input id="club7" type="checkbox" name="clubs[]" value="3 hybrid" />3 hybrid</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club8"><input id="club8" type="checkbox" name="clubs[]" value="4 hybrid" />4 hybrid</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club9"><input id="club9" type="checkbox" name="clubs[]" value="5 hybrid" />5 hybrid</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club10"><input id="club10" type="checkbox" name="clubs[]" value="1 iron" />1 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club11"><input id="club11" type="checkbox" name="clubs[]" value="2 iron" />2 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club12"><input id="club12" type="checkbox" name="clubs[]" value="3 iron" />3 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club13"><input id="club13" type="checkbox" name="clubs[]" value="4 iron" />4 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club14"><input id="club14" type="checkbox" name="clubs[]" value="5 iron" />5 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club15"><input id="club15" type="checkbox" name="clubs[]" value="6 iron" />6 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club16"><input id="club16" type="checkbox" name="clubs[]" value="7 iron" />7 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club17"><input id="club17" type="checkbox" name="clubs[]" value="8 iron" />8 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club18"><input id="club18" type="checkbox" name="clubs[]" value="9 iron" />9 iron</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club19"><input id="club19" type="checkbox" name="clubs[]" value="Pitching wedge" />Pitching wedge</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club20"><input id="club20" type="checkbox" name="clubs[]" value="Gap wedge" />Gap wedge</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club21"><input id="club21" type="checkbox" name="clubs[]" value="Sand wegde" />Sand wegde</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club22"><input id="club22" type="checkbox" name="clubs[]" value="Lob wedge" />Lob wedge</label></div>
+							<div class="form-group"><label class="btn btn-info" data-for="club23"><input id="club23" type="checkbox" name="clubs[]" value="Putter" />Putter</label></div>
+						</div>
 					  </div>
 					</div>
 				  </div>
@@ -127,8 +151,46 @@
         app.initialize();
 		
 		$(document).ready(function(){
-			
+		
+		
+			if (window.localStorage.getItem("clubs") == null){
+				var sclubs = new Array();
+			} else {
+				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
+			}
+			$(sclubs).each(function(key,value){
+				$('input[value="'+value+'"]').prop('checked',true).parent('label').addClass('active');
+			});
+		
+		
+		
+		
+		
+          $('#clubs label').click(function(event) {
+		  event.preventDefault();
+		  event.stopPropagation();
+			//console.log($('#clubs .active').length);
+			if ($(this).hasClass('active')){
+				$('#'+$(this).attr('data-for')).prop('checked',false);
+				$(this).removeClass('active');
+			} else {
+				if ($('#clubs .active').length > 13) {
+					$(this).removeClass('active');
+				} else {
+					$(this).addClass('active');
+					$('#'+$(this).attr('data-for')).prop('checked',true);
+			//console.log($('#clubs .active').length);
+				}
+            }
+			var clubs = new Array();
+			$('#clubs .active input').each(function(){
+				clubs.push($(this).val());
+			});
+			window.localStorage.setItem("clubs", JSON.stringify(clubs));
+			return;
+          });
 		});
+		
     </script>
 </body>
 

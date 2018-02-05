@@ -128,7 +128,21 @@ footer .col-3.active a {color:#0076ff;}
 #ajustes .item-body {padding: 20px 10px;}
 #ajustes .item-header a {font-size: 19px;font-weight:normal;color:#494949;}
 #ajustes .item-header a span{float:right;color:#00bcb4;font-size: 24px;}
-
+#ajustes .form-group label{font-size: 15px;}
+#ajustes .form-group .btn{width: 100%;}
+#ajustes .form-group input{display: none;}
+#ajustes .form-group {    margin-bottom: 0;}
+#ajustes .form-group .btn-info {
+    background-color: #aec4c3;
+    border-color: #aec4c3;
+    margin-top: 0px;
+    border-radius: 5px;
+    padding: 10px auto;
+}
+#ajustes .form-group .btn-info.active {
+    background-color: #01e5db;
+    border-color: #01e5db;
+}
 
 #stats {padding-top:10%;}
 
