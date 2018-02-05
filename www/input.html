@@ -215,7 +215,7 @@
 			if (strike == 1){
 				$('#prevstrike').hide();
 				window.localStorage.setItem("par",0);
-				$("#modalpar").modal("show");
+				$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
 			}
 			
 			var par = window.localStorage.getItem("par");
