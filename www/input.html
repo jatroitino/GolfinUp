@@ -39,7 +39,7 @@
 						Distance to hole:
 					</div>
 					<div class="col-4 pdist">
-						<input type="number" name="distance" id="distance" class="form-control" placeholder="meters"/>
+						<input tabindex="1" type="number" name="distance" id="distance" class="form-control" placeholder="meters"/>
 					</div>
 				</div>
 				<div class="row  no-gutters s2">
@@ -47,7 +47,7 @@
 						Lie:
 					</div>
 					<div class="col-9">
-						<select class="form-control"  name="lie" id="lie">
+						<select tabindex="2" class="form-control"  name="lie" id="lie">
 							<option value="Teeing">Tee</option>
 							<option value="Fairway">Fairway</option>
 							<option value="Rough">Rough</option>
@@ -62,7 +62,7 @@
 						Club:
 					</div>
 					<div class="col-9">
-						<select class="form-control"  name="club" id="club">
+						<select tabindex="3" class="form-control"  name="club" id="club">
 							<option>Drive</option>
 							<option>Wood 2</option>
 							<option>Wood 3</option>
@@ -97,7 +97,7 @@
 						Impeded shot:
 					</div>
 					<div class="col-3">
-						<input type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
+						<input tabindex="4" type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
 					</div>
 				</div>
 				<div class="row  no-gutters s5">
@@ -105,7 +105,7 @@
 						Penalty shot:
 					</div>
 					<div class="col-3">
-						<select name="penalty" id="penalty" class="form-control form-control-sm">
+						<select tabindex="5" name="penalty" id="penalty" class="form-control form-control-sm">
 							<option></option>
 							<option>1</option>
 							<option>2</option>
@@ -255,13 +255,15 @@
 				var sclubs = new Array();
 			} else {
 				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
-				$('#club').empty();
-				$(sclubs).each(function(key,value){
-					$('#club').append($('<option>', {
-						value: value,
-						text: value
-					}));
-				});
+				if (sclubs.length > 0){
+					$('#club').empty();
+					$(sclubs).each(function(key,value){
+						$('#club').append($('<option>', {
+							value: value,
+							text: value
+						}));
+					});
+				}
 			}
 			
 		});
