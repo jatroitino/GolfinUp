@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-9">
 						<select tabindex="3" class="form-control"  name="club" id="club">
-							<option>Drive</option>
+							<option>Driver</option>
 							<option>Wood 2</option>
 							<option>Wood 3</option>
 							<option>Wood 4</option>
@@ -198,6 +198,21 @@
   </div>
 </div>
 
+<div class="modal" id="modal2" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>2nd shot in par 5:</p>
+					
+      </div>
+	   <div class="modal-footer">
+        <button type="button" id="sd1" class="btn btn-info"> Going for the green</button>
+        <button type="button" id="sd2" class="btn btn-info">Laying up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
@@ -217,8 +232,14 @@
 				window.localStorage.setItem("par",0);
 				$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
 			}
-			
+
 			var par = window.localStorage.getItem("par");
+
+
+			if (strike == 2 && par == 5){
+				$("#modal2").modal({show: true,keyboard: false,backdrop: 'static'});
+			}
+			
 			/*if (par > 0){
 				$('#par').val(par);
 			} */
@@ -521,7 +542,8 @@
 			window.localStorage.setItem("pstrike", parseInt(pstrike)+parseInt($(this).val()));
 			$('h2 em').html('+'+window.localStorage.getItem("pstrike"));
 		});
-		
+		$('#sd1').click(function(){$('#modal2').modal('hide')})
+		$('#sd2').click(function(){$('#modal2').modal('hide')})
 		
 		function recoverStroke(stroke){
 			$.ajax({

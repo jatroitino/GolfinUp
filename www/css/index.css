@@ -150,6 +150,7 @@ footer .col-3.active a {color:#0076ff;}
 #stats .pstat {display: none;}
 #stats .item {border-bottom:1px solid #e2e2e2;}
 #stats .item-header {padding: 10px 10px;}
+#stats .col-6 .item-header {padding-left: 0;padding-right: 15px;}
 #stats .item-body p {padding: 10px 10px;font-size:14px;margin-bottom:0;}
 #stats .item-header a {font-size: 14px;font-weight:normal;color:#494949;}
 #stats .item-header a.tour {font-size: 16px;font-weight:normal;color:#494949;}
@@ -161,5 +162,5 @@ footer .col-3.active a {color:#0076ff;}
 #stats .item-body .col-12 a{font-size:14px; color:#494949;    padding: 10px 0 10px 16px;}
 #stats .item-body .col-12 .item {border-bottom:0;}
 #stats .item-body .col-6 span{font-size:26px; color:#00bcb4;padding-left:5px;}
-#stats .item-body .col-12 span{font-size:18px; color:#00bcb4;}
+#stats .item-body .col-12 span{font-size:18px; color:#00bcb4;float: right;}
 #stats .item-body .col-6 span sup{font-size:14px; color:#00bcb4;}
