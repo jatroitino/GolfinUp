@@ -25,6 +25,16 @@ var app = {
 		if (username == null && typeof ppublic == "undefined"){
 			window.location.href='index.html';
 		}
+		var oHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		$(window).resize(function(e) {
+			aHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			if (aHeight < oHeight){
+				$('footer').hide();
+			} else {
+				$('footer').show();
+			}
+		   return false;
+		});
     },
     // Bind Event Listeners
     //

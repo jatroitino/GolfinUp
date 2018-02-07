@@ -125,7 +125,7 @@ footer .col-3.active a {color:#0076ff;}
 #ajustes {padding-top:10%;}
 #ajustes .item {border-bottom:1px solid #e2e2e2;}
 #ajustes .item-header {padding: 20px 10px;}
-#ajustes .item-body {padding: 20px 10px;}
+#ajustes .item-body {padding: 20px 10px;background: rgba(0,0,0,.03);}
 #ajustes .item-header a {font-size: 19px;font-weight:normal;color:#494949;}
 #ajustes .item-header a span{float:right;color:#00bcb4;font-size: 24px;}
 #ajustes .form-group label{font-size: 15px;}
@@ -143,6 +143,60 @@ footer .col-3.active a {color:#0076ff;}
     background-color: #01e5db;
     border-color: #01e5db;
 }
+#ajustes #clubs .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;padding-left: 10px;border-radius:0;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+font-family: sans-serif;font-size:18px;padding: 15px 10px;cursor:pointer;
+}
+#ajustes #clubs .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+font-family: sans-serif;font-size:18px;padding: 15px 10px;
+}
+
+#ajustes #genders {width:100%;}
+#ajustes #genders .btn-secondary {
+	width:50%; padding: 30px 0; color: #000;font-family: sans-serif;font-size:18px;    border-radius: 20px;
+}
+#ajustes #genders .btn-secondary.active {
+	color: #fff;background:#00bcb4;border-color:#00bcb4;box-shadow: none;
+}
+#ajustes #genders.btn-group>.btn:last-child:not(:first-child),#ajustes #genders.btn-group>.dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#ajustes #genders.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#ajustes #profiles {width:100%;}
+#ajustes #profiles .btn-secondary {
+	width:50%; padding: 30px 0; color: #000;font-family: sans-serif;font-size:18px;    border-radius: 20px;
+}
+#ajustes #profiles .btn-secondary.active {
+	color: #fff;background:#00bcb4;border-color:#00bcb4;box-shadow: none;
+}
+#ajustes #profiles.btn-group>.btn:last-child:not(:first-child),#ajustes #profiles.btn-group>.dropdown-toggle:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+#ajustes #profiles.btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#ajustes .profileop label {color: #00bcb4;font-size: 16px;padding: 10px;}
+#ajustes #tours .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;padding-left: 10px;border-radius:0;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+font-family: sans-serif;font-size:18px;padding: 15px 10px;cursor:pointer;
+}
+#ajustes #tours .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+font-family: sans-serif;font-size:18px;padding: 15px 10px;
+}
+#ajustes #handicap {    font-size: 30px;
+    text-align: center;
+    width: auto;
+    margin: 0 auto;}
 
 #stats {padding-top:10%;}
 

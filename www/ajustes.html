@@ -51,9 +51,70 @@
 					</div>
 				  </div>
 				  <div class="item">
+					<div class="item-header" role="tab" id="headingThree">
+						<a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+						  Gender <span>+</span>
+						</a>
+					</div>
+
+					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+					  <div class="item-body">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons" id="genders">
+						  <label class="btn btn-secondary">
+							<input type="radio" name="gender" id="gender1" autocomplete="off" value="Male"> Male
+						  </label>
+						  <label class="btn btn-secondary">
+							<input type="radio" name="gender" id="gender2" autocomplete="off" value="Female"> Female
+						  </label>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="item">
+					<div class="item-header" role="tab" id="headingFour">
+						<a class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
+						  Profile <span>+</span>
+						</a>
+					</div>
+
+					<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+					  <div class="item-body">
+					  
+						<div class="btn-group btn-group-toggle" data-toggle="buttons" id="profiles">
+						  <label class="btn btn-secondary">
+							<input type="radio" name="profile" id="profile1" autocomplete="off" value="amateur"> Amateur
+						  </label>
+						  <label class="btn btn-secondary">
+							<input type="radio" name="profile" id="profile2" autocomplete="off" value="professional"> Professional
+						  </label>
+						</div>
+						
+						<div class="col-12 profileop" id="amateurop" style="display:none">
+							<label>Handicap</label>
+							<input type="number" class="form-control" name="handicap" id="handicap"  min="-6" max="36" />
+						</div>
+						
+						<div class="col-12 profileop" id="professionalop" style="display:none">
+							<label>Your league</label>
+							<div id="tours" class="" data-toggle="buttons">
+								<div class="form-group"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour[]" value="Club Pro" />Club Pro</label></div>
+								<div class="form-group"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour[]" value="Mini tour Pro" />Mini tour Pro</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour3"><input id="tour3" type="radio" name="tour[]" value="Challenge Tour Pro" />Challenge Tour Pro</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour[]" value="Web.com Tour Pro" />Web.com Tour Pro</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour5"><input id="tour5" type="radio" name="tour[]" value="PGA Tour Pro" />PGA Tour Pro</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour[]" value="European Tour Pro" />European Tour Pro</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour[]" value="Ladies European Tour Pro" />Ladies European Tour Pro</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour[]" value="Ladies PGA Tour Pro" />Ladies PGA Tour Pro</label></div>
+							</div>
+						</div>
+						
+					  </div>
+					</div>
+				  </div>
+				  <div class="item">
 					<div class="item-header" role="tab" id="headingTwo">
 						<a class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-						  Club bag <span>+</span>
+						  Golf bag <span>+</span>
 						</a>
 					</div>
 					<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
@@ -140,7 +201,19 @@
 			});
 			$('input[value="Putter"]').prop('checked',true).parent('label').addClass('active');
 		
-		
+			var gender = window.localStorage.getItem("gender");
+			$('#genders input[value="'+gender+'"]').prop('checked',true).parent('label').addClass('active');
+			$('#tours .'+gender).hide();
+			
+			var profile = window.localStorage.getItem("profile");
+			$('#profiles input[value="'+profile+'"]').prop('checked',true).parent('label').addClass('active');
+			$('#'+profile+'op').show();
+
+			var protour = window.localStorage.getItem("protour");
+			$('#tours input[value="'+protour+'"]').prop('checked',true).parent('label').addClass('active');
+			
+			var handicap = window.localStorage.getItem("handicap");
+			$('#handicap').val(handicap);
 		
 		
           $('#clubs label').click(function(event) {
@@ -167,6 +240,65 @@
 			window.localStorage.setItem("clubs", JSON.stringify(clubs));
 			return;
           });
+		  
+		  
+		  $('#genders label').click(function(event) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			  if ($(this).hasClass('active')){
+				return;
+			} else {
+				$('#genders .active').removeClass('active');
+				$('#'+$('#genders .active').attr('data-for')).prop('checked',false);
+				$(this).addClass('active');
+				$('#'+$(this).attr('data-for')).prop('checked',true);
+            }
+			  $('#genders .active input').each(function(){
+				window.localStorage.setItem("gender", $(this).val());
+				$('#tours .form-group').show();
+				$('#tours .'+$(this).val()).hide();
+			  });
+		  });
+		  
+		  $('#profiles label').click(function(event) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			  if ($(this).hasClass('active')){
+				return;
+			} else {
+				$('#profiles .active').removeClass('active');
+				$('#'+$('#profiles .active').attr('data-for')).prop('checked',false);
+				$(this).addClass('active');
+				$('#'+$(this).attr('data-for')).prop('checked',true);
+            }
+				$('.profileop').hide();
+			  $('#profiles .active input').each(function(){
+				window.localStorage.setItem("profile", $(this).val());
+				$('#'+$(this).val()+'op').show();
+			  });
+		  });
+		  
+		  $('#tours label').click(function(event) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			if ($(this).hasClass('active')){
+				$('#'+$(this).attr('data-for')).prop('checked',false);
+				$(this).removeClass('active');
+			} else {
+				$('#tours .active').removeClass('active');
+				$('#'+$('#tours .active').attr('data-for')).prop('checked',false);
+				$(this).addClass('active');
+				$('#'+$(this).attr('data-for')).prop('checked',true);
+            }
+			$('#tours .active input').each(function(){
+				window.localStorage.setItem("protour", $(this).val());
+			});
+			return;
+          });
+		  $('#handicap').change(function(){
+				window.localStorage.setItem("handicap", $(this).val());
+		  })
+		  
 		});
 		
     </script>
