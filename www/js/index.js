@@ -25,6 +25,16 @@ var app = {
 		if (username == null && typeof ppublic == "undefined"){
 			window.location.href='index.html';
 		}
+		var oHeight = window.height;
+		$(window).resize(function(e) {
+			if (window.height < oHeight){
+				$('footer').hide();
+			} else {
+				$('footer').show();
+			}
+		   return false;
+		});
+		
     },
     // Bind Event Listeners
     //
