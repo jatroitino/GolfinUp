@@ -50,7 +50,7 @@
 					  </div>
 					</div>
 				  </div>
-				  <div class="item">
+				  <!--<div class="item">
 					<div class="item-header" role="tab" id="headingThree">
 						<a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
 						  Gender <span>+</span>
@@ -59,17 +59,10 @@
 
 					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
 					  <div class="item-body">
-						<div class="btn-group btn-group-toggle" data-toggle="buttons" id="genders">
-						  <label class="btn btn-secondary">
-							<input type="radio" name="gender" id="gender1" autocomplete="off" value="Male"> Male
-						  </label>
-						  <label class="btn btn-secondary">
-							<input type="radio" name="gender" id="gender2" autocomplete="off" value="Female"> Female
-						  </label>
-						</div>
+						
 					  </div>
 					</div>
-				  </div>
+				  </div>-->
 				  <div class="item">
 					<div class="item-header" role="tab" id="headingFour">
 						<a class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
@@ -79,7 +72,14 @@
 
 					<div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
 					  <div class="item-body">
-					  
+					  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="genders">
+						  <label class="btn btn-secondary">
+							<input type="radio" name="gender" id="gender1" autocomplete="off" value="Male"> Male
+						  </label>
+						  <label class="btn btn-secondary">
+							<input type="radio" name="gender" id="gender2" autocomplete="off" value="Female"> Female
+						  </label>
+						</div>
 						<div class="btn-group btn-group-toggle" data-toggle="buttons" id="profiles">
 						  <label class="btn btn-secondary">
 							<input type="radio" name="profile" id="profile1" autocomplete="off" value="amateur"> Amateur
@@ -99,12 +99,10 @@
 							<div id="tours" class="" data-toggle="buttons">
 								<div class="form-group"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour[]" value="Club Pro" />Club Pro</label></div>
 								<div class="form-group"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour[]" value="Mini tour Pro" />Mini tour Pro</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour3"><input id="tour3" type="radio" name="tour[]" value="Challenge Tour Pro" />Challenge Tour Pro</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour[]" value="Web.com Tour Pro" />Web.com Tour Pro</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour5"><input id="tour5" type="radio" name="tour[]" value="PGA Tour Pro" />PGA Tour Pro</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour[]" value="European Tour Pro" />European Tour Pro</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour[]" value="Ladies European Tour Pro" />Ladies European Tour Pro</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour[]" value="Ladies PGA Tour Pro" />Ladies PGA Tour Pro</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour[]" value="Web.com Tour Pro" />Challenge Tour - Web.com Tour</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour[]" value="PGA Tour Pro" />European Tour - PGA Tour</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour[]" value="Ladies European Tour Pro" />Challenge Tour - Ladies Euro. Tour</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour[]" value="Ladies PGA Tour Pro" />PGA Tour - Ladies PGA Tour</label></div>
 							</div>
 						</div>
 						

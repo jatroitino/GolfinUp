@@ -112,6 +112,11 @@
 						</select>
 					</div>
 				</div>
+				<div class="row  no-gutters s6" style="margin-bottom:0">
+					<div class="col-12">
+						<a href="" id="gimme" class="btn btn-secondary btn-lg">Gimme</a>
+					</div>
+				</div>
 
 			</div>
 			<div class="col-1"></div>
@@ -122,7 +127,7 @@
 				<a href="" id="endround" class="btn btn-danger">Finish round</a>
 			</div>
 			<div class="col-2 sp">
-				<a href="" id="toholes" class="btn btn-info">Holes</a>
+				<a href="" id="toholes" class="btn btn-info">Menu</a>
 			</div>
 			<div class="col-3 sp">
 				<a href="" id="endhole" class="btn btn-info">Next hole</a>
@@ -364,6 +369,43 @@
 						'distance':$('#distance').val(),
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
+						'prevented':$('#prevented:checked').length,
+						'penalty':$('#penalty').val(),
+						'lifted':1
+					},
+					dataType: 'json',
+					success: function(response){
+						window.localStorage.setItem("strike", 1);
+						window.localStorage.setItem("pstrike", 0);
+						var shole = parseInt(window.localStorage.getItem("shole"));
+						window.localStorage.setItem("shole", shole+1);
+						window.location.href = 'input.html';
+					}
+				});
+				
+			}
+		});
+		
+		$('#gimme').click(function(event){
+			event.preventDefault();
+			var gt = window.localStorage.getItem("game_type");
+			if (gt == 'Stableford'){
+				$("#modal1").modal("show");
+			} else {
+				$.ajax({
+					type: 'post',
+					cache: false,
+					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+					data: {
+						'user_id':window.localStorage.getItem("user_id"),
+						'course':window.localStorage.getItem("course"),
+						'tour':window.localStorage.getItem("tour"),
+						'hole':window.localStorage.getItem("shole"),
+						'par':window.localStorage.getItem("par"),
+						'strike':window.localStorage.getItem("strike"),
+						'distance':'0.5',
+						'lie':'Green',
+						'club':'Putter',
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
 						'lifted':1

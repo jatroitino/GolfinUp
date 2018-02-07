@@ -56,12 +56,12 @@
 						<button class="rndbtn h18" name="hole" value="18">18</button>
 					</div>
 			</div>
-			<div class="col-6 aright">
+			<!--<div class="col-6 aright">
 				<a href="condiciones.html" class="btn btn-secondary">Back</a>
 			</div>
 			<div class="col-6 aleft">
 				<a href="input.html" class="btn btn-info">Start</a>
-			</div>
+			</div>-->
 		</div>
     </div>
 <footer class="fixed-bottom">
@@ -123,6 +123,7 @@
 				$('.rndbtn').removeClass('selected');
 				$(this).addClass('selected');
 				window.localStorage.setItem("shole", $(this).val());
+				window.location.href = 'input.html';
 			});
 			
 		});
