@@ -25,9 +25,11 @@ var app = {
 		if (username == null && typeof ppublic == "undefined"){
 			window.location.href='index.html';
 		}
-		var oHeight = window.height;
+		var oHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		console.log(oHeight);
 		$(window).resize(function(e) {
-			if (window.height < oHeight){
+			aHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+			if (aHeight < oHeight){
 				$('footer').hide();
 			} else {
 				$('footer').show();
