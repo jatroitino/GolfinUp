@@ -144,11 +144,11 @@ footer .col-3.active a {color:#0076ff;}
     border-color: #01e5db;
 }
 #ajustes #clubs .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;padding-left: 10px;border-radius:0;
-background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
 font-family: sans-serif;font-size:18px;padding: 15px 10px;cursor:pointer;
 }
 #ajustes #clubs .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
-background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
 font-family: sans-serif;font-size:18px;padding: 15px 10px;
 }
 
@@ -186,11 +186,11 @@ font-family: sans-serif;font-size:18px;padding: 15px 10px;
 
 #ajustes .profileop label {color: #00bcb4;font-size: 16px;padding: 10px;}
 #ajustes #tours .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;padding-left: 10px;border-radius:0;
-background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
 font-family: sans-serif;font-size:18px;padding: 15px 10px;cursor:pointer;
 }
 #ajustes #tours .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
-background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 90%;border-color: #aec4c3;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
 font-family: sans-serif;font-size:18px;padding: 15px 10px;
 }
 #ajustes #handicap {    font-size: 30px;
