@@ -31,7 +31,11 @@
 				<div id="logo">
 					<img src="img/icono-jugar.svg" />
 				<h2>Let's start!</h2>
-					<input type="search" name="course" id="course" class="form-control typeahead"  placeholder="Type course..." />
+				<span class="clearable">
+					<input type="text" name="course" id="course" class="form-control typeahead"  placeholder="Type course..." />
+					<i class="clearable__clear">&times;</i>
+				</span>
+				<div class="clearfix"></div>
 					<a id="nearme" href=""><svg data-name="Layer 1" id="Layer_1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#0076ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><polyline class="cls-1" points="47 1 25.82 47 21.44 26.56 1 22.18 47 1"/></svg>
 					  Search near me
 					</a>
@@ -98,6 +102,11 @@
 		var last_tour;
 		$(document).ready(function(){
 			//navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+			var pcourse = window.localStorage.getItem("pcourse");
+			if (pcourse != undefined && pcourse != ''){
+				$("#course").val(pcourse);
+				$(".clearable__clear").toggle(true);
+			}
 			
 			$.ajax({
 				type: 'post',
@@ -164,6 +173,18 @@
 			}
 			
 			window.location.href='condiciones.html';
+		});
+		
+		$(".clearable").each(function() {
+			var $inp = $(this).find("input:text"),
+			$cle = $(this).find(".clearable__clear");
+			$inp.on("input", function(){
+				$cle.toggle(!!this.value);
+			});
+			$cle.on("touchstart click", function(e) {
+				e.preventDefault();
+				$inp.val("").trigger("input");
+			});
 		});
 		
 		function geosuccess(pos) {
