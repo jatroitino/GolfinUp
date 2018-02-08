@@ -146,7 +146,44 @@
 					</div>
 				  </div>
 
+				  <div class="item">
+					<div class="item-header" role="tab" id="headingThree">
+						<a class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+						  Units <span>+</span>
+						</a>
+					</div>
 
+					<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+					  <div class="item-body">
+						<div class="btn-group btn-group-toggle" data-toggle="buttons" id="units">
+						  <label class="btn btn-secondary">
+							<input type="radio" name="units" id="units1" autocomplete="off" value="meters"> Meters
+						  </label>
+						  <label class="btn btn-secondary">
+							<input type="radio" name="units" id="units2" autocomplete="off" value="yards"> Yards
+						  </label>
+						</div>
+					  </div>
+					</div>
+				  </div>
+	
+					<div class="item">
+					<div class="item-header" role="tab" id="headingSix">
+						<a class="collapsed" data-toggle="collapse" href="#collapseSix" role="button" aria-expanded="false" aria-controls="collapseSix">
+						  Golf course <span>+</span>
+						</a>
+					</div>
+
+					<div id="collapseSix" class="collapse" role="tabpanel" aria-labelledby="headingSix" data-parent="#accordion">
+					  <div class="item-body scourse">
+						<input type="search" name="course" id="course" class="form-control typeahead"  placeholder="Type course..." />
+						<a id="nearme" href=""><svg data-name="Layer 1" id="Layer_1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><defs><style>.cls-1{fill:none;stroke:#0076ff;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px;}</style></defs><title/><polyline class="cls-1" points="47 1 25.82 47 21.44 26.56 1 22.18 47 1"/></svg>
+						  Search near me
+						</a>
+						<div id="coursesops"></div>
+					  </div>
+					</div>
+				  </div>
 				</div>
 			</div>
 		</div>
@@ -182,12 +219,30 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/ajustes.js"></script>
     <script type="text/javascript">
         app.initialize();
 		
+		var sourceplaces = [];
+		var sourceplaces2 = JSON.parse(window.localStorage.getItem('sourceplaces2'));
+		if (sourceplaces2 == null){
+			sourceplaces2 = new Array();
+		}
+		
+		
 		$(document).ready(function(){
 		
+			$('#nearme').click(function(event){
+				event.preventDefault();
+				if ($(this).hasClass('disabled')){
+					$(this).removeClass('disabled');
+					$(".typeahead").data('typeahead').source = sourceplaces;
+				} else {
+					$(this).addClass('disabled');
+					$(".typeahead").data('typeahead').source = sourceplaces2;
+				}
+			});
+			
 		
 			if (window.localStorage.getItem("clubs") == null){
 				var sclubs = new Array();
@@ -212,7 +267,12 @@
 			
 			var handicap = window.localStorage.getItem("handicap");
 			$('#handicap').val(handicap);
+			
+			var pcourse = window.localStorage.getItem("pcourse");
+			$('#course').val(pcourse);
 		
+			var units = window.localStorage.getItem("units");
+			$('#units input[value="'+units+'"]').prop('checked',true).parent('label').addClass('active');
 		
           $('#clubs label').click(function(event) {
 			  event.preventDefault();
@@ -297,8 +357,64 @@
 				window.localStorage.setItem("handicap", $(this).val());
 		  })
 		  
+		  
+		   $('#units label').click(function(event) {
+			  event.preventDefault();
+			  event.stopPropagation();
+			  if ($(this).hasClass('active')){
+				return;
+			} else {
+				$('#units .active').removeClass('active');
+				$('#'+$('#units .active').attr('data-for')).prop('checked',false);
+				$(this).addClass('active');
+				$('#'+$(this).attr('data-for')).prop('checked',true);
+            }
+			  $('#units .active input').each(function(){
+				window.localStorage.setItem("units", $(this).val());
+			  });
+		  });
+		  
+		  $('#course').change(function(){
+				window.localStorage.setItem("pcourse", $(this).val());
+		  })
+		  
 		});
 		
+		
+		function geosuccess(pos) {
+		  crd = pos.coords;
+			$.ajax({
+					type: 'get',
+					cache: false,
+					url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json',
+					data: {
+						'location': crd.latitude+','+crd.longitude,
+						'radius': '50000',
+						'keyword': 'golf course',
+						'key':'AIzaSyDoY5pf3EJ7XzcI-jvpYg3s6s2uG3BiCVY'
+					},
+					dataType: 'json',
+					success: function(response){
+						var html = '';
+						for (i=0;i<response.results.length;i++){
+							 //console.log(response.results[i].name);
+							sourceplaces[i]=response.results[i].name;
+							html += response.results[i].name+'<br>';
+						}
+						//$('#coursesops').html(html);
+						
+						$('.typeahead').typeahead({
+							source: sourceplaces
+						});
+					}
+				});
+		  
+		};
+		
+		function geoError(error) {
+			alert('code: '    + error.code    + '\n' +
+				  'message: ' + error.message + '\n');
+		}
     </script>
 </body>
 

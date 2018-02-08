@@ -226,16 +226,32 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
-		
+		var unitT;
+		var unitT2;
 		$(document).ready(function(){
+			var units = window.localStorage.getItem("units");
+			if (units == 'yards'){
+				unitT = 0.9144;
+				unitT2 = 1.0936;
+			} else {
+				unitT = 1;
+				unitT2 = 1;
+			}
+			
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
 				strike = 1;
 			}
 			if (strike == 1){
 				$('#prevstrike').hide();
+				$('#gimme').hide();
 				window.localStorage.setItem("par",0);
 				$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
+				
+				$('#lie').empty().append($('<option>', {value: 'Teeing',text: 'Tee'})).attr('readonly','readonly');
+					
+			} else {
+				$('#lie').val(window.localStorage.getItem("lie"));
 			}
 
 			var par = window.localStorage.getItem("par");
@@ -268,13 +284,13 @@
 			} else {
 				window.localStorage.setItem("pstrike",0);
 			}
-			$('#lie').val(window.localStorage.getItem("lie"));
+			
 			$('#club').val(window.localStorage.getItem("club"));
 			shole = window.localStorage.getItem("shole");
 			if (parseInt(shole) >= 18){
 				$('#endhole').hide();
 			}
-			
+			$('#distance').attr('placeholder',window.localStorage.getItem("units"));
 			
 			
 			if (window.localStorage.getItem("clubs") == null){
@@ -321,7 +337,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':$('#distance').val(),
+					'distance':parseInt($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -366,7 +382,7 @@
 						'hole':window.localStorage.getItem("shole"),
 						'par':window.localStorage.getItem("par"),
 						'strike':window.localStorage.getItem("strike"),
-						'distance':$('#distance').val(),
+						'distance':parseInt($('#distance').val())*unitT,
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
@@ -441,7 +457,7 @@
 						'hole':window.localStorage.getItem("shole"),
 						'par':window.localStorage.getItem("par"),
 						'strike':window.localStorage.getItem("strike"),
-						'distance':$('#distance').val(),
+						'distance':parseInt($('#distance').val())*unitT,
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
@@ -475,7 +491,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':$('#distance').val(),
+					'distance':parseInt($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -506,7 +522,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':$('#distance').val(),
+					'distance':parseInt($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -538,7 +554,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':$('#distance').val(),
+					'distance':parseInt($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -602,13 +618,20 @@
 				success: function(response){
 					$('#club').val(response.club);
 					$('#lie').val(response.lie);
-					$('#distance').val(response.distance);
+					$('#distance').val(Math.ceil(parseInt(response.distance)*unitT2));
 					$('#penalty').val(response.penalty);
 					if (response.prevented == 1){
 						$('#prevented').prop('checked','checked');
 					}
 					window.localStorage.setItem("strike",stroke);
 					$('h2 span').html(stroke);
+					if (parseInt(stroke) == 1){
+						$('#prevstrike').hide();
+						$('#gimme').hide();
+						window.localStorage.setItem("par",0);
+						$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
+						$('#lie').empty().append($('<option>', {value: 'Teeing',text: 'Tee'})).attr('readonly','readonly');
+					}
 				}
 			});
 		}

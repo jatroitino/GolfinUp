@@ -78,7 +78,8 @@
 				cache: false,
 				url: 'http://proyectosweb.info/golf/privado/get_sg',
 				data: {
-					'user_id':window.localStorage.getItem("user_id")
+					'user_id':window.localStorage.getItem("user_id"),
+					'units':window.localStorage.getItem("units")
 				},
 				dataType: 'html',
 				success: function(response){
