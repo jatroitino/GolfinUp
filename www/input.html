@@ -29,9 +29,20 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-8">Course:&nbsp;<span id="course"></span></div>
+					<div class="col-6">Course:&nbsp;<span id="course"></span></div>
 					<div class="col-2">Hole:&nbsp;<span id="hole"></span></div>
 					<div class="col-2">Par:&nbsp;<span id="spar"></span></div>
+					<div class="col-2">
+					<div class="btn-group dropleft">
+					  <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="img/3dots.svg" width="30%" height="auto" />
+					  </button>
+					  <div class="dropdown-menu  dropdown-menu-right">
+						<a href="" id="endround" class="dropdown-item">Finish round</a>
+						<a href="" id="toholes" class="dropdown-item">Menu</a>
+					  </div>
+					</div>
+					</div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
 				<div class="row  no-gutters">
@@ -112,31 +123,24 @@
 						</select>
 					</div>
 				</div>
-				<div class="row  no-gutters s6" style="margin-bottom:0">
-					<div class="col-12">
-						<a href="" id="gimme" class="btn btn-secondary btn-lg">Gimme</a>
-					</div>
-				</div>
 
 			</div>
 			<div class="col-1"></div>
 			
 			</div>
 			<div class="row wp">
-			<div class="col-3 sp">
-				<a href="" id="endround" class="btn btn-danger">Finish round</a>
+				
+			<div class="col-4 sp">
+				<a href="" id="gimme" class="btn btn-info btn-lg">Gimme</a>
+			</div>
+			<div class="col-4 sp">
+				<a href="" id="endhole" class="btn btn-info btn-lg">Next hole</a>
 			</div>
 			<div class="col-2 sp">
-				<a href="" id="toholes" class="btn btn-info">Menu</a>
-			</div>
-			<div class="col-3 sp">
-				<a href="" id="endhole" class="btn btn-info">Next hole</a>
+				<a href="" id="prevstrike" class="btn btn-info btn-lg"><img src="img/aleft.svg" /></a>
 			</div>
 			<div class="col-2 sp">
-				<a href="" id="prevstrike" class="btn btn-info"><</a>
-			</div>
-			<div class="col-2 sp">
-				<a href="" id="nextstrike" class="btn btn-info">></a>
+				<a href="" id="nextstrike" class="btn btn-info btn-lg"><img src="img/aright.svg" /></a>
 			</div>
 			</div>
 		</div>
@@ -189,15 +193,15 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <p>Par:</p>
-		
-		<select class="form-control form-control-sm" id="par">
-							<option value="">-</option>
-							<option value="3">3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-		</select>
-						
+		<div class="row">
+			<div class="col-12 spc">Select the par of the hole to start:</div>
+			<div class="col-4 spc2">Par:</div>
+			<div class="col-8">
+				<button class="sqbtn h3" name="hole" value="3">3</button>
+				<button class="sqbtn h4" name="hole" value="4">4</button>
+				<button class="sqbtn h5" name="hole" value="5">5</button>
+			</div>
+		</div>
       </div>
     </div>
   </div>
@@ -243,8 +247,8 @@
 				strike = 1;
 			}
 			if (strike == 1){
-				$('#prevstrike').hide();
-				$('#gimme').hide();
+				$('#prevstrike').addClass('disabled');
+				$('#gimme').addClass('disabled');
 				window.localStorage.setItem("par",0);
 				$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
 				
@@ -311,6 +315,7 @@
 		});
 		$('#prevstrike').click(function(event){
 			event.preventDefault();
+			if ($(this).hasClass('disabled')) return;
 			$('.app').hide();
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
@@ -355,16 +360,16 @@
 				}
 			});
 		});
-/* $('.sqbtn').click(function(){
-			$('.sqbtn').removeClass('selected');
-			$(this).addClass('selected');
-			window.localStorage.setItem("par", $(this).val());
-		}); */
-		$('#par').change(function(){
+		$('.sqbtn').click(function(){
 			window.localStorage.setItem("par", $(this).val());
 			$('#spar').html($(this).val());
 			$("#modalpar").modal("hide");
-		});
+		}); 
+		/*$('#par').change(function(){
+			window.localStorage.setItem("par", $(this).val());
+			$('#spar').html($(this).val());
+			$("#modalpar").modal("hide");
+		});*/
 		$('#endhole').click(function(event){
 			event.preventDefault();
 			var gt = window.localStorage.getItem("game_type");
@@ -404,6 +409,7 @@
 		
 		$('#gimme').click(function(event){
 			event.preventDefault();
+			if ($(this).hasClass('disabled')) return;
 			var gt = window.localStorage.getItem("game_type");
 			if (gt == 'Stableford'){
 				$("#modal1").modal("show");
@@ -626,8 +632,8 @@
 					window.localStorage.setItem("strike",stroke);
 					$('h2 span').html(stroke);
 					if (parseInt(stroke) == 1){
-						$('#prevstrike').hide();
-						$('#gimme').hide();
+						$('#prevstrike').addClass('disabled');
+						$('#gimme').addClass('disabled');
 						window.localStorage.setItem("par",0);
 						$("#modalpar").modal({show: true,keyboard: false,backdrop: 'static'});
 						$('#lie').empty().append($('<option>', {value: 'Teeing',text: 'Tee'})).attr('readonly','readonly');

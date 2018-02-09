@@ -30,7 +30,7 @@
 			<div class="col-sm-8">
 					<img src="img/icono-campo.svg" />
 					<h3 id="course"></h3>
-					<img src="img/icono-weather-small.svg" />
+					<img src="img/3dotsh.svg" width="70"/>
 					
 					<h3 id="weather">How is the weather?</h3>
 					<select name="wind" class="form-control" placeholder="Wind">
@@ -48,7 +48,7 @@
 						<option>Heavy rain</option>
 					</select>
 					<span id="sweather"></span>
-					<img src="img/icono-distancia-peque-o.svg" />
+					<img src="img/3dotsh.svg" width="70"/>
 					<h3 id="game_type">How are you going to play?</h3>
 					<select name="game_type" class="form-control" placeholder="Modality">
 						<option value="" disabled selected>Modality</option>
@@ -118,8 +118,8 @@
 		
 		$('select[name="wind"]').change(function(){
 			window.localStorage.setItem("wind", $(this).val());
-			$(this).hide();
-			$('#swind').fadeIn().html($(this).val());
+//			$(this).hide();
+//			$('#swind').fadeIn().html($(this).val());
 		});
 		$('#swind').click(function(){
 			$(this).hide();
@@ -127,9 +127,9 @@
 		});
 		$('select[name="weather"]').change(function(){
 			window.localStorage.setItem("weather", $(this).val());
-			$(this).hide();
+//			$(this).hide();
 			//$('#weather').hide();
-			$('#sweather').fadeIn().html($(this).val());
+//			$('#sweather').fadeIn().html($(this).val());
 		});
 		$('#sweather').click(function(){
 			$(this).hide();
@@ -137,8 +137,8 @@
 		});
 		$('select[name="game_type"]').change(function(){
 			window.localStorage.setItem("game_type", $(this).val());
-			$(this).hide();
-			$('#sgame_type').fadeIn().html($(this).val());
+//			$(this).hide();
+//			$('#sgame_type').fadeIn().html($(this).val());
 		});
 		$('#sgame_type').click(function(){
 			$(this).hide();
@@ -146,9 +146,9 @@
 		});
 		$('select[name="bars"]').change(function(){
 			window.localStorage.setItem("bars", $(this).val());
-			$(this).hide();
+//			$(this).hide();
 			//$('#game_type').hide();
-			$('#sbars').fadeIn().html($(this).val());
+//			$('#sbars').fadeIn().html($(this).val());
 		});
 		$('#sbars').click(function(){
 			$(this).hide();
