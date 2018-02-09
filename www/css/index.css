@@ -20,6 +20,8 @@ a:visited {text-decoration: none;}
 /* Portrait layout (default) */
 .app {margin-bottom: 80px;display: none;}
 
+h2{font-size: 20px;font-weight:bold;}
+
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
     .app {}
@@ -81,26 +83,26 @@ footer .col-3.active a {color:#0076ff;}
 #condiciones h3 {color:#9b9b9b;font-size:19px;font-weight:100;}
 #condiciones span {color:#9b9b9b;font-size:19px;font-weight:100;max-width:80%;margin: 20px auto;display: none;border: 1px solid #9b9b9b;}
 #condiciones .btn-info {margin-top: 40px;}
-
+#condiciones h3#course {font-weight: bold;} 
 
 
 #holes {text-align:center;padding-top:5%;}
-#holes h2 {text-align:left; margin-top:40px;}
+#holes h2 {text-align:left; margin-top:40px;color:#9b9b9b;font-size:17px;font-weight:bold;margin-bottom:0}
 #holes p.half {width:50%;float:left;text-align:left;font-size:14px;}
 #holes p.shalf {width:45%;float:left;text-align:left;font-size:19px;font-weight:100;}
 #input p.shalf {width:45%;float:left;text-align:left;font-size:19px;font-weight:100;}
 #holes p.half span{color:#00bcb4;}
 #holes .btn-info {margin-top: 40px;}
-#cdata {padding-left:50px;margin: 20px 0;    float: left;}
-#hdata {padding-left:50px;text-align:left;    float: left;}
+#cdata {padding-left:40px;margin: 0px 0 20px;    float: left;}
+#hdata {padding-left:40px;text-align:left;    float: left;padding-right:10px;}
 .rndbtn {font-size: 24px;    border-radius: 60px;
     background: #fff;
     color: #cccccc;
     border: 1px solid #cccccc;
     font-weight: 100;
-    width: 60px;
-    height: 60px;
-    margin: 8px;}
+    width: 45px;
+    height: 45px;
+    margin: 4px;}
 .rndbtn.selected {
 	 background: #00bcb4;
     color: #ffffff;
@@ -120,11 +122,13 @@ footer .col-3.active a {color:#0076ff;}
     color: #ffffff;
     border: 1px solid #00bcb4;	
 }
-.spc {font-size:16px;text-align: center;padding-bottom:20px;color: #bbb;font-weight:100;font-family:sans-serif;}
+.spc {font-size:16px;text-align: center;padding-bottom:20px;color: #00bcb4;font-weight:bold;font-family:sans-serif;}
 .spc2 {font-size:14px;text-align: center;padding-top:20px;color: #999;font-weight:100;font-family:sans-serif;}
 
-#input {font-size: 19px;font-weight: 100;}	
-#input .pinfo{font-size: 12px;font-weight: 100;}	
+#input {font-size: 16px;font-weight: 100;}	
+#input h2{font-size: 20px;font-weight:bold;}	
+#input .pinfo{font-size: 12px;font-weight: 100;margin-bottom:20px!important;}	
+#input .pinfo .row{margin-bottom:0;margin-top:0;}	
 #input .pinfo span {color:#00bcb4;}	
 
 #input .btn-danger {padding:0;font-size:12px;width: 100%;
@@ -147,9 +151,12 @@ footer .col-3.active a {color:#0076ff;}
 .dropdown-toggle::after {
     display: none;
 }
-
+.modal-footer {border: none; padding: 0;}
 #endhole {background:#d2fefc;border-color:#d2fefc;color:#01e5db;}
 
+#modal2 {font-size:24px;font-weight:bold;color:#00bcb4;}
+#input .btn-info#sd1 {width: 60%;    font-size: 14px;    padding: 10px 10px;background:#00bcb4;border-color:#00bcb4}
+#input .btn-info#sd2 {width: 60%;    font-size: 14px;    padding: 10px 10px;background:#0076ff;border-color:#0076ff}
 .btn.btn-link.dropdown-toggle {padding:0;text-align:right}
 
 #ajustes {padding-top:10%;}
@@ -175,23 +182,23 @@ footer .col-3.active a {color:#0076ff;}
     border-color: #01e5db;
 }
 #ajustes #clubs .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;padding-left: 10px;border-radius:0;
-background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
-font-family: sans-serif;font-size:16px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 30px;border-color: rgba(195, 195, 195,.3);
+font-family: sans-serif;font-size:14px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
 }
 #ajustes #clubs .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
-background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 36px;border-color: #aec4c3;
-font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 26px;border-color: rgba(195, 195, 195,.3);
+font-family: sans-serif;font-size:14px;padding: 15px 10px;padding-left: 0px;
 }
 
 #ajustes #genders {width:100%;}
 #ajustes #genders .btn-secondary {
-	width:50%; padding: 12px 0; color: #706f6f;font-family: sans-serif;font-size:16px;    border-radius: 10px;
+	width:50%; padding: 12px 0; color: #706f6f;font-family: sans-serif;font-size:14px;    border-radius: 10px;margin-top: 10px;
 }
 
 #ajustes #genders .btn-secondary.active {
 	color: #fff;background:#00bcb4;border-color:#00bcb4;box-shadow: none;
 }
-#ajustes #genders .btn-secondary span{width:40px;height:40px;display: inline-block;vertical-align: middle;margin-right:5px;}
+#ajustes #genders .btn-secondary span{width:20px;height:20px;display: inline-block;vertical-align: text-bottom;margin-right:5px;}
 #ajustes #genders .btn-secondary.g1 span{background: url(../img/male1.svg) no-repeat center center;background-size:contain;}
 #ajustes #genders .btn-secondary.g2 span{background: url(../img/female1.svg) no-repeat center center;background-size:contain;}
 #ajustes #genders .btn-secondary.active.g1 span{background: url(../img/male2.svg) no-repeat center center;background-size:contain;}
@@ -210,7 +217,7 @@ font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
 
 #ajustes #units {width:100%;}
 #ajustes #units .btn-secondary {
-	width:50%; padding: 18px 0; color: #706f6f;font-family: sans-serif;font-size:16px;    border-radius: 10px;
+	width:50%; padding: 12px 0; color: #706f6f;font-family: sans-serif;font-size:14px;    border-radius: 10px;margin-top: 10px;
 }
 #ajustes #units .btn-secondary.active {
 	color: #fff;background:#00bcb4;border-color:#00bcb4;box-shadow: none;
@@ -227,7 +234,7 @@ font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
 
 #ajustes #profiles {width:100%;}
 #ajustes #profiles .btn-secondary {
-	width:50%; padding: 20px 0; color: #706f6f;font-family: sans-serif;font-size:16px;    border-radius: 10px;
+	width:50%; padding: 12px 0; color: #706f6f;font-family: sans-serif;font-size:14px;    border-radius: 10px;margin-top: 10px;
 }
 #ajustes #profiles .btn-secondary.active {
 	color: #fff;background:#00bcb4;border-color:#00bcb4;box-shadow: none;
@@ -242,13 +249,15 @@ font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
 }
 
 #ajustes .profileop label {color: #00bcb4;font-size: 18px;padding: 10px 0;}
-#ajustes #tours .btn-info {text-align:left;color:#000000;font-weight:100;border-width: 0 0 1px 0;border-radius:0;
-background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 40px;border-color: #aec4c3;
-font-family: sans-serif;font-size:16px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
+#ajustes #tours .btn-info {text-align:left;color:#999;font-weight:100;border-width: 0 0 1px 0;border-radius:0;
+background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 30px;
+border-color: rgba(195, 195, 195,.3);
+font-family: sans-serif;font-size:14px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
 }
 #ajustes #tours .btn-info.active {background: none;text-align:left;color:#00bcb4;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
-background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 36px;border-color: #aec4c3;
-font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
+background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 26px;
+border-color: rgba(195, 195, 195,.3);
+font-family: sans-serif;font-size:14px;padding: 15px 10px;padding-left: 0px;
 }
 #ajustes #handicap {    font-size: 30px;
     text-align: center;
@@ -261,15 +270,15 @@ font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
 
 #stats {padding-top:10%;}
 #stats .pstat {display: none;}
-#stats .item {border-bottom:1px solid #e2e2e2;}
-#stats .item-header {padding: 10px 10px;}
+#stats .item {border-bottom:1px solid rgba(226, 226, 226,.4);}
+#stats .item-header {padding: 15px 10px;}
 #stats .col-6 .item-header {padding-left: 0;padding-right: 15px;padding-top:0;}
 #stats .item-body p {padding: 10px 10px;font-size:14px;margin-bottom:0;}
 #stats .item-header a {font-size: 14px;font-weight:normal;color:#494949;}
-#stats .item-header a.tour {font-size: 18px;font-weight:normal;color:#494949;}
+#stats .item-header a.tour {font-size: 17px;font-weight:normal;color:#494949;    line-height: 18px;}
 #stats .item-header a span{float:right;color:#00bcb4;font-size: 24px;}
-#stats .item-header a i{color:#00bcb4;font-size: 14px;font-style:normal;}
-#stats .item-header a b{color:#ddd;font-size: 14px;font-weight:300;}
+#stats .item-header a i{color:#00bcb4;font-size: 12px;font-style:normal;}
+#stats .item-header a b{color:#ddd;font-size: 12px;font-weight:300;}
 #stats .item-header a em{font-size:26px; color:#00bcb4;font-style:normal;font-weight:bold;}
 
 #stats .item-body .col-6{font-size:14px; color:#494949;padding: 10px 10px 10px 0px;}
@@ -282,7 +291,7 @@ font-family: sans-serif;font-size:16px;padding: 15px 10px;padding-left: 0px;
 #stats .item-body .col-6 span sup{font-size:14px; color:#00bcb4;}
 #stats .item-body {    background: rgba(0,0,0,.03);}
 #stats .item-body .item-body {    background: transparent;}
-
+.chart_div {width:100%;overflow:auto;}
 .clearable{
   position: relative;
   display: inline-block;

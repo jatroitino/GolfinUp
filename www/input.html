@@ -29,9 +29,14 @@
 			<div class="col-1"></div>
 			<div class="col-10">
 				<div class="row no-gutters pinfo">
-					<div class="col-6">Course:&nbsp;<span id="course"></span></div>
-					<div class="col-2">Hole:&nbsp;<span id="hole"></span></div>
-					<div class="col-2">Par:&nbsp;<span id="spar"></span></div>
+					<div class="col-10">
+						Course:&nbsp;<span id="course"></span>
+						<div class="row no-gutter">
+							<div class="col-2">Hole:&nbsp;<span id="hole"></span></div>
+							<div class="col-10">Par:&nbsp;<span id="spar"></span></div>
+						</div>
+					</div>
+					
 					<div class="col-2">
 					<div class="btn-group dropleft">
 					  <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -195,8 +200,7 @@
       <div class="modal-body">
 		<div class="row">
 			<div class="col-12 spc">Select the par of the hole to start:</div>
-			<div class="col-4 spc2">Par:</div>
-			<div class="col-8">
+			<div class="col-12 acenter">
 				<button class="sqbtn h3" name="hole" value="3">3</button>
 				<button class="sqbtn h4" name="hole" value="4">4</button>
 				<button class="sqbtn h5" name="hole" value="5">5</button>
@@ -210,13 +214,14 @@
 <div class="modal" id="modal2" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-body">
+      <div class="modal-body acenter">
         <p>2nd shot in par 5:</p>
-					
-      </div>
-	   <div class="modal-footer">
+	   <div class="col-12 acenter">
         <button type="button" id="sd1" class="btn btn-info"> Going for the green</button>
+		</div>
+	   <div class="col-12 acenter">
         <button type="button" id="sd2" class="btn btn-info">Laying up</button>
+      </div>
       </div>
     </div>
   </div>
