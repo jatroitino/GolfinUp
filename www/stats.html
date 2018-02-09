@@ -120,10 +120,18 @@
 
 				  data.addRows(vData);
 
-				var barchart_options = {title:'',width:600,height:300, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" }};
+				  var view = new google.visualization.DataView(data);
+				  view.setColumns([0, 1,
+								   { calc: "stringify",
+									 sourceColumn: 1,
+									 type: "string",
+									 role: "annotation" },
+								   2]);
+					   
+				var barchart_options = {title:'',width:600,height:300, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
 				
 			var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
-				barchart.draw(data,barchart_options);
+				barchart.draw(view,barchart_options);
 			})
 		}
 
