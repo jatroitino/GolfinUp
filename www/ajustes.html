@@ -283,13 +283,13 @@
 				$('#'+$(this).attr('data-for')).prop('checked',false);
 				$(this).removeClass('active');
 			} else {
-				if ($('#clubs .active').length > 13) {
+/*				if ($('#clubs .active').length > 13) {
 					$(this).removeClass('active');
-				} else {
+				} else {*/
 					$(this).addClass('active');
 					$('#'+$(this).attr('data-for')).prop('checked',true);
 			//console.log($('#clubs .active').length);
-				}
+//				}
             }
 			var clubs = new Array();
 			$('#clubs .active input').each(function(){
