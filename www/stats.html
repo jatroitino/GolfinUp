@@ -106,37 +106,24 @@
 				var vData=[];
 				
 				$.each( value, function( i, v ){
-					vData.push([i,v]);
+					if (v > 0){
+						vData.push([i,v,'color:#e21630']);
+					} else {
+						vData.push([i,v,'color:#00bcb4']);
+					}
 				})
 				console.log(vData);
 				 var data = new google.visualization.DataTable();
 				  data.addColumn('string', 'Element');
 				  data.addColumn('number', 'Value');
+				  data.addColumn({role: 'style', type: 'string'});
 
 				  data.addRows(vData);
-		
-				//objJSON = JSON.parse(arrData);
-				//var data = new google.visualization.DataTable(vData);
-				
-				var view = new google.visualization.DataView(data);
-				view.setColumns([0, {
-					type: 'number',
-					label: 'Value',
-					calc: function (dt, row) {
-						return (dt.getValue(row, 1) < 0) ? dt.getValue(row, 1) : null;
-					}
-				}, {
-					type: 'number',
-					label: 'Value',
-					calc: function (dt, row) {
-						return (dt.getValue(row, 1) > 0) ? dt.getValue(row, 1) : null;
-					}
-				}]);
-				
-				var barchart_options = {title:'',width:800,height:400, chartArea: {width: '85%', height: '80%'}, colors: ['#e21630','#00bcb4'],legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true}};
+
+				var barchart_options = {title:'',width:800,height:400, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},bar: { groupWidth: "90%" }};
 				
 			var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
-				barchart.draw(view,barchart_options);
+				barchart.draw(data,barchart_options);
 			})
 		}
 
