@@ -120,7 +120,7 @@
 
 				  data.addRows(vData);
 
-				var barchart_options = {title:'',width:800,height:400, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},bar: { groupWidth: "90%" }};
+				var barchart_options = {title:'',width:600,height:300, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" }};
 				
 			var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
 				barchart.draw(data,barchart_options);
