@@ -7,7 +7,6 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -24,7 +23,7 @@
 </head>
 
 <body id="input">
-    <div class="app conatiner">
+    <div class="app container">
 		<div class="row">
 			<div class="col-1"></div>
 			<div class="col-10">
@@ -63,7 +62,7 @@
 						Lie:
 					</div>
 					<div class="col-9">
-						<select tabindex="2" class="form-control"  name="lie" id="lie">
+						<select tabindex="2" class="custom-select"  name="lie" id="lie">
 							<option value="Teeing">Tee</option>
 							<option value="Fairway">Fairway</option>
 							<option value="Rough">Rough</option>
@@ -78,7 +77,7 @@
 						Club:
 					</div>
 					<div class="col-9">
-						<select tabindex="3" class="form-control"  name="club" id="club">
+						<select tabindex="3" class="custom-select"  name="club" id="club">
 							<option>Driver</option>
 							<option>Wood 2</option>
 							<option>Wood 3</option>
@@ -112,8 +111,11 @@
 					<div class="col-9">
 						Impeded shot:
 					</div>
-					<div class="col-3">
-						<input tabindex="4" type="checkbox" name="prevented" id="prevented" class="form-control form-control-lg">
+					<div class="col-3 aright">
+					<div class="custom-control custom-checkbox">
+						<input tabindex="4" type="checkbox" name="prevented" id="prevented" class="form-control-lg custom-control-input">
+						<label class="custom-control-label" for="prevented">&nbsp;</label>
+					</div>
 					</div>
 				</div>
 				<div class="row  no-gutters s5">
@@ -121,7 +123,7 @@
 						Penalty shot:
 					</div>
 					<div class="col-3">
-						<select tabindex="5" name="penalty" id="penalty" class="form-control form-control-sm">
+						<select tabindex="5" name="penalty" id="penalty" class="custom-select">
 							<option></option>
 							<option>1</option>
 							<option>2</option>
@@ -352,7 +354,8 @@
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
-					'lifted':0
+					'lifted':0,
+					'closed':0
 				},
 				dataType: 'json',
 				success: function(response){
@@ -397,7 +400,8 @@
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
-						'lifted':1
+						'lifted':1,
+						'closed':0
 					},
 					dataType: 'json',
 					success: function(response){
@@ -435,7 +439,8 @@
 						'club':'Putter',
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
-						'lifted':1
+						'lifted':1,
+						'closed':0
 					},
 					dataType: 'json',
 					success: function(response){
@@ -473,7 +478,8 @@
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
-						'lifted':1
+						'lifted':0,
+						'closed':0
 					},
 					dataType: 'json',
 					success: function(response){
@@ -507,7 +513,8 @@
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
-					'lifted':0
+					'lifted':0,
+					'closed':0
 				},
 				dataType: 'json',
 				success: function(response){
@@ -538,7 +545,8 @@
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
-					'lifted':1
+					'lifted':1,
+					'closed':0
 				},
 				dataType: 'json',
 				success: function(response){
@@ -570,7 +578,8 @@
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
-					'lifted':0
+					'lifted':0,
+					'closed':1
 				},
 				dataType: 'json',
 				success: function(response){

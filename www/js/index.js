@@ -50,16 +50,16 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		document.addEventListener('hidekeyboard', onKeyboardHide, false);
-		document.addEventListener('showkeyboard', onKeyboardShow, false);
+		/* document.addEventListener('hidekeyboard', onKeyboardHide, false);
+		document.addEventListener('showkeyboard', onKeyboardShow, false); */
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-    },
+    }/* ,
 	onKeyboardShow: function(){
        $('footer').hide();
 	},
 	onKeyboardHide: function(){
        $('footer').show();
-	}
+	} */
 };

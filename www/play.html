@@ -24,7 +24,7 @@
 </head>
 
 <body id="play">
-    <div class="app conatiner">
+    <div class="app container">
 		<div class="row">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8">
@@ -120,15 +120,14 @@
 				dataType: 'json',
 				success: function(response){
 					console.log(response);
-					if (response.tour == null){
-						last_tour = 0;
-						window.localStorage.setItem("tour",1);
+					last_tour = parseInt(response.tour);
+					if (response.closed != 0){
+						window.localStorage.setItem("tour",last_tour+1);
 						window.localStorage.setItem("shole",1);
 						window.localStorage.setItem("strike",1);
 						window.localStorage.setItem("pstrike",0);
 						$('#course').val(window.localStorage.getItem("pcourse"));
 					} else {
-						last_tour = response.tour;
 						$('#opentour').html(response.course+' <b>|</b> '+response.date);
 						$("#selectcourse").hide();
 						$("#askcourse").fadeIn();
