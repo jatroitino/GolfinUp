@@ -201,7 +201,7 @@
     <div class="modal-content">
       <div class="modal-body">
 		<div class="row">
-			<div class="col-12 spc">Select the par of the hole to start:</div>
+			<div class="col-12 spc">Select the par of the hole <span id="hole2"></span> to start:</div>
 			<div class="col-12 acenter">
 				<button class="sqbtn h3" name="hole" value="3">3</button>
 				<button class="sqbtn h4" name="hole" value="4">4</button>
@@ -286,6 +286,7 @@
 			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
 			$('#hole').html(window.localStorage.getItem("shole"));
+			$('#hole2').html(window.localStorage.getItem("shole"));
 			$('#spar').html(window.localStorage.getItem("par"));
 			$('#tour').html(window.localStorage.getItem("tour"));
 			$('h2 span').html(window.localStorage.getItem("strike"));
