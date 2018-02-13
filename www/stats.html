@@ -94,10 +94,20 @@
 					$('#sgtotal').html(response.html);
 					chart_data = response.chart;
 					google.charts.setOnLoadCallback(drawChart);
+					
+					$('#accordiong .collapse').on('hidden.bs.collapse', function (el) {
+					console.log(el.target);
+						if ($(el.target).attr('id') == 'collapseg0') return;
+						if ($('#accordiong .show').length == 0){
+							$('#collapseg0').collapse('show');
+						}
+					})
+
 				}
 			});
 						
 
+			
 		});
 		
 		
@@ -112,7 +122,7 @@
 						vData.push([i,v,'color:#e21630']);
 					}
 				})
-				console.log(vData);
+				//console.log(vData);
 				 var data = new google.visualization.DataTable();
 				  data.addColumn('string', 'Element');
 				  data.addColumn('number', 'Value');

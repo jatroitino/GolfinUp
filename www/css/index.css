@@ -111,16 +111,18 @@ footer .col-3.active a {color:#0076ff;}
 #input p.shalf {width:45%;float:left;text-align:left;font-size:19px;font-weight:100;}
 #holes p.half span{color:#00bcb4;}
 #holes .btn-info {margin-top: 40px;}
+
 #cdata {padding-left:40px;margin: 0px 0 20px;    float: left;}
-#hdata {padding-left:40px;text-align:left;    float: left;padding-right:10px;}
+#hdata {padding-left:15px;text-align:left;    float: left;padding-right:15px;}
 .rndbtn {font-size: 24px;    border-radius: 60px;
     background: #fff;
     color: #cccccc;
     border: 1px solid #cccccc;
     font-weight: 100;
-    width: 45px;
-    height: 45px;
-    margin: 4px;}
+    
+	width: 80%;
+    margin-bottom: 15px;
+	}
 .rndbtn.selected {
 	 background: #00bcb4;
     color: #ffffff;
@@ -152,11 +154,9 @@ footer .col-3.active a {color:#0076ff;}
 #input .btn-danger {padding:0;font-size:12px;width: 100%;
     padding-top: 5px;
     padding-bottom: 5px;}
-#input .btn-info {padding:0;font-size:18px;width: 100%;
-    padding-top: 10px;
-    padding-bottom: 10px;}
+#input .btn-info {padding:0;font-size:18px;width: 100%;}
 
-#input .row {margin-top:20px; margin-bottom:20px;}
+#input .row {margin-top:5px; margin-bottom:10px;}
 #input .sp {margin:0px!important; padding:0 5px!important;}
 #input .wp {/* margin:0px!important; padding:0 15px!important; */}
 #input .disabled {opacity:0.2;}
@@ -332,7 +332,7 @@ font-family: sans-serif;font-size:14px;padding: 15px 10px;padding-left: 0px;
 #ajustes #handicap {    font-size: 30px;
     text-align: center;
     width: auto;
-    margin: 0 auto;}
+    margin: 0 auto;max-width:50%;}
 
 #ajustes .scourse {text-align:center;}
 

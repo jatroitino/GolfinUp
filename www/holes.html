@@ -35,29 +35,63 @@
 						<p class="half">Tees: <span id="bars"></span></p>
 					</div>
 					<h2><img src="img/icono-hoyo-peque-o.svg" />   Holes</h2>
-					<div id="hdata">
+					<div id="hdata" class="row no-gutters">
+						<div class="col-3">
 						<button class="rndbtn h1" name="hole" value="1">1</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h2" name="hole" value="2">2</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h3" name="hole" value="3">3</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h4" name="hole" value="4">4</button>
-						<div style="clear:both;"></div>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h5" name="hole" value="5">5</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h6" name="hole" value="6">6</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h7" name="hole" value="7">7</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h8" name="hole" value="8">8</button>
-						<div style="clear:both;"></div>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h9" name="hole" value="9">9</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h10" name="hole" value="10">10</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h11" name="hole" value="11">11</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h12" name="hole" value="12">12</button>
-						<div style="clear:both;"></div>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h13" name="hole" value="13">13</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h14" name="hole" value="14">14</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h15" name="hole" value="15">15</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h16" name="hole" value="16">16</button>
-						<div style="clear:both;"></div>
+						</div>
+						<div class="col-3"></div>
+						<div class="col-3">
 						<button class="rndbtn h17" name="hole" value="17">17</button>
+						</div>
+						<div class="col-3">
 						<button class="rndbtn h18" name="hole" value="18">18</button>
+						</div>
+						<div class="col-3"></div>
 					</div>
 			</div>
 			<!--<div class="col-6 aright">
@@ -129,6 +163,10 @@
 				window.localStorage.setItem("shole", $(this).val());
 				window.location.href = 'input.html';
 			});
+			$('.rndbtn').each(function(){
+				width = $(this).outerWidth();
+				$(this).css('height',width);
+			})
 			
 		});
 
