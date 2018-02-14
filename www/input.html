@@ -49,7 +49,7 @@
 					</div>
 				</div>
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
-				<form>
+				<form onsubmit="return false;">
 				<div class="row  no-gutters">
 					<div class="col-8">
 						Distance to hole:
@@ -204,8 +204,11 @@
 		<div class="row">
 			<div class="col-12 spc acenter">
 			<img src="img/icono-hoyo-peque-o.svg"><br>
-			Select the par of the hole <span id="hole2"></span> to start:</div>
-			<div class="col-12 acenter">
+			<span id="hole2"></span> Hole</div>
+			<div class="col-4 aright d-flex align-items-center">
+			Select par
+			</div>
+			<div class="col-8 acenter">
 				<button class="sqbtn h3" name="hole" value="3">3</button>
 				<button class="sqbtn h4" name="hole" value="4">4</button>
 				<button class="sqbtn h5" name="hole" value="5">5</button>
@@ -309,7 +312,7 @@
 			window.localStorage.setItem("holes", JSON.stringify(holes));
 			$('#course').html(window.localStorage.getItem("course"));
 			$('#hole').html(window.localStorage.getItem("shole"));
-			$('#hole2').html(window.localStorage.getItem("shole"));
+			$('#hole2').html(ordinal_suffix_of(window.localStorage.getItem("shole")));
 			$('#spar').html(window.localStorage.getItem("par"));
 			$('#tour').html(window.localStorage.getItem("tour"));
 			$('h2 span').html(window.localStorage.getItem("strike"));
@@ -674,6 +677,21 @@
 					}
 				}
 			});
+		}
+		
+		function ordinal_suffix_of(i) {
+			var j = i % 10,
+				k = i % 100;
+			if (j == 1 && k != 11) {
+				return i + "st";
+			}
+			if (j == 2 && k != 12) {
+				return i + "nd";
+			}
+			if (j == 3 && k != 13) {
+				return i + "rd";
+			}
+			return i + "th";
 		}
     </script>
 </body>

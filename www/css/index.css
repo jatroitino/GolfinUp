@@ -135,8 +135,8 @@ height: 100vh;}
     border: 1px solid #cccccc;
     font-weight: 100;
     
-	width: 80%;
-    margin-bottom: 15px;
+	width: 70%;
+    margin-bottom: 10px;
 	}
 .rndbtn.selected {
 	 background: #00bab2;
@@ -187,6 +187,7 @@ height: 100vh;}
     display: none;
 }
 .modal-footer {border: none; padding: 0;}
+#modalpar{font-size:14px;}
 #endhole {background:#b2b2b2;border-color:#b2b2b2;color:#fff;}
  .dropdown-item:first-child {    border-bottom: 1px solid #e7e7e7;
 }}
