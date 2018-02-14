@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="-241 333 128 128" style="enable-background:new -241 333 128 128;" xml:space="preserve">
-<g>
-	<g>
-		<path d="M-177,347.1c-27.6,0-50.1,22.5-50.1,50.1c0,27.6,22.5,50.1,50.1,50.1c27.6,0,50.1-22.5,50.1-50.1
-			C-126.8,369.5-149.3,347.1-177,347.1z M-177,443.3L-177,443.3c-25.4,0-46.1-20.7-46.1-46.1c0-25.4,20.7-46.1,46.1-46.1
-			s46.1,20.7,46.1,46.1C-130.8,422.6-151.5,443.3-177,443.3z"/>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#9B9B9B;}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#D5D5D5;}
+</style>
+<title>elementos/action boxes/Campo pequeño check</title>
+<desc>Created with Sketch.</desc>
+<g id="Symbols">
+	<g id="elementos_x2F_action-boxes_x2F_Campo-pequeño-check">
+		<g>
+			<path class="st0" d="M45.5,50h-41C2,50,0,48,0,45.5v-41C0,2,2,0,4.5,0h41C48,0,50,2,50,4.5v41C50,48,48,50,45.5,50z M4.5,1
+				C2.6,1,1,2.6,1,4.5v41C1,47.4,2.6,49,4.5,49h41c1.9,0,3.5-1.6,3.5-3.5v-41C49,2.6,47.4,1,45.5,1H4.5z"/>
+		</g>
+		<g id="color_x2F_affirmative-blanco">
+			<g id="Rectangle-Copy-5">
+				<rect y="0" class="st1" width="50.6" height="50.6"/>
+			</g>
+		</g>
+		<g id="Rectangle-2">
+			<path class="st2" d="M45.5,50h-41C2,50,0,48,0,45.5v-41C0,2,2,0,4.5,0h41C48,0,50,2,50,4.5v41C50,48,48,50,45.5,50z M4.5,1
+				C2.6,1,1,2.6,1,4.5v41c0,2,1.6,3.5,3.5,3.5h41c1.9,0,3.5-1.6,3.5-3.5v-41C49,2.6,47.4,1,45.5,1H4.5z"/>
+		</g>
 	</g>
 </g>
 </svg>
