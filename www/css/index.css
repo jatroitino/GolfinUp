@@ -176,7 +176,7 @@ height: 100vh;}
 #input .row {margin-top:5px; margin-bottom:10px;}
 #input .sp {margin:0px!important; padding:0 5px!important;}
 #input .wp {/* margin:0px!important; padding:0 15px!important; */}
-#input .h10 {height:10vh;}
+#input .h10 {height:9vh;}
 #input .disabled {opacity:0.2;}
 .pdist {font-size: 12px;text-align:right;}
 .pdist input{float:right;width:100%;vertical-align:middle;padding-left: 0;padding-right: 0;text-align:center;}
