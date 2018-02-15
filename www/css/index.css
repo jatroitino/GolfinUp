@@ -1,4 +1,6 @@
-* {}
+@import url("https://use.typekit.net/gfj1ihi.css");
+
+* {font-family:"gesta";}
 
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
@@ -6,7 +8,8 @@ body {
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
     background-color:#ffffff;
     /*font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;*/
-    font-family:sans-serif;
+    /*font-family:sans-serif;*/
+	font-family:"gesta";
     font-size:12px;
     height:100%;
     margin:0px;
@@ -255,7 +258,7 @@ height: 100vh;}
 #input #clubs .btn-info {
 text-align:left;color:#d3d3d3;font-weight:100;width: 90%;
 border: 2px solid #d3d3d3;border-radius:10px;
-font-family: sans-serif;font-size:28px;    padding: 15px 5px 5px 5px;cursor:pointer;
+font-family: 'gesta';font-size:28px;    padding: 15px 5px 5px 5px;cursor:pointer;
 background: #fff;    line-height: 25px;outline: none;
 }
 #input #clubs .btn-info sub{font-size:16px;display: inline-block;}
@@ -264,7 +267,7 @@ background: #fff;    line-height: 25px;outline: none;
 #input #clubs .btn-info.active {color:#00bab2;font-weight:100;
 border: 2px solid #00bab2;border-radius:10px;
 border-color: #00bab2;
-font-family: sans-serif;font-size:28px;cursor:pointer;
+font-family: 'gesta';font-size:28px;cursor:pointer;
 background: #fff;outline: none;box-shadow: none;
 }
 #input #clubs .row{margin-top: 0px;margin-bottom: 0px;}
@@ -304,7 +307,7 @@ background: #fff;outline: none;box-shadow: none;
 #ajustes #clubs .btn-info {
 text-align:left;color:#d3d3d3;font-weight:100;width: 90%;
 border: 2px solid #d3d3d3;border-radius:10px;
-font-family: sans-serif;font-size:28px;    padding: 15px 5px 5px 5px;cursor:pointer;
+font-family: 'gesta';font-size:28px;    padding: 15px 5px 5px 5px;cursor:pointer;
 background: #fff;line-height: 6px;outline: none;
 }
 #ajustes #clubs .btn-info sub{font-size:16px;display: inline-block;}
@@ -313,13 +316,13 @@ background: #fff;line-height: 6px;outline: none;
 #ajustes #clubs .btn-info.active {color:#00bab2;font-weight:100;
 border: 2px solid #00bab2;border-radius:10px;
 border-color: #00bab2;
-font-family: sans-serif;font-size:28px;cursor:pointer;
+font-family: 'gesta';font-size:28px;cursor:pointer;
 background: #fff;outline: none;box-shadow: none;
 }
 #collapseOne input{margin-top:5px;}
 #ajustes #genders {width:100%;}
 #ajustes #genders .btn-secondary {
-	width:50%; padding: 12px 0; color: #b2b2b2;font-family: sans-serif;font-size:14px;
+	width:50%; padding: 12px 0; color: #b2b2b2;font-family: 'gesta';font-size:14px;
     border-radius: 10px;margin: 10px 5px;border-color:#b2b2b2;background:#ffffff;border-radius:100px;
 }
 
@@ -336,7 +339,7 @@ background: #fff;outline: none;box-shadow: none;
 
 #ajustes #units {width:100%;}
 #ajustes #units .btn-secondary {
-	width:50%; padding: 12px 0; color: #b2b2b2;font-family: sans-serif;font-size:14px;    border-radius: 100px;margin: 10px 5px;
+	width:50%; padding: 12px 0; color: #b2b2b2;font-family: 'gesta';font-size:14px;    border-radius: 100px;margin: 10px 5px;
 	border-color:#b2b2b2;background:#ffffff;
 }
 #ajustes #units .btn-secondary.active {
@@ -347,7 +350,7 @@ background: #fff;outline: none;box-shadow: none;
 
 #ajustes #profiles {width:100%;}
 #ajustes #profiles .btn-secondary {
-	width:50%; padding: 12px 0; color: #b2b2b2;font-family: sans-serif;font-size:14px;    border-radius: 100px;margin: 10px 5px;
+	width:50%; padding: 12px 0; color: #b2b2b2;font-family: 'gesta';font-size:14px;    border-radius: 100px;margin: 10px 5px;
 	border-color:#b2b2b2;background:#ffffff;
 }
 #ajustes #profiles .btn-secondary.active {
@@ -358,12 +361,12 @@ background: #fff;outline: none;box-shadow: none;
 #ajustes #tours .btn-info {text-align:left;color:#b2b2b2;font-weight:normal;border-width: 0 0 1px 0;border-radius:0;
 background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 26px;
 border-color: rgba(195, 195, 195,.3);
-font-family: sans-serif;font-size:14px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
+font-family: 'gesta';font-size:14px;padding: 15px 10px;cursor:pointer;padding-left: 0px;
 }
 #ajustes #tours .btn-info.active {background: none;text-align:left;color:#00bab2;border-width: 0 0 1px 0;padding-left: 10px;box-shadow: none;border-radius:0;border-color:#000000;
 background: url(../img/activecheck.svg) no-repeat right center transparent;background-size: auto 26px;
 border-color: rgba(195, 195, 195,.3);
-font-family: sans-serif;font-size:14px;padding: 15px 10px;padding-left: 0px;
+font-family: 'gesta';font-size:14px;padding: 15px 10px;padding-left: 0px;
 }
 #ajustes #handicap {
     -webkit-appearance: none;
