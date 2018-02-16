@@ -80,10 +80,7 @@
 						Club:
 					</div>
 					<div class="col-9">
-						<a class="openmodal" href="#" onclick="$('#modalclubs').modal('show');"><b>Choose one</b> <span>+</span></a>
-						<input type="hidden" name="club" id="club" value="" />
-					</div>
-						<!--<select tabindex="3" class="custom-select"  name="club" id="club">
+						<select tabindex="3" class="custom-select"  name="club" id="club">
 							<option>Driver</option>
 							<option>Wood 2</option>
 							<option>Wood 3</option>
@@ -110,7 +107,8 @@
 							<option>Lob wedge</option>
 							<option>Ultra lob wedge</option>
 							<option>Putter</option>
-						</select>-->
+						</select>
+						</div>
 				</div>
 				<div class="row  no-gutters s4 h10">
 					<div class="col-9">
@@ -240,51 +238,6 @@
   </div>
 </div>
 
-<div class="modal" id="modalclubs" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-body acenter">
-	  	<div id="clubs" class="" data-toggle="buttons">
-			<div class="row no-gutters">
-			<div class="form-group col"><label class="btn btn-info" data-for="club1"><input id="club1" type="checkbox" name="clubs[]" value="Driver" />D<sub>r</sub><br><span>Driver</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club2"><input id="club2" type="checkbox" name="clubs[]" value="3 wood" />3<sub>W</sub><br><span>3 wood</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club3"><input id="club3" type="checkbox" name="clubs[]" value="4 wood" />4<sub>W</sub><br><span>4 wood</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club4"><input id="club4" type="checkbox" name="clubs[]" value="5 wood" />5<sub>W</sub><br><span>5 wood</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club5"><input id="club5" type="checkbox" name="clubs[]" value="7 wood" />7<sub>W</sub><br><span>7 wood</span></label></div>
-			</div>
-			<div class="row no-gutters">
-			<div class="form-group col"></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club6"><input id="club6" type="checkbox" name="clubs[]" value="2 hybrid" />2<sub>H</sub><br><span>2 hybrid</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club7"><input id="club7" type="checkbox" name="clubs[]" value="3 hybrid" />3<sub>H</sub><br><span>3 hybrid</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club8"><input id="club8" type="checkbox" name="clubs[]" value="4 hybrid" />4<sub>H</sub><br><span>4 hybrid</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club9"><input id="club9" type="checkbox" name="clubs[]" value="5 hybrid" />5<sub>H</sub><br><span>5 hybrid</span></label></div>
-			</div>
-			<div class="row no-gutters">
-			<div class="form-group col"><label class="btn btn-info" data-for="club10"><input id="club10" type="checkbox" name="clubs[]" value="1 iron" />1<sub>I</sub><br><span>1 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club11"><input id="club11" type="checkbox" name="clubs[]" value="2 iron" />2<sub>I</sub><br><span>2 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club12"><input id="club12" type="checkbox" name="clubs[]" value="3 iron" />3<sub>I</sub><br><span>3 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club13"><input id="club13" type="checkbox" name="clubs[]" value="4 iron" />4<sub>I</sub><br><span>4 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club14"><input id="club14" type="checkbox" name="clubs[]" value="5 iron" />5<sub>I</sub><br><span>5 iron</span></label></div>
-			</div>
-			<div class="row no-gutters">
-			<div class="form-group col"></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club15"><input id="club15" type="checkbox" name="clubs[]" value="6 iron" />6<sub>I</sub><br><span>6 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club16"><input id="club16" type="checkbox" name="clubs[]" value="7 iron" />7<sub>I</sub><br><span>7 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club17"><input id="club17" type="checkbox" name="clubs[]" value="8 iron" />8<sub>I</sub><br><span>8 iron</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club18"><input id="club18" type="checkbox" name="clubs[]" value="9 iron" />9<sub>I</sub><br><span>9 iron</span></label></div>
-			</div>
-			<div class="row no-gutters">
-			<div class="form-group col"><label class="btn btn-info" data-for="club19"><input id="club19" type="checkbox" name="clubs[]" value="Pitching wedge" />P<sub>w</sub><br><span>Pitching w</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club20"><input id="club20" type="checkbox" name="clubs[]" value="Gap wedge" />G<sub>w</sub><br><span>Gap w</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club21"><input id="club21" type="checkbox" name="clubs[]" value="Sand wegde" />S<sub>w</sub><br><span>Sand w</span></label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club22"><input id="club22" type="checkbox" name="clubs[]" value="Lob wedge" />L<sub>w</sub><br><span>Lob w</label></div>
-			<div class="form-group col"><label class="btn btn-info" data-for="club23"><input id="club23" type="checkbox" name="clubs[]" value="Putter" />P<sub>t</sub></label></div>
-			</div>
-		</div>
-      </div>
-    </div>
-  </div>
-</div>
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
@@ -310,9 +263,12 @@
 			} else {
 				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
 				if (sclubs.length > 0){
-					$('#clubs label').addClass('disabled');
+					$('#club').empty();
 					$(sclubs).each(function(key,value){
-						$('#clubs input[value="'+value+'"]').parent('label').removeClass('disabled');
+						$('#club').append($('<option>', {
+							value: value,
+							text: value
+						}));
 					});
 				}
 			}
@@ -332,16 +288,12 @@
 				
 				$('#lie').empty().append($('<option>', {value: 'Teeing',text: 'Tee'})).attr('readonly','readonly');
 				$('#club').val('Driver');
-				$('.openmodal b').html('Driver');
 			} else {
 				$('#lie').val(window.localStorage.getItem("lie"));
 				if (window.localStorage.getItem("lie")=='Green'){
-					/* $('#club').val('Putter').attr('disabled',true);*/
-					$('#club').val('Putter');
-					$('.openmodal b').html('Putter');
+					$('#club').val('Putter').attr('disabled',true);
 				} else {
 					$('#club').val(window.localStorage.getItem("club"));
-					$('.openmodal b').html(window.localStorage.getItem("club"));
 				}
 			}
 
@@ -684,27 +636,18 @@
 		});
 		$('#lie').change(function(){
 			if ($('#lie option:selected').val() == 'Green'){
-				$('#club').val('Putter');
-				$('.openmodal b').html('Putter');
-			} /*else {
+				$('#club').val('Putter').attr('disabled',true);
+			} else {
 				$('#club').attr('disabled',false);
-			}*/
+			}
 			//$('.s3').removeClass('disabled');
 			window.localStorage.setItem("lie", $(this).val());
 		});
-		/*$('#club').change(function(){
+		$('#club').change(function(){
 			//$('.s4').removeClass('disabled');
 			//$('.s5').removeClass('disabled');
 			window.localStorage.setItem("club", $(this).val());
-		});*/
-		$('#clubs label').click(function(event) {
-				event.preventDefault();
-				event.stopPropagation();
-				window.localStorage.setItem("club", $('#'+$(this).attr('data-for')).val());
-				$('#club').val($('#'+$(this).attr('data-for')).val());
-				$('.openmodal b').html($('#'+$(this).attr('data-for')).val());
-				$('#modalclubs').modal('hide');
-          });
+		});
 		$('#penalty').change(function(){
 			pstrike = window.localStorage.getItem("pstrike");
 			newPStrike = parseInt($(this).val());
