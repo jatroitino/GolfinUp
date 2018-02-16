@@ -115,7 +115,7 @@ height: 100vh;}
 
 
 #condiciones {text-align:center;}
-#condiciones select {max-width:80%;margin: 20px auto;}
+#condiciones select {max-width:80%;margin: 20px auto;font-size: 14px;}
 #condiciones h3 {color:#9b9b9b;font-size:19px;font-weight:100;}
 #condiciones span {color:#9b9b9b;font-size:19px;font-weight:100;max-width:80%;margin: 20px auto;display: none;border: 1px solid #9b9b9b;}
 #condiciones .btn-info {margin-top: 40px;}
