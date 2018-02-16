@@ -313,11 +313,11 @@ background: #fff;line-height: 6px;outline: none;
 #ajustes #clubs .btn-info sub{font-size:16px;display: inline-block;}
 #ajustes #clubs .btn-info span{font-size:8px;display: inline-block;display: none;}
 
-#ajustes #clubs .btn-info.active {color:#00bab2;font-weight:100;
+#ajustes #clubs .btn-info.active {color:#fff;font-weight:100;
 border: 2px solid #00bab2;border-radius:10px;
 border-color: #00bab2;
 font-family: 'gesta';font-size:28px;cursor:pointer;
-background: #fff;outline: none;box-shadow: none;
+background: #00bab2;outline: none;box-shadow: none;
 }
 #collapseOne input{margin-top:5px;}
 #ajustes #genders {width:100%;}
