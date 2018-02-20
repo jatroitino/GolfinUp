@@ -49,23 +49,23 @@
 					</div>
 					</div>
 				</div>
-				<div class="h10">
+				<div class="h10 d-flex align-items-center">
 				<h2><img src="img/icono-hoyo-peque-o.svg" />   Stroke <span></span><em></em></h2>
 				</div>
 				<form onsubmit="return false;">
 				<div class="row  no-gutters h10">
-					<div class="col-8">
+					<div class="col-8 d-flex align-items-center">
 						Distance to hole:
 					</div>
-					<div class="col-4 pdist">
+					<div class="col-4 pdist d-flex align-items-center">
 						<input tabindex="1" type="number" name="distance" id="distance" class="form-control" placeholder="meters"/>
 					</div>
 				</div>
 				<div class="row  no-gutters s2 h10">
-					<div class="col-3">
+					<div class="col-3 d-flex align-items-center">
 						Lie:
 					</div>
-					<div class="col-9">
+					<div class="col-9 d-flex align-items-center">
 						<select tabindex="2" class="custom-select"  name="lie" id="lie">
 							<option value="Teeing">Tee</option>
 							<option value="Fairway">Fairway</option>
@@ -77,48 +77,43 @@
 					</div>
 				</div>
 				<div class="row  no-gutters s3 h10">
-					<div class="col-2">
-						<label class="v-middle">
+					<div class="col-2 d-flex align-items-center">
 						Club:
-						</label>
 						<input type="hidden" id="club" />
 					</div>
 					<div class="col-10">
 						<div id="clubs">
-							<div data-value="Driver">D<sub>r</sub></div>
-							<div data-value="Wood 2">2<sub>W</sub></div>
-							<div data-value="Wood 3">3<sub>W</sub></div>
-							<div data-value="Wood 4">4<sub>W</sub></div>
-							<div data-value="Wood 5">5<sub>W</sub></div>
-							<div data-value="Wood 6">6<sub>W</sub></div>
-							<div data-value="Wood 7">7<sub>W</sub></div>
-							<div data-value="Wood 8">8<sub>W</sub></div>
-							<div data-value="Wood 9">9<sub>W</sub></div>
-							<div data-value="Wood 10">10<sub>W</sub></div>
-							<div data-value="Wood 11">11<sub>W</sub></div>
-							<div data-value="Iron 1">1<sub>I</sub></div>
-							<div data-value="Iron 2">2<sub>I</sub></div>
-							<div data-value="Iron 3">3<sub>I</sub></div>
-							<div data-value="Iron 4">4<sub>I</sub></div>
-							<div data-value="Iron 5">5<sub>I</sub></div>
-							<div data-value="Iron 6">6<sub>I</sub></div>
-							<div data-value="Iron 7">7<sub>I</sub></div>
-							<div data-value="Iron 8">8<sub>I</sub></div>
-							<div data-value="Iron 9">9<sub>I</sub></div>
-							<div data-value="Pitching wedge">P<sub>W</sub></div>
-							<div data-value="Gap wedge">G<sub>W</sub></div>
-							<div data-value="Sand wedge">S<sub>W</sub></div>
-							<div data-value="Lob wedge">L<sub>W</sub></div>
-							<div data-value="Ultra lob wedge">U<sub>W</sub></div>
-							<div data-value="Putter">P<sub>T</sub></div>
+							<div class="cluboption" data-value="Driver">D<sub>r</sub></div>
+							<div class="cluboption" data-value="3 wood">3<sub>W</sub></div>
+							<div class="cluboption" data-value="4 wood">4<sub>W</sub></div>
+							<div class="cluboption" data-value="5 wood">5<sub>W</sub></div>
+							<div class="cluboption" data-value="7 wood">7<sub>W</sub></div>
+							<div class="cluboption" data-value="2 hybrid">2<sub>H</sub></div>
+							<div class="cluboption" data-value="3 hybrid">3<sub>H</sub></div>
+							<div class="cluboption" data-value="4 hybrid">4<sub>H</sub></div>
+							<div class="cluboption" data-value="5 hybrid">5<sub>H</sub></div>
+							<div class="cluboption" data-value="1 iron">1<sub>I</sub></div>
+							<div class="cluboption" data-value="2 iron">2<sub>I</sub></div>
+							<div class="cluboption" data-value="3 iron">3<sub>I</sub></div>
+							<div class="cluboption" data-value="4 iron">4<sub>I</sub></div>
+							<div class="cluboption" data-value="5 iron">5<sub>I</sub></div>
+							<div class="cluboption" data-value="6 iron">6<sub>I</sub></div>
+							<div class="cluboption" data-value="7 iron">7<sub>I</sub></div>
+							<div class="cluboption" data-value="8 iron">8<sub>I</sub></div>
+							<div class="cluboption" data-value="9 iron">9<sub>I</sub></div>
+							<div class="cluboption" data-value="Pitching wedge">P<sub>W</sub></div>
+							<div class="cluboption" data-value="Gap wedge">G<sub>W</sub></div>
+							<div class="cluboption" data-value="Sand wedge">S<sub>W</sub></div>
+							<div class="cluboption" data-value="Lob wedge">L<sub>W</sub></div>
+							<div class="cluboption" data-value="Putter">P<sub>T</sub></div>
 						</div>
-						</div>
+					</div>
 				</div>
 				<div class="row  no-gutters s4 h10">
-					<div class="col-9">
+					<div class="col-9 d-flex align-items-center">
 						Impeded shot:
 					</div>
-					<div class="col-3 aright">
+					<div class="col-3 aright d-flex align-items-center justify-content-end">
 					<div class="custom-control custom-checkbox">
 						<input tabindex="4" type="checkbox" name="prevented" id="prevented" class="form-control-lg custom-control-input">
 						<label class="custom-control-label" for="prevented">&nbsp;</label>
@@ -126,10 +121,10 @@
 					</div>
 				</div>
 				<div class="row  no-gutters s5 h10">
-					<div class="col-9">
+					<div class="col-9 d-flex align-items-center">
 						Penalty shot:
 					</div>
-					<div class="col-3">
+					<div class="col-3 d-flex align-items-center">
 						<select tabindex="5" name="penalty" id="penalty" class="custom-select">
 							<option></option>
 							<option>1</option>
@@ -263,20 +258,69 @@
 				unitT = 1;
 				unitT2 = 1;
 			}
+			
+			
+			// CAROUSEL
+			
 			if (window.localStorage.getItem("clubs") == null){
 				var sclubs = new Array();
 			} else {
 				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
 				if (sclubs.length > 0){
-					/* $('#club').empty();
-					$(sclubs).each(function(key,value){
-						$('#club').append($('<option>', {
-							value: value,
-							text: value
-						}));
-					}); */
+					$('#clubs .cluboption').each(function(){
+						if ($.inArray($(this).data('value'), sclubs) == -1){
+							$(this).remove();
+						}
+					});
 				}
 			}
+			
+			$('#clubs').slick({
+			  centerMode: true,
+			  centerPadding: '0px',
+			  slidesToShow: 5,
+			  infinite: false,
+			  //easing:false,
+			  //cssEase:false,
+			  swipeToSlide: true,
+			  responsive: [
+				{
+				  breakpoint: 768,
+				  settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '0px',
+					infinite: false,
+					//easing:false,
+					//cssEase:false,
+					swipeToSlide: true,
+					slidesToShow: 5
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '0px',
+					infinite: false,
+					//easing:false,
+					//cssEase:false,
+					swipeToSlide: true,
+					slidesToShow: 5
+				  }
+				}
+			  ]
+			});
+			
+			$('#clubs').on('afterChange', function(event, slick, currentSlide){
+				var club = $(slick.$slides.get(currentSlide)).data('value');
+				$('#club').val(club);
+			});
+			
+			
+			
+			
 			
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			if (!(strike > 0)){
@@ -293,12 +337,15 @@
 				
 				$('#lie').empty().append($('<option>', {value: 'Teeing',text: 'Tee'})).attr('readonly','readonly');
 				$('#club').val('Driver');
+				$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Driver"]').data('slickIndex'));
 			} else {
 				$('#lie').val(window.localStorage.getItem("lie"));
 				if (window.localStorage.getItem("lie")=='Green'){
-					$('#club').val('Putter').attr('disabled',true);
+					$('#club').val('Putter');//.attr('disabled',true);
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
 				} else {
 					$('#club').val(window.localStorage.getItem("club"));
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="'+window.localStorage.getItem("club")+'"]').data('slickIndex'));
 				}
 			}
 
@@ -349,62 +396,17 @@
 			
 			
 			var wHeight = window.innerHeight;
-			console.log(wHeight);
 			var mHeight = $('footer').height()+15; //8
-			console.log(mHeight);
 			var h10Height = (wHeight-mHeight)/8;
-			console.log(h10Height);
 			$('#input .h10').outerHeight(h10Height);
 			
 			
 			
-			// CAROUSEL
-			$('#clubs').slick({
-			  centerMode: true,
-			  centerPadding: '0px',
-			  slidesToShow: 5,
-			  easing:false,
-			  cssEase:false,
-			  swipeToSlide: true,
-			  responsive: [
-				{
-				  breakpoint: 768,
-				  settings: {
-					arrows: false,
-					centerMode: true,
-					centerPadding: '0px',
-					easing:false,
-					cssEase:false,
-					swipeToSlide: true,
-					slidesToShow: 5
-				  }
-				},
-				{
-				  breakpoint: 480,
-				  settings: {
-					arrows: false,
-					centerMode: true,
-					centerPadding: '0px',
-					easing:false,
-					cssEase:false,
-					swipeToSlide: true,
-					slidesToShow: 3
-				  }
-				}
-			  ]
-			});
-			
-			$('#clubs').on('afterChange', function(event, slick, currentSlide){
-				var club = $(slick.$slides.get(currentSlide)).data('value');
-				$('#club').val(club);
-			});
-			$('#clubs').on('init', function(event, slick){
-				var currentSlide = $('#clubs').slick('slickCurrentSlide');
-				var club = $(slick.$slides.get(currentSlide)).data('value');
-				$('#club').val(club);
-			});
 			
 		});
+			
+			
+			
 		$('#prevstrike').click(function(event){
 			event.preventDefault();
 			if ($(this).hasClass('disabled')) return;
@@ -688,9 +690,10 @@
 		});
 		$('#lie').change(function(){
 			if ($('#lie option:selected').val() == 'Green'){
-				$('#club').val('Putter').attr('disabled',true);
+				$('#club').val('Putter');//.attr('disabled',true);
+				$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
 			} else {
-				$('#club').attr('disabled',false);
+				//$('#club').attr('disabled',false);
 			}
 			//$('.s3').removeClass('disabled');
 			window.localStorage.setItem("lie", $(this).val());
@@ -728,6 +731,7 @@
 				dataType: 'json',
 				success: function(response){
 					$('#club').val(response.club);
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="'+response.club+'"]').data('slickIndex'));
 					$('#lie').val(response.lie);
 					$('#distance').val(Math.ceil(parseInt(response.distance)*unitT2));
 					$('#penalty').val(response.penalty);
