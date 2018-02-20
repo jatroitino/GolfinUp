@@ -201,6 +201,22 @@ height: 100vh;}
 #input .btn-info#sd2 {width: 60%;    font-size: 14px;    padding: 10px 10px;background:#0076ff;border-color:#0076ff}
 .btn.btn-link.dropdown-toggle {padding:0;text-align:right}
 
+#clubs {padding-bottom:15px;}
+#clubs .slick-slide {
+	font-size: 28px;
+	font-weight: bold;
+	color: #b2b2b2;
+	vertical-align: middle;
+	text-align:center;
+}
+#clubs .slick-slide.slick-center {color:#01e5db;font-size: 32px;}
+#clubs .slick-slide sub{font-size: 14px;}
+#clubs .slick-slide.slick-center sub{font-size: 16px;}
+
+.v-middle {    height: 50px;
+    vertical-align: middle;
+    display: table-cell;}
+
 .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
      background-image: url(../img/check.svg);
 }

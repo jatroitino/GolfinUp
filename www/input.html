@@ -18,6 +18,7 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/slick.css" />
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <title>GolfinUp</title>
 </head>
@@ -76,38 +77,41 @@
 					</div>
 				</div>
 				<div class="row  no-gutters s3 h10">
-					<div class="col-3">
+					<div class="col-2">
+						<label class="v-middle">
 						Club:
+						</label>
+						<input type="hidden" id="club" />
 					</div>
-					<div class="col-9">
-						<select tabindex="3" class="custom-select"  name="club" id="club">
-							<option>Driver</option>
-							<option>Wood 2</option>
-							<option>Wood 3</option>
-							<option>Wood 4</option>
-							<option>Wood 5</option>
-							<option>Wood 6</option>
-							<option>Wood 7</option>
-							<option>Wood 8</option>
-							<option>Wood 9</option>
-							<option>Wood 10</option>
-							<option>Wood 11</option>
-							<option>Iron 1</option>
-							<option>Iron 2</option>
-							<option>Iron 3</option>
-							<option>Iron 4</option>
-							<option>Iron 5</option>
-							<option>Iron 6</option>
-							<option>Iron 7</option>
-							<option>Iron 8</option>
-							<option>Iron 9</option>
-							<option>Pitching wedge</option>
-							<option>Gap wedge</option>
-							<option>Sand wedge</option>
-							<option>Lob wedge</option>
-							<option>Ultra lob wedge</option>
-							<option>Putter</option>
-						</select>
+					<div class="col-10">
+						<div id="clubs">
+							<div data-value="Driver">D<sub>r</sub></div>
+							<div data-value="Wood 2">2<sub>W</sub></div>
+							<div data-value="Wood 3">3<sub>W</sub></div>
+							<div data-value="Wood 4">4<sub>W</sub></div>
+							<div data-value="Wood 5">5<sub>W</sub></div>
+							<div data-value="Wood 6">6<sub>W</sub></div>
+							<div data-value="Wood 7">7<sub>W</sub></div>
+							<div data-value="Wood 8">8<sub>W</sub></div>
+							<div data-value="Wood 9">9<sub>W</sub></div>
+							<div data-value="Wood 10">10<sub>W</sub></div>
+							<div data-value="Wood 11">11<sub>W</sub></div>
+							<div data-value="Iron 1">1<sub>I</sub></div>
+							<div data-value="Iron 2">2<sub>I</sub></div>
+							<div data-value="Iron 3">3<sub>I</sub></div>
+							<div data-value="Iron 4">4<sub>I</sub></div>
+							<div data-value="Iron 5">5<sub>I</sub></div>
+							<div data-value="Iron 6">6<sub>I</sub></div>
+							<div data-value="Iron 7">7<sub>I</sub></div>
+							<div data-value="Iron 8">8<sub>I</sub></div>
+							<div data-value="Iron 9">9<sub>I</sub></div>
+							<div data-value="Pitching wedge">P<sub>W</sub></div>
+							<div data-value="Gap wedge">G<sub>W</sub></div>
+							<div data-value="Sand wedge">S<sub>W</sub></div>
+							<div data-value="Lob wedge">L<sub>W</sub></div>
+							<div data-value="Ultra lob wedge">U<sub>W</sub></div>
+							<div data-value="Putter">P<sub>T</sub></div>
+						</div>
 						</div>
 				</div>
 				<div class="row  no-gutters s4 h10">
@@ -244,6 +248,7 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript" src="js/slick.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
@@ -263,13 +268,13 @@
 			} else {
 				var sclubs = JSON.parse(window.localStorage.getItem("clubs"));
 				if (sclubs.length > 0){
-					$('#club').empty();
+					/* $('#club').empty();
 					$(sclubs).each(function(key,value){
 						$('#club').append($('<option>', {
 							value: value,
 							text: value
 						}));
-					});
+					}); */
 				}
 			}
 			
@@ -351,6 +356,53 @@
 			console.log(h10Height);
 			$('#input .h10').outerHeight(h10Height);
 			
+			
+			
+			// CAROUSEL
+			$('#clubs').slick({
+			  centerMode: true,
+			  centerPadding: '0px',
+			  slidesToShow: 5,
+			  easing:false,
+			  cssEase:false,
+			  swipeToSlide: true,
+			  responsive: [
+				{
+				  breakpoint: 768,
+				  settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '0px',
+					easing:false,
+					cssEase:false,
+					swipeToSlide: true,
+					slidesToShow: 5
+				  }
+				},
+				{
+				  breakpoint: 480,
+				  settings: {
+					arrows: false,
+					centerMode: true,
+					centerPadding: '0px',
+					easing:false,
+					cssEase:false,
+					swipeToSlide: true,
+					slidesToShow: 3
+				  }
+				}
+			  ]
+			});
+			
+			$('#clubs').on('afterChange', function(event, slick, currentSlide){
+				var club = $(slick.$slides.get(currentSlide)).data('value');
+				$('#club').val(club);
+			});
+			$('#clubs').on('init', function(event, slick){
+				var currentSlide = $('#clubs').slick('slickCurrentSlide');
+				var club = $(slick.$slides.get(currentSlide)).data('value');
+				$('#club').val(club);
+			});
 			
 		});
 		$('#prevstrike').click(function(event){
