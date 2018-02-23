@@ -67,6 +67,7 @@ footer .col-3.active a {color:#0076ff;}
 .btn-info {background: #01e5db;border-color:#01e5db;margin-top: 20px;border-radius:40px;padding:10px 40px;}
 .btn-warning {background: #117a8b;border-color:#117a8b;margin-top: 20px;border-radius:40px;padding:10px 40px;color: #fff;}
 .btn-danger {margin-top: 20px;border-radius:40px;padding:10px 40px;}
+.btn-sm {margin-top: 10px;margin-bottom: 10px;border-radius:20px;padding:5px 10px;font-size:10px;}
 
 #home {text-align:center;padding-top:5%;
  background: url(../img/backdrop.svg) no-repeat right bottom #fff;background-size:auto 50%; 

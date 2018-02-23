@@ -78,6 +78,11 @@
         app.initialize();
 		var chart_data;
 		$(document).ready(function(){
+			getStats();
+		});
+		
+		function getStats(){
+		
 			$.ajax({
 				type: 'post',
 				cache: false,
@@ -103,10 +108,24 @@
 
 				}
 			});
-						
+		}				
 
-			
-		});
+		function deleteRound(round)
+		{
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/delete_round',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'round':round
+				},
+				dataType: 'json',
+				success: function(response){
+					getStats();
+				}
+			});
+		}
 		
 		
 		function drawChart() {
