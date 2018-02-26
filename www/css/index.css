@@ -195,8 +195,9 @@ height: 100vh;}
 .modal-footer {border: none; padding: 0;}
 #modalpar{font-size:14px;}
 #endhole {background:#b2b2b2;border-color:#b2b2b2;color:#fff;}
+#endround2 {background:#dc3545;border-color:#dc3545;color:#fff;    font-size: 14px !important;}
  .dropdown-item:first-child {    border-bottom: 1px solid #e7e7e7;
-}}
+}
 #modal2 {font-size:24px;font-weight:bold;color:#b2b2b2;}
 #input .btn-info#sd1 {width: 60%;    font-size: 14px;    padding: 10px 10px;background:#00bab2;border-color:#00bab2}
 #input .btn-info#sd2 {width: 60%;    font-size: 14px;    padding: 10px 10px;background:#0076ff;border-color:#0076ff}

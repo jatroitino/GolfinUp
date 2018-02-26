@@ -144,6 +144,7 @@
 			</div>
 			<div class="col-4 sp">
 				<a href="" id="endhole" class="btn btn-info btn-lg">Next hole</a>
+				<a href="" id="endround2" class="btn btn-info btn-danger btn-lg" style="display:none;">Finish round</a>
 			</div>
 			<div class="col-2 sp">
 				<a href="" id="prevstrike" class="btn btn-info btn-lg"><img src="img/aleft.svg" /></a>
@@ -258,6 +259,8 @@
 				unitT = 1;
 				unitT2 = 1;
 			}
+			
+			var pholes = round_holes_count();
 			
 			
 			// CAROUSEL
@@ -383,9 +386,7 @@
 			
 			
 			shole = window.localStorage.getItem("shole");
-			if (parseInt(shole) >= 18){
-				$('#endhole').hide();
-			} 
+
 			$('#distance').attr('placeholder',window.localStorage.getItem("units"));
 			
 			
@@ -495,6 +496,7 @@
 						window.localStorage.setItem("strike", 1);
 						window.localStorage.setItem("pstrike", 0);
 						var shole = parseInt(window.localStorage.getItem("shole"));
+						if (shole == 18) shole = 0;
 						window.localStorage.setItem("shole", shole+1);
 						window.location.href = 'input.html';
 					}
@@ -533,9 +535,16 @@
 					success: function(response){
 						window.localStorage.setItem("strike", 1);
 						window.localStorage.setItem("pstrike", 0);
-						var shole = parseInt(window.localStorage.getItem("shole"));
-						window.localStorage.setItem("shole", shole+1);
-						window.location.href = 'input.html';
+						pholes = parseInt(window.localStorage.getItem("pholes"));
+						if (pholes == 18){
+							window.localStorage.setItem("shole", '1');
+							window.location.href = 'holes.html';
+						} else {
+							var shole = parseInt(window.localStorage.getItem("shole"));
+							if (shole == 18) shole = 0;
+							window.localStorage.setItem("shole", shole+1);
+							window.location.href = 'input.html';
+						}
 					}
 				});
 				
@@ -573,6 +582,7 @@
 						window.localStorage.setItem("strike", 1);
 						window.localStorage.setItem("pstrike", 0);
 						var shole = parseInt(window.localStorage.getItem("shole"));
+						if (shole == 18) shole = 0;
 						window.localStorage.setItem("shole", shole+1);
 						window.location.href = 'holes.html';
 					}
@@ -608,6 +618,7 @@
 					window.localStorage.setItem("strike", 1);
 					window.localStorage.setItem("pstrike", 0);
 					var shole = parseInt(window.localStorage.getItem("shole"));
+					if (shole == 18) shole = 0;
 					window.localStorage.setItem("shole", shole+1);
 					window.location.href = 'input.html';
 				}
@@ -640,6 +651,7 @@
 					window.localStorage.setItem("strike", 1);
 					window.localStorage.setItem("pstrike", 0);
 					var shole = parseInt(window.localStorage.getItem("shole"));
+					if (shole == 18) shole = 0;
 					window.localStorage.setItem("shole", shole+1);
 					window.location.href = 'input.html';
 				}
@@ -647,7 +659,7 @@
 		});
 		
 		
-		$('#endround').click(function(event){
+		$('#endround, #endround2').click(function(event){
 			event.preventDefault();
 			$.ajax({
 				type: 'post',
@@ -764,6 +776,31 @@
 				return i + "rd";
 			}
 			return i + "th";
+		}
+		
+		function round_holes_count()
+		{
+			var pholes = 1;
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/round_holes_count',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'tour':window.localStorage.getItem("tour")
+				},
+				dataType: 'json',
+				success: function(response){
+					pholes = response;
+					console.log(pholes);
+					window.localStorage.setItem("pholes", pholes);
+					if (parseInt(pholes) >= 17){
+						$('#endhole').hide();
+						$('#endround2').show();
+					} 
+					return pholes;
+				}
+			});
 		}
     </script>
 </body>
