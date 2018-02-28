@@ -238,6 +238,21 @@
   </div>
 </div>
 
+<div class="modal" id="modalmsg" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+	  <div class="modal-header acenter">
+        <h5 class="modal-title acenter">Error saving data</h5>
+      </div>
+      <div class="modal-body acenter">
+	  <p></p>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
@@ -447,12 +462,15 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					var strike = parseInt(window.localStorage.getItem("strike"));
-					if (!(strike > 0)){
-						strike = 1;
+					if (response.result == 0) alertmodal(response.msg);
+					else {
+						var strike = parseInt(window.localStorage.getItem("strike"));
+						if (!(strike > 0)){
+							strike = 1;
+						}
+						window.localStorage.setItem("strike", strike+1);
+						window.location.href = 'input.html';
 					}
-					window.localStorage.setItem("strike", strike+1);
-					window.location.href = 'input.html';
 				}
 			});
 		});
@@ -493,12 +511,15 @@
 					},
 					dataType: 'json',
 					success: function(response){
-						window.localStorage.setItem("strike", 1);
-						window.localStorage.setItem("pstrike", 0);
-						var shole = parseInt(window.localStorage.getItem("shole"));
-						if (shole == 18) shole = 0;
-						window.localStorage.setItem("shole", shole+1);
-						window.location.href = 'input.html';
+						if (response.result == 0) alertmodal(response.msg);
+						else {
+							window.localStorage.setItem("strike", 1);
+							window.localStorage.setItem("pstrike", 0);
+							var shole = parseInt(window.localStorage.getItem("shole"));
+							if (shole == 18) shole = 0;
+							window.localStorage.setItem("shole", shole+1);
+							window.location.href = 'input.html';
+						}
 					}
 				});
 				
@@ -533,17 +554,20 @@
 					},
 					dataType: 'json',
 					success: function(response){
-						window.localStorage.setItem("strike", 1);
-						window.localStorage.setItem("pstrike", 0);
-						pholes = parseInt(window.localStorage.getItem("pholes"));
-						if (pholes == 18){
-							window.localStorage.setItem("shole", '1');
-							window.location.href = 'holes.html';
-						} else {
-							var shole = parseInt(window.localStorage.getItem("shole"));
-							if (shole == 18) shole = 0;
-							window.localStorage.setItem("shole", shole+1);
-							window.location.href = 'input.html';
+						if (response.result == 0) alertmodal(response.msg);
+						else {
+							window.localStorage.setItem("strike", 1);
+							window.localStorage.setItem("pstrike", 0);
+							pholes = parseInt(window.localStorage.getItem("pholes"));
+							if (pholes == 18){
+								window.localStorage.setItem("shole", '1');
+								window.location.href = 'holes.html';
+							} else {
+								var shole = parseInt(window.localStorage.getItem("shole"));
+								if (shole == 18) shole = 0;
+								window.localStorage.setItem("shole", shole+1);
+								window.location.href = 'input.html';
+							}
 						}
 					}
 				});
@@ -579,12 +603,15 @@
 					},
 					dataType: 'json',
 					success: function(response){
-						window.localStorage.setItem("strike", 1);
-						window.localStorage.setItem("pstrike", 0);
-						var shole = parseInt(window.localStorage.getItem("shole"));
-						if (shole == 18) shole = 0;
-						window.localStorage.setItem("shole", shole+1);
-						window.location.href = 'holes.html';
+						if (response.result == 0) alertmodal(response.msg);
+						else {
+							window.localStorage.setItem("strike", 1);
+							window.localStorage.setItem("pstrike", 0);
+							var shole = parseInt(window.localStorage.getItem("shole"));
+							if (shole == 18) shole = 0;
+							window.localStorage.setItem("shole", shole+1);
+							window.location.href = 'holes.html';
+						}
 					}
 				});
 				
@@ -615,12 +642,15 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					window.localStorage.setItem("strike", 1);
-					window.localStorage.setItem("pstrike", 0);
-					var shole = parseInt(window.localStorage.getItem("shole"));
-					if (shole == 18) shole = 0;
-					window.localStorage.setItem("shole", shole+1);
-					window.location.href = 'input.html';
+					if (response.result == 0) alertmodal(response.msg);
+					else {
+						window.localStorage.setItem("strike", 1);
+						window.localStorage.setItem("pstrike", 0);
+						var shole = parseInt(window.localStorage.getItem("shole"));
+						if (shole == 18) shole = 0;
+						window.localStorage.setItem("shole", shole+1);
+						window.location.href = 'input.html';
+					}
 				}
 			});
 		});
@@ -648,12 +678,15 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					window.localStorage.setItem("strike", 1);
-					window.localStorage.setItem("pstrike", 0);
-					var shole = parseInt(window.localStorage.getItem("shole"));
-					if (shole == 18) shole = 0;
-					window.localStorage.setItem("shole", shole+1);
-					window.location.href = 'input.html';
+					if (response.result == 0) alertmodal(response.msg);
+					else {
+						window.localStorage.setItem("strike", 1);
+						window.localStorage.setItem("pstrike", 0);
+						var shole = parseInt(window.localStorage.getItem("shole"));
+						if (shole == 18) shole = 0;
+						window.localStorage.setItem("shole", shole+1);
+						window.location.href = 'input.html';
+					}
 				}
 			});
 		});
@@ -682,18 +715,21 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					window.localStorage.removeItem("course");
-					window.localStorage.removeItem("shole");
-					window.localStorage.removeItem("par");
-					window.localStorage.removeItem("strike");
-					window.localStorage.removeItem("pstrike");
-					window.localStorage.removeItem("wind");
-					window.localStorage.removeItem("weather");
-					window.localStorage.removeItem("game_type");
-					window.localStorage.removeItem("bars");
-					window.localStorage.removeItem("lie");
-					window.localStorage.removeItem("club");
-					window.location.href = 'home.html';
+					if (response.result == 0) alertmodal(response.msg);
+					else {
+						window.localStorage.removeItem("course");
+						window.localStorage.removeItem("shole");
+						window.localStorage.removeItem("par");
+						window.localStorage.removeItem("strike");
+						window.localStorage.removeItem("pstrike");
+						window.localStorage.removeItem("wind");
+						window.localStorage.removeItem("weather");
+						window.localStorage.removeItem("game_type");
+						window.localStorage.removeItem("bars");
+						window.localStorage.removeItem("lie");
+						window.localStorage.removeItem("club");
+						window.location.href = 'home.html';
+					}
 				}
 			});
 		});
@@ -801,6 +837,12 @@
 					return pholes;
 				}
 			});
+		}
+		
+		function alertmodal(msg)
+		{
+			$("#modalmsg .modal-body p").html(msg);
+			$("#modalmsg").modal({show: true});
 		}
     </script>
 </body>
