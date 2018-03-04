@@ -98,12 +98,12 @@
 						<div class="col-12 profileop" id="professionalop" style="display:none">
 							<label>Status</label>
 							<div id="tours" class="" data-toggle="buttons">
-								<div class="form-group"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour[]" value="Club Pro" />Club Pro</label></div>
-								<div class="form-group"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour[]" value="Mini tour Pro" />Mini Tour Player</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour[]" value="Challenge Tour Pro" />Challenge Tour<br>Web.com Tour<br>Asian Tour</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour[]" value="PGA Tour Pro" />European Tour<br>PGA Tour</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour[]" value="Ladies European Tour Pro" />Ladies European Tour</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour[]" value="Ladies PGA Tour Pro" />Ladies PGA Tour</label></div>
+								<div class="form-group"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour" value="Club Pro" />Club Pro</label></div>
+								<div class="form-group"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour" value="Mini tour Pro" />Mini Tour Player</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour" value="Challenge Tour Pro" />Challenge Tour<br>Web.com Tour<br>Asian Tour</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour" value="PGA Tour Pro" />European Tour<br>PGA Tour</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour" value="Ladies European Tour Pro" />Ladies European Tour</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour" value="Ladies PGA Tour Pro" />Ladies PGA Tour</label></div>
 							</div>
 						</div>
 						
@@ -336,6 +336,8 @@
             }
 			  $('#genders .active input').each(function(){
 				window.localStorage.setItem("gender", $(this).val());
+				$(this).prop('checked', true);
+				save_user_data();
 				$('#tours .form-group').show();
 				$('#tours .'+$(this).val()).hide();
 			  });
@@ -355,6 +357,8 @@
 				$('.profileop').hide();
 			  $('#profiles .active input').each(function(){
 				window.localStorage.setItem("profile", $(this).val());
+				$(this).prop('checked', true);
+				save_user_data();
 				$('#'+$(this).val()+'op').show();
 			  });
 		  });
@@ -375,11 +379,13 @@
             }
 			$('#tours .active input').each(function(){
 				window.localStorage.setItem("protour", $(this).val());
+				save_user_data();
 			});
 			return;
           });
 		  $('#handicap').change(function(){
 				window.localStorage.setItem("handicap", $(this).val());
+				save_user_data();
 		  })
 		  $('#handicap').on("input change", function() { 
 				$('#handicapvalue').html($(this).val());
@@ -399,6 +405,8 @@
             }
 			  $('#units .active input').each(function(){
 				window.localStorage.setItem("units", $(this).val());
+				$(this).prop('checked', true);
+				save_user_data();
 			  });
 		  });
 		  
@@ -442,6 +450,32 @@
 		function geoError(error) {
 			alert('code: '    + error.code    + '\n' +
 				  'message: ' + error.message + '\n');
+		}
+		
+		function save_user_data()
+		{
+			var gender = $('input[name=gender]:checked').val();
+			var profile = $('input[name=profile]:checked').val();
+			var handicap = $('input[name=handicap]').val();
+			var tour = $('input[name=tour]:checked').val();
+			var units = $('input[name=units]:checked').val();
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/save_user_data',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'gender':gender,
+					'profile':profile,
+					'handicap':handicap,
+					'tour':tour,
+					'units':units
+				},
+				dataType: 'json',
+				success: function(response){
+					
+				}
+			});
 		}
     </script>
 </body>
