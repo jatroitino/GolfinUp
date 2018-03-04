@@ -452,6 +452,43 @@
 				  'message: ' + error.message + '\n');
 		}
 		
+		
+		
+		$('#saveconfig').click(function(){
+			var oldpwd = $('input[name=password]').val();
+			var newpwd = $('input[name=newpassword]').val();
+			var newpwd2 = $('input[name=newpassword2]').val();
+			if (oldpwd == '' || newpwd == '' || newpwd2 == ''){
+				alert('Enter your current password, new password and confirm new password.');
+				return;
+			}
+			
+			//if (oldpwd != )
+			if (newpwd != newpwd2){
+				alert('The confirmation of the new password does not match.');
+				return;
+			}
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://proyectosweb.info/golf/privado/ajax_change_password',
+				data: {
+					'user_id':window.localStorage.getItem("user_id"),
+					'password':oldpwd,
+					'newpassword':newpwd,
+					'newpassword2':newpwd2
+				},
+				dataType: 'json',
+				success: function(response){
+					if (response == true)
+						alert('Password changed');
+					else 
+						alert('Error updating new password.');
+				}
+			});
+		});
+		
+		
 		function save_user_data()
 		{
 			var gender = $('input[name=gender]:checked').val();
