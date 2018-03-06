@@ -717,18 +717,14 @@
 				success: function(response){
 					if (response.result == 0) alertmodal(response.msg);
 					else {
-						window.localStorage.removeItem("course");
-						window.localStorage.removeItem("shole");
 						window.localStorage.removeItem("par");
 						window.localStorage.removeItem("strike");
+						window.localStorage.removeItem("shole");
 						window.localStorage.removeItem("pstrike");
-						window.localStorage.removeItem("wind");
-						window.localStorage.removeItem("weather");
-						window.localStorage.removeItem("game_type");
-						window.localStorage.removeItem("bars");
 						window.localStorage.removeItem("lie");
 						window.localStorage.removeItem("club");
-						window.location.href = 'home.html';
+						
+						window.location.href = 'resume.html';
 					}
 				}
 			});
