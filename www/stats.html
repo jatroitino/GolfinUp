@@ -71,12 +71,16 @@
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="https://unpkg.com/popper.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
 		var chart_data;
+		var chart_data1;
+		var chart_data2;
+		var chart_data3;
 		$(document).ready(function(){
 			getStats();
 		});
@@ -96,7 +100,11 @@
 					//console.log(response.chart);
 					$('#sgtotal').html(response.html);
 					chart_data = response.chart;
+					chart_data1 = response.chart1;
+					chart_data2 = response.chart2;
+					chart_data3 = response.chart3;
 					google.charts.setOnLoadCallback(drawChart);
+					$('.subchart').hide();
 					
 					$('#accordiong .collapse').on('hidden.bs.collapse', function (el) {
 					console.log(el.target);
@@ -139,7 +147,6 @@
 						vData.push([i,v,'color:#e21630']);
 					}
 				})
-				//console.log(vData);
 				 var data = new google.visualization.DataTable();
 				  data.addColumn('string', 'Element');
 				  data.addColumn('number', 'Value');
@@ -155,9 +162,113 @@
 									 role: "annotation" },
 								   2]);
 					   
-				var barchart_options = {title:'',width:600,height:300, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
 				
-			var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
+				var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
+				
+				google.visualization.events.addListener(barchart, 'select', function(){
+					var selectedItem = barchart.getSelection()[0];
+					if (selectedItem) {
+						$('.subchart').hide();
+						if (!$('#chart'+selectedItem.row+'_div'+index).is(":visible")){
+							$('#chart'+selectedItem.row+'_div'+index).show( 'drop', {direction:'up'}, 500);
+						}
+					}
+				});
+				
+				barchart.draw(view,barchart_options);
+			}) 
+			
+			$.each( chart_data1, function( index, value ){
+				var vData=[];
+				
+				$.each( value, function( i, v ){
+					if (v > 0){
+						vData.push([i,v,'color:#00bcb4']);
+					} else {
+						vData.push([i,v,'color:#e21630']);
+					}
+				})
+				 var data = new google.visualization.DataTable();
+				  data.addColumn('string', 'Element');
+				  data.addColumn('number', 'Value');
+				  data.addColumn({role: 'style', type: 'string'});
+
+				  data.addRows(vData);
+
+				  var view = new google.visualization.DataView(data);
+				  view.setColumns([0, 1,
+								   { calc: "stringify",
+									 sourceColumn: 1,
+									 type: "string",
+									 role: "annotation" },
+								   2]);
+					   
+				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				
+				var barchart = new google.visualization.ColumnChart($('#chart1_div'+index)[0]);
+				barchart.draw(view,barchart_options);
+			})
+			
+			$.each( chart_data2, function( index, value ){
+				var vData=[];
+				
+				$.each( value, function( i, v ){
+					if (v > 0){
+						vData.push([i,v,'color:#00bcb4']);
+					} else {
+						vData.push([i,v,'color:#e21630']);
+					}
+				})
+				 var data = new google.visualization.DataTable();
+				  data.addColumn('string', 'Element');
+				  data.addColumn('number', 'Value');
+				  data.addColumn({role: 'style', type: 'string'});
+
+				  data.addRows(vData);
+
+				  var view = new google.visualization.DataView(data);
+				  view.setColumns([0, 1,
+								   { calc: "stringify",
+									 sourceColumn: 1,
+									 type: "string",
+									 role: "annotation" },
+								   2]);
+					   
+				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				
+				var barchart = new google.visualization.ColumnChart($('#chart2_div'+index)[0]);
+				barchart.draw(view,barchart_options);
+			})
+			
+			$.each( chart_data3, function( index, value ){
+				var vData=[];
+				
+				$.each( value, function( i, v ){
+					if (v > 0){
+						vData.push([i,v,'color:#00bcb4']);
+					} else {
+						vData.push([i,v,'color:#e21630']);
+					}
+				})
+				 var data = new google.visualization.DataTable();
+				  data.addColumn('string', 'Element');
+				  data.addColumn('number', 'Value');
+				  data.addColumn({role: 'style', type: 'string'});
+
+				  data.addRows(vData);
+
+				  var view = new google.visualization.DataView(data);
+				  view.setColumns([0, 1,
+								   { calc: "stringify",
+									 sourceColumn: 1,
+									 type: "string",
+									 role: "annotation" },
+								   2]);
+					   
+				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				
+				var barchart = new google.visualization.ColumnChart($('#chart3_div'+index)[0]);
 				barchart.draw(view,barchart_options);
 			})
 		}

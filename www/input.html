@@ -731,8 +731,10 @@
 		});
 		$('#distance').change(function(){
 			//$('.s2').removeClass('disabled');
+			$(this).css('border','1px solid #ced4da');
 		});
 		$('#lie').change(function(){
+			$(this).css('border','1px solid #ced4da');
 			if ($('#lie option:selected').val() == 'Green'){
 				$('#club').val('Putter');//.attr('disabled',true);
 				$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
@@ -837,8 +839,12 @@
 		
 		function alertmodal(msg)
 		{
-			$("#modalmsg .modal-body p").html(msg);
-			$("#modalmsg").modal({show: true});
+			if (msg == 'ERROR'){
+				$('#distance, #lie').css('border','2px solid #e21630');
+			} else {
+				$("#modalmsg .modal-body p").html(msg);
+				$("#modalmsg").modal({show: true});
+			}
 		}
     </script>
 </body>
