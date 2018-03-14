@@ -142,9 +142,9 @@
 				
 				$.each( value, function( i, v ){
 					if (v > 0){
-						vData.push([i,v,'color:#00bcb4']);
+						vData.push([i,v,'color:#35e37c']);
 					} else {
-						vData.push([i,v,'color:#e21630']);
+						vData.push([i,v,'color:#ff4768']);
 					}
 				})
 				 var data = new google.visualization.DataTable();
@@ -162,7 +162,7 @@
 									 role: "annotation" },
 								   2]);
 					   
-				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				var barchart_options = {title:'',width:$(window).width()-30,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9,color:'#9c9c9c'}, gridlines:{color:'#d4d4d4'}},vAxis:{ gridlines:{color:'#d4d4d4'}, baselineColor:'#d4d4d4',textPosition:'none'},bar: { groupWidth: "25%" },annotations:{alwaysOutside:true}};
 				
 				var barchart = new google.visualization.ColumnChart($('#chart_div'+index)[0]);
 				
@@ -184,9 +184,9 @@
 				
 				$.each( value, function( i, v ){
 					if (v > 0){
-						vData.push([i,v,'color:#00bcb4']);
+						vData.push([i,v,'color:#35e37c']);
 					} else {
-						vData.push([i,v,'color:#e21630']);
+						vData.push([i,v,'color:#ff4768']);
 					}
 				})
 				 var data = new google.visualization.DataTable();
@@ -204,7 +204,7 @@
 									 role: "annotation" },
 								   2]);
 					   
-				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				var barchart_options = {title:'',width:$(window).width()-30,height:200, chartArea: {width: '65%', height: '70%'},legend:'none',hAxis:{textStyle:{fontSize:8,color:'#9c9c9c'}},vAxis:{ gridlines:{color:'#d4d4d4'}, baselineColor:'#d4d4d4',textPosition:'none'},bar: { groupWidth: "20%" },annotations:{alwaysOutside:true},backgroundColor:'#f3f3f3'};
 				
 				var barchart = new google.visualization.ColumnChart($('#chart1_div'+index)[0]);
 				barchart.draw(view,barchart_options);
@@ -215,9 +215,9 @@
 				
 				$.each( value, function( i, v ){
 					if (v > 0){
-						vData.push([i,v,'color:#00bcb4']);
+						vData.push([i,v,'color:#35e37c']);
 					} else {
-						vData.push([i,v,'color:#e21630']);
+						vData.push([i,v,'color:#ff4768']);
 					}
 				})
 				 var data = new google.visualization.DataTable();
@@ -235,7 +235,7 @@
 									 role: "annotation" },
 								   2]);
 					   
-				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				var barchart_options = {title:'',width:$(window).width()-30,height:200, chartArea: {width: '65%', height: '70%'},legend:'none',hAxis:{textStyle:{fontSize:8,color:'#9c9c9c'}},vAxis:{ gridlines:{color:'#d4d4d4'}, baselineColor:'#d4d4d4',textPosition:'none'},bar: { groupWidth: "20%" },annotations:{alwaysOutside:true},backgroundColor:'#f3f3f3'};
 				
 				var barchart = new google.visualization.ColumnChart($('#chart2_div'+index)[0]);
 				barchart.draw(view,barchart_options);
@@ -246,9 +246,9 @@
 				
 				$.each( value, function( i, v ){
 					if (v > 0){
-						vData.push([i,v,'color:#00bcb4']);
+						vData.push([i,v,'color:#35e37c']);
 					} else {
-						vData.push([i,v,'color:#e21630']);
+						vData.push([i,v,'color:#ff4768']);
 					}
 				})
 				 var data = new google.visualization.DataTable();
@@ -266,7 +266,7 @@
 									 role: "annotation" },
 								   2]);
 					   
-				var barchart_options = {title:'',width:350,height:250, chartArea: {width: '85%', height: '80%'},legend:'none',hAxis:{textStyle:{fontSize:9},slantedText:true},vAxis:{textStyle:{fontSize:9}},bar: { groupWidth: "90%" },annotations:{alwaysOutside:true}};
+				var barchart_options = {title:'',width:$(window).width()-30,height:200, chartArea: {width: '65%', height: '70%'},legend:'none',hAxis:{textStyle:{fontSize:8,color:'#9c9c9c'}},vAxis:{ gridlines:{color:'#d4d4d4'}, baselineColor:'#d4d4d4',textPosition:'none'},bar: { groupWidth: "20%" },annotations:{alwaysOutside:true},backgroundColor:'#f3f3f3'};
 				
 				var barchart = new google.visualization.ColumnChart($('#chart3_div'+index)[0]);
 				barchart.draw(view,barchart_options);
