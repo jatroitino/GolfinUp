@@ -582,7 +582,7 @@
 			if (gt == 'Stableford'){
 				$("#modal1").modal("show");
 			} else {
-				$.ajax({
+				/* $.ajax({
 					type: 'post',
 					cache: false,
 					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
@@ -604,16 +604,16 @@
 					dataType: 'json',
 					success: function(response){
 						if (response.result == 0) alertmodal(response.msg);
-						else {
+						else { */
 							window.localStorage.setItem("strike", 1);
 							window.localStorage.setItem("pstrike", 0);
 							var shole = parseInt(window.localStorage.getItem("shole"));
 							if (shole == 18) shole = 0;
 							window.localStorage.setItem("shole", shole+1);
 							window.location.href = 'holes.html';
-						}
+						/*}
 					}
-				});
+				});*/
 				
 			}
 		});
@@ -694,7 +694,7 @@
 		
 		$('#endround, #endround2').click(function(event){
 			event.preventDefault();
-			$.ajax({
+			/*$.ajax({
 				type: 'post',
 				cache: false,
 				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
@@ -716,7 +716,7 @@
 				dataType: 'json',
 				success: function(response){
 					if (response.result == 0) alertmodal(response.msg);
-					else {
+					else {*/
 						window.localStorage.removeItem("par");
 						window.localStorage.removeItem("strike");
 						window.localStorage.removeItem("shole");
@@ -725,9 +725,9 @@
 						window.localStorage.removeItem("club");
 						
 						window.location.href = 'resume.html';
-					}
+					/*}
 				}
-			});
+			});*/
 		});
 		$('#distance').change(function(){
 			//$('.s2').removeClass('disabled');
