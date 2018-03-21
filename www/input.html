@@ -265,6 +265,7 @@
         app.initialize();
 		var unitT;
 		var unitT2;
+		var gender = 'Male';
 		$(document).ready(function(){
 			var units = window.localStorage.getItem("units");
 			if (units == 'yards'){
@@ -273,6 +274,9 @@
 			} else {
 				unitT = 1;
 				unitT2 = 1;
+			}
+			if (window.localStorage.getItem("gender") != null){
+				gender = window.localStorage.getItem("gender");
 			}
 			
 			var pholes = round_holes_count();
@@ -362,7 +366,7 @@
 					$('#club').val('Putter');//.attr('disabled',true);
 					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
 				} else {
-					$('#club').val(window.localStorage.getItem("club"));
+ 					$('#club').val(window.localStorage.getItem("club"));
 					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="'+window.localStorage.getItem("club")+'"]').data('slickIndex'));
 				}
 			}
@@ -732,6 +736,158 @@
 		$('#distance').change(function(){
 			//$('.s2').removeClass('disabled');
 			$(this).css('border','1px solid #ced4da');
+			
+			distance = $(this).val();
+			distance = distance*unitT;
+			if (gender == 'Male'){
+				if (distance < 60){
+					$('#club').val('Lob wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Lob wedge"]').data('slickIndex'));
+				}else if(between(distance,60,89)){
+					$('#club').val('Sand wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Sand wedge"]').data('slickIndex'));
+				} else if(between(distance,90,109)){  
+					$('#club').val('Gap wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Gap wedge"]').data('slickIndex'));
+				} else if(between(distance,110,124)){  
+					$('#club').val('Pitching wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Pitching wedge"]').data('slickIndex'));
+				} else if(between(distance,125,134)){ 
+					$('#club').val('9 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="9 iron"]').data('slickIndex'));
+				} else if(between(distance,135,144)){ 
+					$('#club').val('8 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="8 iron"]').data('slickIndex'));
+				} else if(between(distance,145,154)){ 
+					$('#club').val('7 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="7 iron"]').data('slickIndex'));
+				} else if(between(distance,155,164)){ 
+					$('#club').val('6 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="6 iron"]').data('slickIndex'));
+				} else if(between(distance,165,174)){ 
+					$('#club').val('5 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 iron"]').data('slickIndex'));
+				} else if(between(distance,175,184)){ 
+					$('#club').val('4 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 iron"]').data('slickIndex'));
+				} else if(between(distance,185,194)){ 
+					if ($('.cluboption[data-value="3 iron"]').length){
+						$('#club').val('3 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="5 hybrid"]').length){
+						$('#club').val('5 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="4 hybrid"]').length){
+						$('#club').val('4 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="7 wood"]').length){
+						$('#club').val('7 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="7 wood"]').data('slickIndex'));
+					}
+				} else if(between(distance,195,214)){ 
+					if ($('.cluboption[data-value="2 iron"]').length){
+						$('#club').val('2 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="2 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="2 hybrid"]').length){
+						$('#club').val('2 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="2 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="3 hybrid"]').length){
+						$('#club').val('3 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="5 wood"]').length){
+						$('#club').val('5 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 wood"]').data('slickIndex'));
+					}
+				} else if(between(distance,214,235)){ 
+					if ($('.cluboption[data-value="1 iron"]').length){
+						$('#club').val('1 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="1 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="4 wood"]').length){
+						$('#club').val('4 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 wood"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="3 wood"]').length){
+						$('#club').val('3 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 wood"]').data('slickIndex'));
+					} 
+				} else {
+					$('#club').val('Driver');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Driver"]').data('slickIndex'));
+				}
+			} else {
+				if (distance < 50){
+					$('#club').val('Lob wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Lob wedge"]').data('slickIndex'));
+				}else if(between(distance,50,69)){
+					$('#club').val('Sand wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Sand wedge"]').data('slickIndex'));
+				} else if(between(distance,70,94)){  
+					$('#club').val('Gap wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Gap wedge"]').data('slickIndex'));
+				} else if(between(distance,95,104)){  
+					$('#club').val('Pitching wedge');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Pitching wedge"]').data('slickIndex'));
+				} else if(between(distance,105,114)){ 
+					$('#club').val('9 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="9 iron"]').data('slickIndex'));
+				} else if(between(distance,115,124)){ 
+					$('#club').val('8 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="8 iron"]').data('slickIndex'));
+				} else if(between(distance,125,134)){ 
+					$('#club').val('7 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="7 iron"]').data('slickIndex'));
+				} else if(between(distance,135,144)){ 
+					$('#club').val('6 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="6 iron"]').data('slickIndex'));
+				} else if(between(distance,145,154)){ 
+					$('#club').val('5 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 iron"]').data('slickIndex'));
+				} else if(between(distance,155,164)){ 
+					$('#club').val('4 iron');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 iron"]').data('slickIndex'));
+				} else if(between(distance,165,174)){ 
+					if ($('.cluboption[data-value="3 iron"]').length){
+						$('#club').val('3 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="5 hybrid"]').length){
+						$('#club').val('5 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="4 hybrid"]').length){
+						$('#club').val('4 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="7 wood"]').length){
+						$('#club').val('7 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="7 wood"]').data('slickIndex'));
+					}
+				} else if(between(distance,175,184)){ 
+					if ($('.cluboption[data-value="2 iron"]').length){
+						$('#club').val('2 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="2 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="2 hybrid"]').length){
+						$('#club').val('2 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="2 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="3 hybrid"]').length){
+						$('#club').val('3 hybrid');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 hybrid"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="5 wood"]').length){
+						$('#club').val('5 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="5 wood"]').data('slickIndex'));
+					}
+				} else if(between(distance,185,194)){ 
+					if ($('.cluboption[data-value="1 iron"]').length){
+						$('#club').val('1 iron');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="1 iron"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="4 wood"]').length){
+						$('#club').val('4 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="4 wood"]').data('slickIndex'));
+					} else if ($('.cluboption[data-value="3 wood"]').length){
+						$('#club').val('3 wood');
+						$('#clubs').slick('slickGoTo',$('.cluboption[data-value="3 wood"]').data('slickIndex'));
+					} 
+				} else {
+					$('#club').val('Driver');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Driver"]').data('slickIndex'));
+				}
+			}
 		});
 		$('#lie').change(function(){
 			$(this).css('border','1px solid #ced4da');
@@ -845,6 +1001,10 @@
 				$("#modalmsg .modal-body p").html(msg);
 				$("#modalmsg").modal({show: true});
 			}
+		}
+		
+		function between(val,min,max){
+			return (min<=val && val<=max);
 		}
     </script>
 </body>
