@@ -373,7 +373,29 @@
 
 			var par = window.localStorage.getItem("par");
 
-
+			if (par == 3){
+				 if (strike > 1){
+					$('#lie').val('Green');
+					$('#club').val('Putter');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
+				 }
+			} else if(par == 4){
+				 if (strike > 1 && strike < 3){
+					$('#lie').val('Fairway');
+				 } else if (strike > 2){
+					$('#lie').val('Green');
+					$('#club').val('Putter');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
+				 }
+			} else if (par == 5){
+				if (strike > 1 && strike < 4){
+					$('#lie').val('Fairway');
+				 } else if (strike > 3){
+					$('#lie').val('Green');
+					$('#club').val('Putter');
+					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
+				 }
+			}
 			if (strike == 2 && par == 5){
 				$("#modal2").modal({show: true,keyboard: false,backdrop: 'static'});
 			}
