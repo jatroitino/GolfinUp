@@ -364,7 +364,13 @@
 				window.localStorage.setItem("profile", $(this).val());
 				$(this).prop('checked', true);
 				save_user_data();
-				$('#'+$(this).val()+'op').show();
+				if ($(this).val() == 'amateur'){
+					$('#professionalop').hide();
+					$('#amateurop').show();
+				} else {
+					$('#professionalop').show();
+					$('#amateurop').hide();
+				}
 			  });
 		  });
 		  
