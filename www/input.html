@@ -267,6 +267,9 @@
 		var unitT2;
 		var gender = 'Male';
 		
+		var penalty1 = false;
+		var penalty2 = false;
+		
 		var gclubs = [
 			"Driver",
 			"3 wood",
@@ -932,7 +935,7 @@
 			if ($('#lie option:selected').val() == 'Green'){
 				$('#club').val('Putter');//.attr('disabled',true);
 				$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
-			} else if($('#lie option:selected').val() == 'Fairway'){
+			} else if($('#lie option:selected').val() != 'Green' && $('#lie option:selected').val() != 'Teeing'){
 			
 			
 				var strike = parseInt(window.localStorage.getItem("strike"));
@@ -1090,11 +1093,31 @@
 			pstrike = window.localStorage.getItem("pstrike");
 			newPStrike = parseInt($(this).val());
 			if(isNaN(newPStrike)){
-				$('h2 em').html('');
+				if (penalty1){
+					penalty1 = false;
+					pstrike = pstrike-1;
+				}
+				if (penalty2){
+					penalty2 = false;
+					pstrike = pstrike-2;
+				}
+				if (pstrike > 0){
+					$('h2 em').html('+'+pstrike);
+				}else{
+					$('h2 em').html('');
+				}
 				window.localStorage.setItem("pstrike", pstrike);
 			} else {
+				if (parseInt(newPStrike)==1){
+					penalty1 = true;
+					penalty2 = false;
+				}
+				if (parseInt(newPStrike)==2){
+					penalty2=true;
+					penalty1=false;
+				}
 				window.localStorage.setItem("pstrike", parseInt(pstrike)+parseInt(newPStrike));
-				$('h2 em').html('+'+newPStrike);
+				$('h2 em').html('+'+(parseInt(pstrike)+parseInt(newPStrike)));
 			}
 		});
 		$('#sd1').click(function(){$('#modal2').modal('hide')})
