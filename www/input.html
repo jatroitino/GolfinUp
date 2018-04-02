@@ -793,7 +793,7 @@
 			
 			var strike = parseInt(window.localStorage.getItem("strike"));
 			var par = window.localStorage.getItem("par");
-			if ((par==4 && strike == 2) || (par==5 && (strike == 2 || strike == 3))){
+			if ((par==3 && strike == 1) || (par==4 && strike <= 2) || (par==5 && (strike <= 3))){
 				
 				distance = $(this).val();
 				distance = distance*unitT;
@@ -935,7 +935,7 @@
 			if ($('#lie option:selected').val() == 'Green'){
 				$('#club').val('Putter');//.attr('disabled',true);
 				$('#clubs').slick('slickGoTo',$('.cluboption[data-value="Putter"]').data('slickIndex'));
-			} else if($('#lie option:selected').val() != 'Green' && $('#lie option:selected').val() != 'Teeing'){
+			} else if($('#lie option:selected').val() != 'Green'){
 			
 			
 				var strike = parseInt(window.localStorage.getItem("strike"));
