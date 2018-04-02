@@ -204,6 +204,17 @@
     <div class="modal-content">
       <div class="modal-body">
 		<div class="row">
+			<div class="col-10"></div>
+			<div class="col-2">
+			<div class="btn-group dropleft">
+					  <button type="button" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						<img src="img/3dots.svg" width="30%" height="auto" />
+					  </button>
+					  <div class="dropdown-menu  dropdown-menu-right">
+						<a href="" id="endround3" class="dropdown-item">Finish round</a>
+						<a href="" id="toholes3" class="dropdown-item">Menu</a>
+					  </div>
+					</div></div>
 			<div class="col-12 spc acenter">
 			<img src="img/icono-hoyo-peque-o.svg"><br>
 			<span id="hole2"></span> Hole</div>
@@ -634,44 +645,53 @@
 		});
 		
 		
-		$('#toholes').click(function(event){
+		$('#toholes, #toholes3').click(function(event){
 			event.preventDefault();
 			var gt = window.localStorage.getItem("game_type");
 			if (gt == 'Stableford'){
 				$("#modal1").modal("show");
 			} else {
-				/* $.ajax({
-					type: 'post',
-					cache: false,
-					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
-					data: {
-						'user_id':window.localStorage.getItem("user_id"),
-						'course':window.localStorage.getItem("course"),
-						'tour':window.localStorage.getItem("tour"),
-						'hole':window.localStorage.getItem("shole"),
-						'par':window.localStorage.getItem("par"),
-						'strike':window.localStorage.getItem("strike"),
-						'distance':parseInt($('#distance').val())*unitT,
-						'lie':$('#lie').val(),
-						'club':$('#club').val(),
-						'prevented':$('#prevented:checked').length,
-						'penalty':$('#penalty').val(),
-						'lifted':0,
-						'closed':0
-					},
-					dataType: 'json',
-					success: function(response){
-						if (response.result == 0) alertmodal(response.msg);
-						else { */
-							window.localStorage.setItem("strike", 1);
-							window.localStorage.setItem("pstrike", 0);
-							var shole = parseInt(window.localStorage.getItem("shole"));
-							if (shole == 18) shole = 0;
-							window.localStorage.setItem("shole", shole+1);
-							window.location.href = 'holes.html';
-						/*}
-					}
-				});*/
+				if (parseInt($('#distance').val()) > 0){
+					$.ajax({
+						type: 'post',
+						cache: false,
+						url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+						data: {
+							'user_id':window.localStorage.getItem("user_id"),
+							'course':window.localStorage.getItem("course"),
+							'tour':window.localStorage.getItem("tour"),
+							'hole':window.localStorage.getItem("shole"),
+							'par':window.localStorage.getItem("par"),
+							'strike':window.localStorage.getItem("strike"),
+							'distance':parseInt($('#distance').val())*unitT,
+							'lie':$('#lie').val(),
+							'club':$('#club').val(),
+							'prevented':$('#prevented:checked').length,
+							'penalty':$('#penalty').val(),
+							'lifted':0,
+							'closed':0
+						},
+						dataType: 'json',
+						success: function(response){
+							if (response.result == 0) alertmodal(response.msg);
+							else { 
+								window.localStorage.setItem("strike", 1);
+								window.localStorage.setItem("pstrike", 0);
+								var shole = parseInt(window.localStorage.getItem("shole"));
+								if (shole == 18) shole = 0;
+								window.localStorage.setItem("shole", shole+1);
+								window.location.href = 'holes.html';
+							}
+						}
+					});
+				} else {
+					window.localStorage.setItem("strike", 1);
+					window.localStorage.setItem("pstrike", 0);
+					var shole = parseInt(window.localStorage.getItem("shole"));
+					if (shole == 18) shole = 0;
+					window.localStorage.setItem("shole", shole+1);
+					window.location.href = 'holes.html';
+				}
 				
 			}
 		});
@@ -750,42 +770,53 @@
 		});
 		
 		
-		$('#endround, #endround2').click(function(event){
+		$('#endround, #endround2, #endround3').click(function(event){
 			event.preventDefault();
-			/*$.ajax({
-				type: 'post',
-				cache: false,
-				url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
-				data: {
-					'user_id':window.localStorage.getItem("user_id"),
-					'course':window.localStorage.getItem("course"),
-					'tour':window.localStorage.getItem("tour"),
-					'hole':window.localStorage.getItem("shole"),
-					'par':window.localStorage.getItem("par"),
-					'strike':window.localStorage.getItem("strike"),
-					'distance':parseInt($('#distance').val())*unitT,
-					'lie':$('#lie').val(),
-					'club':$('#club').val(),
-					'prevented':$('#prevented:checked').length,
-					'penalty':$('#penalty').val(),
-					'lifted':0,
-					'closed':1
-				},
-				dataType: 'json',
-				success: function(response){
-					if (response.result == 0) alertmodal(response.msg);
-					else {*/
-						window.localStorage.removeItem("par");
-						window.localStorage.removeItem("strike");
-						window.localStorage.removeItem("shole");
-						window.localStorage.removeItem("pstrike");
-						window.localStorage.removeItem("lie");
-						window.localStorage.removeItem("club");
-						
-						window.location.href = 'resume.html';
-					/*}
-				}
-			});*/
+			if (parseInt($('#distance').val()) > 0){
+				$.ajax({
+					type: 'post',
+					cache: false,
+					url: 'http://proyectosweb.info/golf/privado/ajax_save_input',
+					data: {
+						'user_id':window.localStorage.getItem("user_id"),
+						'course':window.localStorage.getItem("course"),
+						'tour':window.localStorage.getItem("tour"),
+						'hole':window.localStorage.getItem("shole"),
+						'par':window.localStorage.getItem("par"),
+						'strike':window.localStorage.getItem("strike"),
+						'distance':parseInt($('#distance').val())*unitT,
+						'lie':$('#lie').val(),
+						'club':$('#club').val(),
+						'prevented':$('#prevented:checked').length,
+						'penalty':$('#penalty').val(),
+						'lifted':0,
+						'closed':1
+					},
+					dataType: 'json',
+					success: function(response){
+						if (response.result == 0) alertmodal(response.msg);
+						else {
+							window.localStorage.removeItem("par");
+							window.localStorage.removeItem("strike");
+							window.localStorage.removeItem("shole");
+							window.localStorage.removeItem("pstrike");
+							window.localStorage.removeItem("lie");
+							window.localStorage.removeItem("club");
+							
+							window.location.href = 'resume.html';
+						}
+					}
+				});
+			} else {
+				window.localStorage.removeItem("par");
+				window.localStorage.removeItem("strike");
+				window.localStorage.removeItem("shole");
+				window.localStorage.removeItem("pstrike");
+				window.localStorage.removeItem("lie");
+				window.localStorage.removeItem("club");
+				
+				window.location.href = 'resume.html';
+			}
 		});
 		$('#distance').change(function(){
 			//$('.s2').removeClass('disabled');
