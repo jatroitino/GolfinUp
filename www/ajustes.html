@@ -98,12 +98,12 @@
 						<div class="col-12 profileop" id="professionalop" style="display:none">
 							<label>Status</label>
 							<div id="tours" class="" data-toggle="buttons">
-								<div class="form-group"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour" value="Club Pro" />Club Pro</label></div>
-								<div class="form-group"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour" value="Mini tour Pro" />Mini Tour Player</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour" value="Challenge Tour Pro" />Challenge Tour<br>Web.com Tour<br>Asian Tour</label></div>
-								<div class="form-group Female"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour" value="PGA Tour Pro" />European Tour<br>PGA Tour</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour" value="Ladies European Tour Pro" />Ladies European Tour</label></div>
-								<div class="form-group Male"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour" value="Ladies PGA Tour Pro" />Ladies PGA Tour</label></div>
+								<div class="form-group Female Male"><label class="btn btn-info" data-for="tour1"><input id="tour1" type="radio" name="tour" value="Club Pro" />Club Pro</label></div>
+								<div class="form-group Female Male"><label class="btn btn-info" data-for="tour2"><input id="tour2" type="radio" name="tour" value="Mini tour Pro" />Mini Tour Player</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour4"><input id="tour4" type="radio" name="tour" value="Challenge Tour Pro" />Challenge Tour<br>Web.com Tour<br>Asian Tour</label></div>
+								<div class="form-group Male"><label class="btn btn-info" data-for="tour6"><input id="tour6" type="radio" name="tour" value="PGA Tour Pro" />European Tour<br>PGA Tour</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour7"><input id="tour7" type="radio" name="tour" value="Ladies European Tour Pro" />Ladies European Tour</label></div>
+								<div class="form-group Female"><label class="btn btn-info" data-for="tour8"><input id="tour8" type="radio" name="tour" value="Ladies PGA Tour Pro" />Ladies PGA Tour</label></div>
 							</div>
 						</div>
 						
@@ -277,15 +277,20 @@
 		
 			var gender = window.localStorage.getItem("gender");
 			$('#genders input[value="'+gender+'"]').prop('checked',true).parent('label').addClass('active');
-			$('#tours .'+gender).hide();
+			$('#tours .form-group ').hide();
+			$('#tours .'+gender).show();
 			
 			var profile = window.localStorage.getItem("profile");
 			$('#profiles input[value="'+profile+'"]').prop('checked',true).parent('label').addClass('active');
 			$('#'+profile+'op').show();
 
 			var protour = window.localStorage.getItem("protour");
-			$('#tours input[value="'+protour+'"]').prop('checked',true).parent('label').addClass('active');
-			$('#tours label').not('.active').fadeOut();
+			if (protour != '' && protour != 'undefined'){
+				if ($('#tours input[value="'+protour+'"]').parent().parent().hasClass(gender)){
+					$('#tours input[value="'+protour+'"]').prop('checked',true).parent('label').addClass('active');
+					$('#tours label').not('.active').parent().fadeOut();
+				}
+			}
 			
 			var handicap = window.localStorage.getItem("handicap");
 			$('#handicap').val(handicap);
@@ -338,8 +343,8 @@
 				window.localStorage.setItem("gender", $(this).val());
 				$(this).prop('checked', true);
 				save_user_data();
-				$('#tours .form-group').show();
-				$('#tours .'+$(this).val()).hide();
+				$('#tours .form-group').hide();
+				$('#tours .'+$(this).val()).show();
 			  });
 		  });
 		  
@@ -354,7 +359,7 @@
 				$(this).addClass('active');
 				$('#'+$(this).attr('data-for')).prop('checked',true);
             }
-				$('.profileop').hide();
+				/*$('.profileop').hide();*/
 			  $('#profiles .active input').each(function(){
 				window.localStorage.setItem("profile", $(this).val());
 				$(this).prop('checked', true);
@@ -374,7 +379,7 @@
 				$('#tours .active').removeClass('active');
 				$('#'+$('#tours .active').attr('data-for')).prop('checked',false);
 				$(this).addClass('active');
-				$('#tours label').not('.active').fadeOut();
+				$('#tours label').not('.active').parent().fadeOut();
 				$('#'+$(this).attr('data-for')).prop('checked',true);
             }
 			$('#tours .active input').each(function(){
