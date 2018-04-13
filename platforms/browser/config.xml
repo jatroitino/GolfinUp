@@ -8,10 +8,10 @@
     </feature>
     <name>GolfinUp</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        GolfinUp
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="info@proyectosweb.info" href="http://proyectosweb.info">
+        GolfinUp
     </author>
     <content src="index.html" />
     <access origin="*" />
