@@ -38,6 +38,7 @@
 					<input type="text" id="register_user" name="username" class="form-control" placeholder="Username" />
 					<input type="text" id="register_email" name="email" class="form-control" placeholder="Email" />
 					<input type="password" id="register_pass" name="password" class="form-control" placeholder="Password" />
+					<input type="password" id="register_pass2" name="password2" class="form-control" placeholder="Repeat password" />
 					<input type="submit" id="register_submit" value="Register" class="btn btn-info" />
 					<p></p>
 					<a class="btn btn-warning btn-sm" href="index.html">Login</a>
@@ -69,7 +70,8 @@
 						data: {
 							'register_user': $('#register_user').val(),
 							'register_email': $('#register_email').val(),
-							'register_pass': $('#register_pass').val()
+							'register_pass': $('#register_pass').val(),
+							'register_pass2': $('#register_pass2').val()
 						},
 						dataType: 'json',
 						success: function(response){
