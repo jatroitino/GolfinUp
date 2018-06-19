@@ -76,11 +76,11 @@
 						dataType: 'json',
 						success: function(response){
 							if(response.status == 1){
-								$('#errors p').html('<p>Congratulations. Your account has been created.</p>');
+								$('#errors p').html(response.errors);
 								$('#errors').removeClass('alert-danger').addClass('alert-success').addClass('show');
 							}else if(response.status == 0){
 								$('#errors p').html(response.errors);
-								$('#errors').addClass('show');
+								$('#errors').removeClass('alert-success').addClass('alert-danger').addClass('show');
 							}
 						}
 					});
