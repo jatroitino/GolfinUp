@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.golfinup.app" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.golfinup.app" version="1.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>GolfinUp</name>
     <description>
         GolfinUp
@@ -28,18 +28,18 @@
         <icon density="xhdpi" src="www/res/icon/android/icon.png" />
         <icon density="xxhdpi" src="www/res/icon/android/icon.png" />
         <icon density="xxxhdpi" src="www/res/icon/android/icon.png" />
-        <splash density="land-ldpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="land-mdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="land-hdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="land-xhdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="land-xxhdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="land-xxxhdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-ldpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-mdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-hdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-xhdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-xxhdpi" src="www/res/screen/android/screen.jpg" />
-        <splash density="port-xxxhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-ldpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-mdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-hdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-xhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-xxhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="land-xxxhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-ldpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-mdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-hdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-xhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-xxhdpi" src="www/res/screen/android/screen.jpg" />
+        <splash platform="android" qualifier="port-xxxhdpi" src="www/res/screen/android/screen.jpg" />
     </platform>
     <platform name="ios">
         <icon height="40" platform="ios" src="www/res/icon/ios/notificationsipad.png" width="40" />
