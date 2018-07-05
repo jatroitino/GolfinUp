@@ -63,6 +63,11 @@
 					window.location.href='home.html';
 				}
 				$('#register_submit').on( 'click', function(e){
+					if ($('#register_pass').val() != $('#register_pass2').val()) {
+						$('#errors p').html('Passwords do not match');
+						$('#errors').removeClass('alert-success').addClass('alert-danger').addClass('show');
+						return false;
+					}
 					$.ajax({
 						type: 'post',
 						cache: false,

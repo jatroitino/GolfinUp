@@ -85,10 +85,14 @@
 
 							}else if(response.status == 0 && response.on_hold){
 							
-								$('#errors p').html('Has excedido el número máximo de intentos. Espera unos minutos antes de volver a intentar acceder.')
+								$('#errors p').html('You have exceeded the maximum number of attempts. Wait a few minutes before trying again.')
 								$('#errors').addClass('show');
 							}else if(response.status == 0 && response.count){
-								$('#errors p').html('Error en los datos introducidos.');
+								if (!response.errors){
+									$('#errors p').html('Authentication Error. Make sure you have activated the account..');
+								} else {
+									$('#errors p').html(response.errors);
+								}
 								$('#errors').addClass('show');
 							}
 						}
