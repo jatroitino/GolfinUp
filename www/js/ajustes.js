@@ -50,7 +50,7 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-		navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+		//navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
 		document.addEventListener('hidekeyboard', onKeyboardHide, false);
 		document.addEventListener('showkeyboard', onKeyboardShow, false);
     },

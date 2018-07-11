@@ -308,6 +308,9 @@
 		];
 		
 		$(document).ready(function(){
+		
+			check_user_data();
+		
 			var units = window.localStorage.getItem("units");
 			if (units == 'yards'){
 				unitT = 0.9144;
@@ -521,7 +524,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':parseInt($('#distance').val())*unitT,
+					'distance':parseFloat($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -570,7 +573,7 @@
 						'hole':window.localStorage.getItem("shole"),
 						'par':window.localStorage.getItem("par"),
 						'strike':window.localStorage.getItem("strike"),
-						'distance':parseInt($('#distance').val())*unitT,
+						'distance':parseFloat($('#distance').val())*unitT,
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
@@ -651,7 +654,7 @@
 			if (gt == 'Stableford'){
 				$("#modal1").modal("show");
 			} else {
-				if (parseInt($('#distance').val()) > 0){
+				if (parseFloat($('#distance').val()) > 0){
 					$.ajax({
 						type: 'post',
 						cache: false,
@@ -663,7 +666,7 @@
 							'hole':window.localStorage.getItem("shole"),
 							'par':window.localStorage.getItem("par"),
 							'strike':window.localStorage.getItem("strike"),
-							'distance':parseInt($('#distance').val())*unitT,
+							'distance':parseFloat($('#distance').val())*unitT,
 							'lie':$('#lie').val(),
 							'club':$('#club').val(),
 							'prevented':$('#prevented:checked').length,
@@ -710,7 +713,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':parseInt($('#distance').val())*unitT,
+					'distance':parseFloat($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -746,7 +749,7 @@
 					'hole':window.localStorage.getItem("shole"),
 					'par':window.localStorage.getItem("par"),
 					'strike':window.localStorage.getItem("strike"),
-					'distance':parseInt($('#distance').val())*unitT,
+					'distance':parseFloat($('#distance').val())*unitT,
 					'lie':$('#lie').val(),
 					'club':$('#club').val(),
 					'prevented':$('#prevented:checked').length,
@@ -784,7 +787,7 @@
 						'hole':window.localStorage.getItem("shole"),
 						'par':window.localStorage.getItem("par"),
 						'strike':window.localStorage.getItem("strike"),
-						'distance':parseInt($('#distance').val())*unitT,
+						'distance':parseFloat($('#distance').val())*unitT,
 						'lie':$('#lie').val(),
 						'club':$('#club').val(),
 						'prevented':$('#prevented:checked').length,
@@ -1170,7 +1173,7 @@
 					$('#club').val(response.club);
 					$('#clubs').slick('slickGoTo',$('.cluboption[data-value="'+response.club+'"]').data('slickIndex'));
 					$('#lie').val(response.lie);
-					$('#distance').val(Math.ceil(parseInt(response.distance)*unitT2));
+					$('#distance').val(parseFloat(Math.ceil(parseFloat(response.distance)*unitT2*100)/100).toFixed(2));
 					$('#penalty').val(response.penalty);
 					if (response.prevented == 1){
 						$('#prevented').prop('checked','checked');
@@ -1240,6 +1243,24 @@
 		
 		function between(val,min,max){
 			return (min<=val && val<=max);
+		}
+		function check_user_data()
+		{
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://golfinup.com/privado/check_user_data',
+				data: {
+					'user_id':window.localStorage.getItem("user_id")
+				},
+				dataType: 'json',
+				success: function(response){
+					if (response != true){
+						alert('You must fill in your profile.');
+						window.location.href='ajustes.html';
+					}
+				}
+			});
 		}
     </script>
 </body>

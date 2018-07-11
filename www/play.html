@@ -101,7 +101,10 @@
 		var crd;
 		var last_tour;
 		$(document).ready(function(){
-			//navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+		
+			check_user_data();
+		
+			navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
 			var pcourse = window.localStorage.getItem("pcourse");
 			if (pcourse != undefined && pcourse != ''){
 				$("#course").val(pcourse);
@@ -221,6 +224,25 @@
 		function geoError(error) {
 			alert('code: '    + error.code    + '\n' +
 				  'message: ' + error.message + '\n');
+		}
+		
+		function check_user_data()
+		{
+			$.ajax({
+				type: 'post',
+				cache: false,
+				url: 'http://golfinup.com/privado/check_user_data',
+				data: {
+					'user_id':window.localStorage.getItem("user_id")
+				},
+				dataType: 'json',
+				success: function(response){
+					if (response != true){
+						alert('You must fill in your profile.');
+						window.location.href='ajustes.html';
+					}
+				}
+			});
 		}
     </script>
 </body>

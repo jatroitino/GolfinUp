@@ -197,6 +197,8 @@
 					  </div>
 					</div>
 				  </div>
+				  <div class="item" id="extra" style="display: none;">
+				  </div>
 				</div>
 			</div>
 		</div>
@@ -425,6 +427,8 @@
 				window.localStorage.setItem("pcourse", $(this).val());
 		  })
 		  
+		  navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+		  
 		});
 		
 		
@@ -525,6 +529,8 @@
 				}
 			});
 		}
+		
+		
     </script>
 </body>
 

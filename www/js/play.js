@@ -50,7 +50,7 @@ var app = {
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
 		
-		navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
+		//navigator.geolocation.getCurrentPosition(geosuccess,geoError,{ enableHighAccuracy: true });
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
