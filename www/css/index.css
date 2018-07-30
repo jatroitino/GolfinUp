@@ -394,6 +394,16 @@ background: #00bab2;outline: none;box-shadow: none;
 }
 
 #ajustes .profileop label {color: #b2b2b2;font-size: 18px;padding: 10px 0;}
+
+#ajustes .units label {
+    color: #b2b2b2;
+    font-size: 18px;
+    padding: 10px 0;
+	width:100%;
+	float: none;
+	clear:both;
+}
+
 #ajustes #tours .btn-info {text-align:left;color:#b2b2b2;font-weight:normal;border-width: 0 0 1px 0;border-radius:0;
 background: url(../img/inactivecheck.svg) no-repeat right center transparent;background-size: auto 26px;
 border-color: rgba(195, 195, 195,.3);
