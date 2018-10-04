@@ -1219,10 +1219,10 @@
 				},
 				dataType: 'json',
 				success: function(response){
-					pholes = response;
-					//console.log(pholes);
+					pholes = response.count;
 					window.localStorage.setItem("pholes", pholes);
-					if (parseInt(pholes) > 17){
+					shole = window.localStorage.getItem("shole");
+					if (parseInt(pholes) > 17 || (parseInt(pholes)==17 && response.data[shole]!=1)){
 						$('#endhole').hide();
 						$('#endround2').show();
 					} 
