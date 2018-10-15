@@ -632,8 +632,14 @@
 							window.localStorage.setItem("pstrike", 0);
 							pholes = parseInt(window.localStorage.getItem("pholes"));
 							if (pholes == 18){
-								window.localStorage.setItem("shole", '1');
-								window.location.href = 'holes.html';
+								window.localStorage.removeItem("par");
+								window.localStorage.removeItem("strike");
+								window.localStorage.removeItem("shole");
+								window.localStorage.removeItem("pstrike");
+								window.localStorage.removeItem("lie");
+								window.localStorage.removeItem("club");
+								
+								window.location.href = 'resume.html';
 							} else {
 								var shole = parseInt(window.localStorage.getItem("shole"));
 								if (shole == 18) shole = 0;
