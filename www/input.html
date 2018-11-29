@@ -489,7 +489,7 @@
 			$('#input .h10').outerHeight(h10Height);
 			
 			
-			
+			window.localStorage.setItem("gttg",0);
 			
 		});
 			
@@ -530,7 +530,8 @@
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
 					'lifted':0,
-					'closed':0
+					'closed':0,
+					'gttg':window.localStorage.getItem("gttg")
 				},
 				dataType: 'json',
 				success: function(response){
@@ -579,7 +580,8 @@
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
 						'lifted':1,
-						'closed':0
+						'closed':0,
+						'gttg':window.localStorage.getItem("gttg")
 					},
 					dataType: 'json',
 					success: function(response){
@@ -622,7 +624,8 @@
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
 						'lifted':1,
-						'closed':0
+						'closed':0,
+						'gttg':window.localStorage.getItem("gttg")
 					},
 					dataType: 'json',
 					success: function(response){
@@ -678,7 +681,8 @@
 							'prevented':$('#prevented:checked').length,
 							'penalty':$('#penalty').val(),
 							'lifted':0,
-							'closed':0
+							'closed':0,
+							'gttg':window.localStorage.getItem("gttg")
 						},
 						dataType: 'json',
 						success: function(response){
@@ -725,7 +729,8 @@
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
 					'lifted':0,
-					'closed':0
+					'closed':0,
+					'gttg':window.localStorage.getItem("gttg")
 				},
 				dataType: 'json',
 				success: function(response){
@@ -761,7 +766,8 @@
 					'prevented':$('#prevented:checked').length,
 					'penalty':$('#penalty').val(),
 					'lifted':1,
-					'closed':0
+					'closed':0,
+					'gttg':window.localStorage.getItem("gttg")
 				},
 				dataType: 'json',
 				success: function(response){
@@ -799,7 +805,8 @@
 						'prevented':$('#prevented:checked').length,
 						'penalty':$('#penalty').val(),
 						'lifted':0,
-						'closed':1
+						'closed':1,
+						'gttg':window.localStorage.getItem("gttg")
 					},
 					dataType: 'json',
 					success: function(response){
@@ -1160,8 +1167,14 @@
 				$('h2 em').html('+'+(parseInt(pstrike)+parseInt(newPStrike)));
 			}
 		});
-		$('#sd1').click(function(){$('#modal2').modal('hide')})
-		$('#sd2').click(function(){$('#modal2').modal('hide')})
+		$('#sd1').click(function(){
+			$('#modal2').modal('hide');
+			window.localStorage.setItem("gttg",1);
+		});
+		$('#sd2').click(function(){
+			$('#modal2').modal('hide');
+			window.localStorage.setItem("gttg",0);
+		})
 		
 		function recoverStroke(stroke){
 			$.ajax({
